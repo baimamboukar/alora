@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "132950112983",
+    "project_id": "alora-b477f",
+    "storage_bucket": "alora-b477f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132950112983:android:4ab50f02b9d7b218c84e92",
+        "android_client_info": {
+          "package_name": "com.example.alora"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "132950112983-e391l9bpikspch47ikkgae0tfg6e5c21.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqLMYdRz07snb1PfFGj8XBJaZ_Nb4ttlc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "132950112983-e391l9bpikspch47ikkgae0tfg6e5c21.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
