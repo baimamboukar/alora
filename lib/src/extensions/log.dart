@@ -1,0 +1,1 @@
+extension Log on Object {}
