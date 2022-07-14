@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthWithGoogle {
+  // ignore: unused_field
   final Ref _ref;
   final FirebaseAuth _auth;
   AuthWithGoogle(this._ref, this._auth);

@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class FirebaseAuthentication {
+  // ignore: unused_field
   final Ref _ref;
   final FirebaseAuth _auth;
   const FirebaseAuthentication(this._ref, this._auth);
@@ -26,6 +27,7 @@ class FirebaseAuthentication {
     required String mail,
     required String pass,
   }) async {
+    //late UserCredential? response;
     try {
       await _auth
           .createUserWithEmailAndPassword(email: mail, password: pass)
@@ -35,6 +37,7 @@ class FirebaseAuthentication {
     } on FirebaseAuthException {
       debugPrint("Error");
     }
+    return null;
   }
 
   //simply logs out the user
