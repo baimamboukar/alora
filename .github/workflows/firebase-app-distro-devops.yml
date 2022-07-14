@@ -1,4 +1,4 @@
-name: Android CI
+name: firebase-app-distro
 on:
   push:
     branches: [ develop ]
