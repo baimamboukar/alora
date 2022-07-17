@@ -4,6 +4,7 @@ import 'package:alora/src/extensions/extensions.dart';
 import 'package:alora/src/widgets/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:line_icons/line_icons.dart';
 
 class Bookmarks extends ConsumerStatefulWidget {
   const Bookmarks({Key? key}) : super(key: key);
@@ -118,7 +119,97 @@ class _BookmarksState extends ConsumerState<Bookmarks> {
         radius: 28,
         backgroundColor: Palette.primary,
         child: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              showModalBottomSheet(
+                context: context,
+                builder: (context) {
+                  return Container(
+                    decoration: const BoxDecoration(
+                      color: Palette.light,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        topRight: Radius.circular(20),
+                      ),
+                    ),
+                    child: Column(children: [
+                      Container(
+                        height: 20,
+                        width: 120,
+                        decoration: BoxDecoration(
+                          color: Palette.primary,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      Column(
+                        children: [
+                          Text(
+                            "Pick image from camera or gallery",
+                            style: Styles.designText(
+                                color: Palette.light, size: 16, bold: true),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          Row(
+                            children: [
+                              Card(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                ),
+                                child: Container(
+                                    width: 76.0,
+                                    height: 58.0,
+                                    decoration: BoxDecoration(
+                                      color: Palette.primary,
+                                      borderRadius: BorderRadius.circular(20.0),
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                          "Pick from camera",
+                                          style: Styles.designText(
+                                              color: Palette.light,
+                                              size: 12,
+                                              bold: false),
+                                        ),
+                                        const Icon(LineIcons.camera),
+                                      ],
+                                    )),
+                              ),
+                              Card(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                ),
+                                child: Container(
+                                    width: 76.0,
+                                    height: 58.0,
+                                    decoration: BoxDecoration(
+                                      color: Palette.primary,
+                                      borderRadius: BorderRadius.circular(20.0),
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                          "Pick from gallery",
+                                          style: Styles.designText(
+                                              color: Palette.light,
+                                              size: 12,
+                                              bold: false),
+                                        ),
+                                        const Icon(LineIcons.images),
+                                      ],
+                                    )),
+                              ),
+                            ],
+                          ),
+                        ],
+                      )
+                    ]),
+                  );
+                },
+              );
+            },
             icon: const Icon(
               Icons.document_scanner,
               color: Palette.light,

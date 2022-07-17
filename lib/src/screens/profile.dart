@@ -1,10 +1,15 @@
 import 'package:alora/src/configs/index.dart';
 import 'package:alora/src/extensions/extensions.dart';
 import 'package:alora/src/riverpods/index.dart';
+import 'package:alora/src/services/shared/settings_box.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class Profile extends ConsumerStatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -14,6 +19,11 @@ class Profile extends ConsumerStatefulWidget {
 }
 
 class _ProfileState extends ConsumerState<Profile> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,14 +71,19 @@ class _ProfileState extends ConsumerState<Profile> {
               height: 20,
             ),
             ListTile(
-              leading: const CircleAvatar(
+              leading: CircleAvatar(
+                backgroundColor: Colors.transparent,
                 radius: 32,
-                backgroundImage: AssetImage("assets/images/user.png"),
+                backgroundImage: NetworkImage(FirebaseAuth
+                        .instance.currentUser?.providerData.first.photoURL ??
+                    "..."),
               ),
-              title: Text("Alora booster",
+              title: Text("User",
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style: Styles.designText(
                       bold: true, color: Palette.primary, size: 18)),
-              subtitle: Text("aloraboss@alorabiz.cm",
+              subtitle: Text(FirebaseAuth.instance.currentUser?.email ?? "...",
                   style: Styles.designText(
                       bold: false, color: Palette.primary, size: 12)),
             ),
@@ -76,12 +91,51 @@ class _ProfileState extends ConsumerState<Profile> {
               height: 20,
             ),
             ListTile(
+              style: ListTileStyle.drawer,
+              dense: false,
+              trailing: DropdownButton<String>(
+                items: ["English", "Francais", "Deutsch"]
+                    .map((item) => DropdownMenuItem<String>(
+                          value: item,
+                          child: Text(item),
+                        ))
+                    .toList(),
+                onChanged: (value) {},
+                value: "English",
+              ),
               leading: const Icon(
-                LineIcons.language,
+                Icons.language,
                 color: Palette.primary,
                 size: 32,
               ),
+              subtitle: Text("change app language",
+                  style: Styles.designText(
+                      bold: false, color: Palette.secondary, size: 11)),
               title: Text("Language",
+                  style: Styles.designText(
+                      bold: false, color: Palette.primary, size: 16)),
+            ),
+            ListTile(
+              leading: const Icon(
+                Icons.light_mode,
+                color: Palette.primary,
+                size: 32,
+              ),
+              trailing: ValueListenableBuilder(
+                valueListenable: Hive.box('settings').listenable(),
+                builder: (BuildContext context, Box box, Widget? widget) {
+                  return CupertinoSwitch(
+                      activeColor: Palette.primary,
+                      value: box.get('theme'),
+                      onChanged: (value) {
+                        box.put('theme', value);
+                      });
+                },
+              ),
+              subtitle: Text("change app theme",
+                  style: Styles.designText(
+                      bold: false, color: Palette.secondary, size: 11)),
+              title: Text("Theme mode",
                   style: Styles.designText(
                       bold: false, color: Palette.primary, size: 16)),
             ),
@@ -117,12 +171,13 @@ class _ProfileState extends ConsumerState<Profile> {
             ),
             ListTile(
               onTap: () async {
-                EasyLoading.show(status: "Logging out..", dismissOnTap: false);
-                ref
-                    .read(firebaseAuthRiverpod)
-                    .logoutUser()
-                    .then((res) => context.autorouter.popUntilRoot());
-                EasyLoading.dismiss();
+                await EasyLoading.show(
+                    status: "Logging out..", dismissOnTap: false);
+                ref.read(firebaseAuthRiverpod).logoutUser().then((done) async {
+                  //context.autorouter.popUntilRoot();
+                  await EasyLoading.dismiss();
+                  await EasyLoading.showSuccess("Logged out successfully");
+                });
               },
               leading: const Icon(
                 LineIcons.powerOff,

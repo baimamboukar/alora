@@ -10,15 +10,15 @@ class FirebaseAuthentication {
   Stream<User?> get getAuthUser => _auth.authStateChanges();
   bool get isSignedIn => _auth.currentUser != null;
   //login user and provide his data to the app once done
-  Future<void> loginUser({required String mail, required String pass}) async {
+  Future<UserCredential> loginUser(
+      {required String mail, required String pass}) async {
+    late UserCredential creds;
     try {
-      await _auth
-          .signInWithEmailAndPassword(email: mail, password: pass)
-          .then((response) async {
-        debugPrint(response.toString());
-      });
+      creds =
+          await _auth.signInWithEmailAndPassword(email: mail, password: pass);
+      return creds;
     } on FirebaseAuthException catch (err) {
-      debugPrint(err.toString());
+      throw Exception(err);
     }
   }
 
@@ -27,23 +27,21 @@ class FirebaseAuthentication {
     required String mail,
     required String pass,
   }) async {
-    //late UserCredential? response;
+    late UserCredential? response;
     try {
-      await _auth
-          .createUserWithEmailAndPassword(email: mail, password: pass)
-          .then((response) async {
-        return response;
-      });
+      response = await _auth.createUserWithEmailAndPassword(
+          email: mail, password: pass);
+      return response;
     } on FirebaseAuthException {
       debugPrint("Error");
     }
-    return null;
+    return response;
   }
 
   //simply logs out the user
   Future<void> logoutUser() async {
     try {
-      await _auth.signOut().then((res) => debugPrint("Done"));
+      await _auth.signOut();
     } on FirebaseAuthException catch (err) {
       debugPrint(err.toString());
     }

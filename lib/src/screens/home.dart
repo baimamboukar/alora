@@ -4,6 +4,7 @@ import 'package:alora/src/router/router.gr.dart' as routes;
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:line_icons/line_icons.dart';
 
 final _key = GlobalKey<ScaffoldState>();
 
@@ -17,7 +18,7 @@ class Home extends ConsumerWidget {
       routes: const [
         routes.CropsView(),
         routes.Bookmarks(),
-        routes.Settings(),
+        routes.Profile(),
       ],
       builder: (context, child, animation) => ScaleTransition(
         scale: animation,
@@ -35,25 +36,25 @@ class Home extends ConsumerWidget {
           items: [
             BottomNavigationBarItem(
               icon: const Icon(
-                Icons.home,
+                LineIcons.leaf,
                 size: 22,
               ),
-              label: context.loc.crops,
+              label: context.loc.library,
             ),
             BottomNavigationBarItem(
               icon: const Icon(
-                Icons.bookmark,
+                LineIcons.heart,
                 size: 22,
               ),
               label: context.loc.bookmarks,
             ),
             BottomNavigationBarItem(
               icon: const Icon(
-                Icons.settings,
+                LineIcons.user,
                 size: 22,
               ),
               backgroundColor: Palette.dark,
-              label: context.loc.settings,
+              label: context.loc.profile,
             ),
           ],
         );

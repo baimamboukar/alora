@@ -10,7 +10,7 @@ final googleAuthRiverpod = Provider<AuthWithGoogle>((ref) {
   return AuthWithGoogle(ref, FirebaseAuth.instance);
 });
 final authStateRiverpod = StreamProvider<User?>((ref) async* {
-  yield* ref.read(firebaseAuthRiverpod).getAuthUser;
+  yield* ref.watch(firebaseAuthRiverpod).getAuthUser;
 });
 
 final googleSignInRiverpod = FutureProvider<UserCredential>((

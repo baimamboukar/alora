@@ -1,5 +1,7 @@
 import 'package:alora/src/riverpods/auth_riverpods.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -10,7 +12,17 @@ class AuthGuard extends AutoRouteGuard {
 
   @override
   void onNavigation(NavigationResolver resolver, StackRouter router) {
-    final user = ref.read(firebaseAuthRiverpod).isSignedIn;
-    user ? resolver.next(true) : resolver.next(true);
+    // final user = ref.watch(firebaseAuthRiverpod).getAuthUser;
+    FirebaseAuth.instance.authStateChanges().listen(
+      (state) {
+        state != null ? resolver.next(true) : router.replaceNamed('/signup');
+      },
+      onError: (err) {
+        EasyLoading.showError("Something went wrong");
+      },
+      onDone: () {
+        EasyLoading.showInfo("Done");
+      },
+    );
   }
 }

@@ -4,6 +4,7 @@ import 'package:alora/src/riverpods/auth_riverpods.dart';
 import 'package:alora/src/widgets/index.dart';
 import 'package:alora/src/widgets/social_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:line_icons/line_icons.dart';
 
@@ -27,7 +28,6 @@ class Signup extends ConsumerWidget {
               children: [
                 Form(
                   key: formKey,
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   child: Column(
                     children: [
                       Text(context.loc.register,
@@ -81,12 +81,26 @@ class Signup extends ConsumerWidget {
             ),
             const SizedBox(height: 32),
             Button(
-              callback: () {
+              callback: () async {
                 if (formKey.currentState!.validate()) {
-                  ref.read(emailSignInRiverpod([
-                    emailController.value.text,
-                    passwordController.value.text
-                  ]));
+                  await EasyLoading.show(
+                      status: "Signing up...",
+                      maskType: EasyLoadingMaskType.black,
+                      dismissOnTap: false);
+                  final res = await ref.read(firebaseAuthRiverpod).signupUser(
+                        mail: emailController.value.text,
+                        pass: passwordController.value.text,
+                      );
+
+                  if (res!.user != null) {
+                    await EasyLoading.dismiss();
+                    await EasyLoading.showInfo("Authenticated successfully");
+                    context.autorouter.popUntilRoot();
+                  } else {
+                    await EasyLoading.dismiss();
+                    await EasyLoading.showError(
+                        "Something went wrong, please try again later");
+                  }
                 }
               },
               isLoading: false,
@@ -102,8 +116,10 @@ class Signup extends ConsumerWidget {
               children: [
                 SocialButton(
                   callback: () async {
+                    context.autorouter.popUntilRoot();
                     ref.read(googleSignUpRiverpod);
                     ref.refresh(authStateRiverpod);
+
                     context.autorouter.popUntilRoot();
                   },
                   iconAsset: 'assets/images/google.png',
