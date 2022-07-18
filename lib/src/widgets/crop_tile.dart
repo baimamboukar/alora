@@ -28,7 +28,7 @@ class CropCaption extends ConsumerWidget {
             height: 170,
             width: 165,
             decoration: BoxDecoration(
-              color: Colors.white,
+              //color: Colors.white,
               borderRadius: BorderRadius.circular(20),
             ),
             child: Stack(children: [

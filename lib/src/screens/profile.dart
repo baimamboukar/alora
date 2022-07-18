@@ -59,7 +59,7 @@ class _ProfileState extends ConsumerState<Profile> {
               children: [
                 Align(
                   alignment: Alignment.bottomCenter,
-                  child: Text(context.loc.settings,
+                  child: Text(context.loc.profile,
                       style: Styles.designText(
                           bold: true, color: Palette.primary, size: 26)),
                 ),
@@ -71,18 +71,29 @@ class _ProfileState extends ConsumerState<Profile> {
               height: 20,
             ),
             ListTile(
-              leading: CircleAvatar(
-                backgroundColor: Colors.transparent,
-                radius: 32,
-                backgroundImage: NetworkImage(FirebaseAuth
-                        .instance.currentUser?.providerData.first.photoURL ??
-                    "..."),
+              leading: Visibility(
+                visible: FirebaseAuth
+                        .instance.currentUser?.providerData.first.photoURL !=
+                    null,
+                replacement: const CircleAvatar(
+                  backgroundColor: Colors.transparent,
+                  radius: 32,
+                  backgroundImage: AssetImage('assets/images/user.png'),
+                ),
+                child: CircleAvatar(
+                  backgroundColor: Colors.transparent,
+                  radius: 32,
+                  backgroundImage: NetworkImage(FirebaseAuth
+                          .instance.currentUser?.providerData.first.photoURL ??
+                      ''),
+                ),
               ),
-              title: Text("User",
+              title: Text(
+                  FirebaseAuth.instance.currentUser?.displayName ?? "User",
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: Styles.designText(
-                      bold: true, color: Palette.primary, size: 18)),
+                      bold: true, color: Palette.primary, size: 14)),
               subtitle: Text(FirebaseAuth.instance.currentUser?.email ?? "...",
                   style: Styles.designText(
                       bold: false, color: Palette.primary, size: 12)),
@@ -94,10 +105,18 @@ class _ProfileState extends ConsumerState<Profile> {
               style: ListTileStyle.drawer,
               dense: false,
               trailing: DropdownButton<String>(
+                underline: const SizedBox.shrink(),
+                elevation: 0,
                 items: ["English", "Francais", "Deutsch"]
                     .map((item) => DropdownMenuItem<String>(
                           value: item,
-                          child: Text(item),
+                          child: Text(
+                            item,
+                            style: Styles.designText(
+                                size: 14.0,
+                                bold: false,
+                                color: Palette.primary),
+                          ),
                         ))
                     .toList(),
                 onChanged: (value) {},
@@ -174,7 +193,7 @@ class _ProfileState extends ConsumerState<Profile> {
                 await EasyLoading.show(
                     status: "Logging out..", dismissOnTap: false);
                 ref.read(firebaseAuthRiverpod).logoutUser().then((done) async {
-                  //context.autorouter.popUntilRoot();
+                  context.autorouter.popUntilRoot();
                   await EasyLoading.dismiss();
                   await EasyLoading.showSuccess("Logged out successfully");
                 });

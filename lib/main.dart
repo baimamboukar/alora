@@ -12,6 +12,9 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'firebase_options.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+final appKeyProvider = Provider<GlobalKey>((ref) {
+  return GlobalKey();
+});
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
@@ -23,7 +26,7 @@ Future<void> main() async {
   // await Hive.deleteBoxFromDisk('settings');
   // await Hive.deleteBoxFromDisk('user');
   await Hive.openBox<dynamic>('settings');
-  // await Hive.openBox('user');
+  await Hive.openBox('user');
   runApp(const ProviderScope(child: Alora()));
 }
 

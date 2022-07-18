@@ -1,12 +1,16 @@
+import 'package:alora/main.dart';
 import 'package:alora/src/configs/index.dart';
 import 'package:alora/src/extensions/extensions.dart';
 import 'package:alora/src/riverpods/auth_riverpods.dart';
 import 'package:alora/src/widgets/index.dart';
 import 'package:alora/src/widgets/social_button.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:line_icons/line_icons.dart';
+
+import '../router/router.gr.dart';
 
 class Signup extends ConsumerWidget {
   const Signup({Key? key}) : super(key: key);
@@ -90,12 +94,16 @@ class Signup extends ConsumerWidget {
                   final res = await ref.read(firebaseAuthRiverpod).signupUser(
                         mail: emailController.value.text,
                         pass: passwordController.value.text,
+                        name: nameController.value.text,
                       );
 
                   if (res!.user != null) {
-                    await EasyLoading.dismiss();
+                    context.autorouter.popUntilRoot();
+                    await FirebaseAuth.instance.currentUser?.reload();
+
                     await EasyLoading.showInfo("Authenticated successfully");
                     context.autorouter.popUntilRoot();
+                    context.autorouter.push(const Home());
                   } else {
                     await EasyLoading.dismiss();
                     await EasyLoading.showError(
@@ -120,7 +128,7 @@ class Signup extends ConsumerWidget {
                     ref.read(googleSignUpRiverpod);
                     ref.refresh(authStateRiverpod);
 
-                    context.autorouter.popUntilRoot();
+                    context.autorouter.push(const Home());
                   },
                   iconAsset: 'assets/images/google.png',
                 ),

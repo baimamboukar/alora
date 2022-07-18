@@ -32,12 +32,22 @@ class _CropsViewState extends ConsumerState<CropsView> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                CircleAvatar(
-                  backgroundColor: Colors.transparent,
-                  radius: 32,
-                  backgroundImage: NetworkImage(FirebaseAuth
-                          .instance.currentUser?.providerData.first.photoURL ??
-                      "..."),
+                Visibility(
+                  visible: FirebaseAuth
+                          .instance.currentUser?.providerData.first.photoURL !=
+                      null,
+                  replacement: const CircleAvatar(
+                    backgroundColor: Colors.transparent,
+                    radius: 32,
+                    backgroundImage: AssetImage('assets/images/user.png'),
+                  ),
+                  child: CircleAvatar(
+                    backgroundColor: Colors.transparent,
+                    radius: 32,
+                    backgroundImage: NetworkImage(FirebaseAuth.instance
+                            .currentUser?.providerData.first.photoURL ??
+                        ''),
+                  ),
                 ),
                 IconButton(
                   icon: const Icon(
@@ -84,7 +94,15 @@ class _CropsViewState extends ConsumerState<CropsView> {
                     )),
                 const SizedBox(width: 22),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    showModalBottomSheet(
+                      backgroundColor: Colors.transparent,
+                      context: context,
+                      builder: (context) {
+                        return const ImagePickModal();
+                      },
+                    );
+                  },
                   child: Container(
                     width: 50.0,
                     height: 50.0,
@@ -127,128 +145,7 @@ class _CropsViewState extends ConsumerState<CropsView> {
                 backgroundColor: Colors.transparent,
                 context: context,
                 builder: (context) {
-                  return Container(
-                    decoration: const BoxDecoration(
-                      color: Palette.light,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(20),
-                        topRight: Radius.circular(20),
-                      ),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(mainAxisSize: MainAxisSize.min, children: [
-                        Container(
-                          height: 6,
-                          width: 70,
-                          decoration: BoxDecoration(
-                            color: Palette.primary,
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                        ),
-                        const SizedBox(height: 20),
-                        Text("Pick image either from gallery or camera",
-                            style: Styles.designText(
-                                bold: false, color: Palette.primary, size: 16)),
-                        Column(
-                          children: [
-                            Text(
-                              "Pick image from camera or gallery",
-                              style: Styles.designText(
-                                  color: Palette.light, size: 16, bold: true),
-                            ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                GestureDetector(
-                                  onTap: () async {
-                                    final XFile? image =
-                                        await ImagePickerServices
-                                            .takeCameraImage();
-                                    if (image == null) {
-                                      EasyLoading.showError(
-                                          "No image selected");
-                                    } else {}
-                                  },
-                                  child: Card(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20.0),
-                                    ),
-                                    child: Container(
-                                        width: 100.0,
-                                        height: 70.0,
-                                        decoration: BoxDecoration(
-                                          color: Palette.primary,
-                                          borderRadius:
-                                              BorderRadius.circular(20.0),
-                                        ),
-                                        child: Column(
-                                          children: [
-                                            const Icon(LineIcons.camera,
-                                                size: 32,
-                                                color: Palette.secondary),
-                                            Text(
-                                              "Camera",
-                                              style: Styles.designText(
-                                                  color: Palette.light,
-                                                  size: 12,
-                                                  bold: false),
-                                            ),
-                                          ],
-                                        )),
-                                  ),
-                                ),
-                                GestureDetector(
-                                  onTap: () async {
-                                    final XFile? image =
-                                        await ImagePickerServices
-                                            .pickGalleryImage();
-                                    if (image == null) {
-                                      EasyLoading.showError(
-                                          "No image selected");
-                                    } else {
-                                      context.autorouter
-                                          .push(Predict(image: image));
-                                    }
-                                  },
-                                  child: Card(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20.0),
-                                    ),
-                                    child: Container(
-                                        width: 100.0,
-                                        height: 70.0,
-                                        decoration: BoxDecoration(
-                                          color: Palette.primary,
-                                          borderRadius:
-                                              BorderRadius.circular(20.0),
-                                        ),
-                                        child: Column(
-                                          children: [
-                                            const Icon(LineIcons.images,
-                                                size: 32,
-                                                color: Palette.secondary),
-                                            Text(
-                                              "Gallery",
-                                              style: Styles.designText(
-                                                  color: Palette.light,
-                                                  size: 12,
-                                                  bold: false),
-                                            ),
-                                          ],
-                                        )),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        )
-                      ]),
-                    ),
-                  );
+                  return const ImagePickModal();
                 },
               );
             },
@@ -256,6 +153,132 @@ class _CropsViewState extends ConsumerState<CropsView> {
               Icons.document_scanner,
               color: Palette.light,
             )),
+      ),
+    );
+  }
+}
+
+class ImagePickModal extends StatelessWidget {
+  const ImagePickModal({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        color: Palette.light,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
+        ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(mainAxisSize: MainAxisSize.min, children: [
+          Container(
+            height: 6,
+            width: 70,
+            decoration: BoxDecoration(
+              color: Palette.primary,
+              borderRadius: BorderRadius.circular(20),
+            ),
+          ),
+          const SizedBox(height: 20),
+          Text("Pick image either from gallery or camera",
+              style: Styles.designText(
+                  bold: false, color: Palette.primary, size: 16)),
+          Column(
+            children: [
+              Text(
+                "Pick image from camera or gallery",
+                style: Styles.designText(
+                    color: Palette.light, size: 16, bold: true),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  GestureDetector(
+                    onTap: () async {
+                      final XFile? image =
+                          await ImagePickerServices.takeCameraImage();
+
+                      if (image == null) {
+                        EasyLoading.showError("No image selected");
+                      } else {
+                        context.autorouter.push(Predict(image: image));
+                      }
+                    },
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      child: Container(
+                          width: 100.0,
+                          height: 70.0,
+                          decoration: BoxDecoration(
+                            color: Palette.primary,
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                          child: Column(
+                            children: [
+                              const Icon(LineIcons.camera,
+                                  size: 32, color: Palette.secondary),
+                              Text(
+                                "Camera",
+                                style: Styles.designText(
+                                    color: Palette.light,
+                                    size: 12,
+                                    bold: false),
+                              ),
+                            ],
+                          )),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () async {
+                      final XFile? image =
+                          await ImagePickerServices.pickGalleryImage();
+                      if (image == null) {
+                        EasyLoading.showError("No image selected");
+                      } else {
+                        context.autorouter.push(Predict(image: image));
+                      }
+                    },
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      child: Container(
+                          width: 100.0,
+                          height: 70.0,
+                          decoration: BoxDecoration(
+                            color: Palette.primary,
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                          child: Column(
+                            children: [
+                              const Icon(LineIcons.images,
+                                  size: 32, color: Palette.secondary),
+                              Text(
+                                "Gallery",
+                                style: Styles.designText(
+                                    color: Palette.light,
+                                    size: 12,
+                                    bold: false),
+                              ),
+                            ],
+                          )),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          )
+        ]),
       ),
     );
   }

@@ -4,9 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 final dioProvider = Provider<Dio>((ref) {
   return Dio(BaseOptions(
       baseUrl: 'https://agentcrop.azurewebsites.net',
-      sendTimeout: 30000,
-      connectTimeout: 30000,
-      receiveTimeout: 30000,
+      sendTimeout: 60000,
+      connectTimeout: 60000,
+      receiveTimeout: 60000,
       contentType: Headers.jsonContentType,
       headers: {
         'Accept': 'application/json',

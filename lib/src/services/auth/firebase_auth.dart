@@ -10,12 +10,15 @@ class FirebaseAuthentication {
   Stream<User?> get getAuthUser => _auth.authStateChanges();
   bool get isSignedIn => _auth.currentUser != null;
   //login user and provide his data to the app once done
-  Future<UserCredential> loginUser(
-      {required String mail, required String pass}) async {
+  Future<UserCredential> loginUser({
+    required String mail,
+    required String pass,
+  }) async {
     late UserCredential creds;
     try {
       creds =
           await _auth.signInWithEmailAndPassword(email: mail, password: pass);
+
       return creds;
     } on FirebaseAuthException catch (err) {
       throw Exception(err);
@@ -23,19 +26,19 @@ class FirebaseAuthentication {
   }
 
   //sign up the user and store his data to firestore
-  Future<UserCredential?> signupUser({
-    required String mail,
-    required String pass,
-  }) async {
+  Future<UserCredential?> signupUser(
+      {required String mail,
+      required String pass,
+      required String name}) async {
     late UserCredential? response;
     try {
       response = await _auth.createUserWithEmailAndPassword(
           email: mail, password: pass);
+      response.user!.updateDisplayName(name);
       return response;
-    } on FirebaseAuthException {
-      debugPrint("Error");
+    } on FirebaseAuthException catch (err) {
+      throw Exception(err);
     }
-    return response;
   }
 
   //simply logs out the user

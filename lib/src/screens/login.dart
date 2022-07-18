@@ -1,7 +1,9 @@
 import 'package:alora/src/configs/index.dart';
 import 'package:alora/src/extensions/extensions.dart';
 import 'package:alora/src/riverpods/auth_riverpods.dart';
+import 'package:alora/src/router/router.gr.dart';
 import 'package:alora/src/widgets/index.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -84,6 +86,7 @@ class Login extends ConsumerWidget {
                               pass: passwordController.value.text,
                             )
                             .then((res) async {
+                          await FirebaseAuth.instance.currentUser?.reload();
                           context.autorouter.popUntilRoot();
                           if (res.user != null) {
                             ref.refresh(firebaseAuthRiverpod);
@@ -91,6 +94,7 @@ class Login extends ConsumerWidget {
                             await EasyLoading.showSuccess(
                                 "Authenticated successfully");
                             context.autorouter.popUntilRoot();
+                            context.autorouter.push(const Home());
                           } else {
                             await EasyLoading.dismiss();
                             await EasyLoading.showError(

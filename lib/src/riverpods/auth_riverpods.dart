@@ -22,7 +22,7 @@ final emailSignInRiverpod =
     FutureProvider.family<UserCredential?, List<String>>((ref, data) async {
   return ref
       .read(firebaseAuthRiverpod)
-      .signupUser(mail: data.first, pass: data.last);
+      .signupUser(mail: data.first, pass: data.last, name: data.last);
 });
 
 final googleSignUpRiverpod = FutureProvider<User>((

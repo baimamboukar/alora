@@ -326,13 +326,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_native_splash:
-    dependency: "direct main"
-    description:
-      name: flutter_native_splash
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.2.4"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -469,13 +462,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.1"
-  image:
-    dependency: transitive
-    description:
-      name: image
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.2.0"
   image_picker:
     dependency: "direct main"
     description:
@@ -546,13 +532,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
-  lint:
-    dependency: transitive
-    description:
-      name: lint
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.8.2"
   lints:
     dependency: transitive
     description:

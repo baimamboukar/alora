@@ -1,7 +1,9 @@
 import 'package:alora/src/configs/data.dart';
 import 'package:alora/src/configs/index.dart';
 import 'package:alora/src/extensions/extensions.dart';
+import 'package:alora/src/screens/crops_view.dart';
 import 'package:alora/src/widgets/index.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:line_icons/line_icons.dart';
@@ -35,8 +37,22 @@ class _BookmarksState extends ConsumerState<Bookmarks> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const CircleAvatar(
-                  backgroundImage: AssetImage('assets/images/user.png'),
+                Visibility(
+                  visible: FirebaseAuth
+                          .instance.currentUser?.providerData.first.photoURL !=
+                      null,
+                  replacement: const CircleAvatar(
+                    backgroundColor: Colors.transparent,
+                    radius: 32,
+                    backgroundImage: AssetImage('assets/images/user.png'),
+                  ),
+                  child: CircleAvatar(
+                    backgroundColor: Colors.transparent,
+                    radius: 32,
+                    backgroundImage: NetworkImage(FirebaseAuth.instance
+                            .currentUser?.providerData.first.photoURL ??
+                        ''),
+                  ),
                 ),
                 IconButton(
                   icon: const Icon(
@@ -81,7 +97,15 @@ class _BookmarksState extends ConsumerState<Bookmarks> {
                     )),
                 const SizedBox(width: 22),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    showModalBottomSheet(
+                      backgroundColor: Colors.transparent,
+                      context: context,
+                      builder: (context) {
+                        return const ImagePickModal();
+                      },
+                    );
+                  },
                   child: Container(
                     width: 50.0,
                     height: 50.0,
@@ -121,92 +145,10 @@ class _BookmarksState extends ConsumerState<Bookmarks> {
         child: IconButton(
             onPressed: () {
               showModalBottomSheet(
+                backgroundColor: Colors.transparent,
                 context: context,
                 builder: (context) {
-                  return Container(
-                    decoration: const BoxDecoration(
-                      color: Palette.light,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(20),
-                        topRight: Radius.circular(20),
-                      ),
-                    ),
-                    child: Column(children: [
-                      Container(
-                        height: 20,
-                        width: 120,
-                        decoration: BoxDecoration(
-                          color: Palette.primary,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                      Column(
-                        children: [
-                          Text(
-                            "Pick image from camera or gallery",
-                            style: Styles.designText(
-                                color: Palette.light, size: 16, bold: true),
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          Row(
-                            children: [
-                              Card(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                ),
-                                child: Container(
-                                    width: 76.0,
-                                    height: 58.0,
-                                    decoration: BoxDecoration(
-                                      color: Palette.primary,
-                                      borderRadius: BorderRadius.circular(20.0),
-                                    ),
-                                    child: Column(
-                                      children: [
-                                        Text(
-                                          "Pick from camera",
-                                          style: Styles.designText(
-                                              color: Palette.light,
-                                              size: 12,
-                                              bold: false),
-                                        ),
-                                        const Icon(LineIcons.camera),
-                                      ],
-                                    )),
-                              ),
-                              Card(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                ),
-                                child: Container(
-                                    width: 76.0,
-                                    height: 58.0,
-                                    decoration: BoxDecoration(
-                                      color: Palette.primary,
-                                      borderRadius: BorderRadius.circular(20.0),
-                                    ),
-                                    child: Column(
-                                      children: [
-                                        Text(
-                                          "Pick from gallery",
-                                          style: Styles.designText(
-                                              color: Palette.light,
-                                              size: 12,
-                                              bold: false),
-                                        ),
-                                        const Icon(LineIcons.images),
-                                      ],
-                                    )),
-                              ),
-                            ],
-                          ),
-                        ],
-                      )
-                    ]),
-                  );
+                  return const ImagePickModal();
                 },
               );
             },

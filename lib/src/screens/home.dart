@@ -27,7 +27,7 @@ class Home extends ConsumerWidget {
       bottomNavigationBuilder: (context, router) {
         return BottomNavigationBar(
           elevation: 12,
-          backgroundColor: const Color(0xFFFFFFFF),
+          // backgroundColor: Colors.white,
           selectedItemColor: Palette.primary,
           unselectedItemColor: Palette.primary.withOpacity(.55),
           currentIndex: router.activeIndex,
