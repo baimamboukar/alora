@@ -1,7 +1,6 @@
 import 'package:alora/src/configs/index.dart';
 import 'package:alora/src/router/guards/index.dart';
 import 'package:alora/src/router/router.gr.dart';
-import 'package:alora/src/services/shared/settings_box.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

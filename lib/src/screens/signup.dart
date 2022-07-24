@@ -1,4 +1,3 @@
-import 'package:alora/main.dart';
 import 'package:alora/src/configs/index.dart';
 import 'package:alora/src/extensions/extensions.dart';
 import 'package:alora/src/riverpods/auth_riverpods.dart';

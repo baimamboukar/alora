@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:alora/src/models/prediction.dart';
 import 'package:alora/src/riverpods/dio_riverpod.dart';
@@ -21,7 +20,8 @@ class PredictionsApiServices {
           await _read(dioProvider).post('/api/predict', data: imageData);
 
       if (response.statusCode == 200 || response.statusCode == 201) {
-        return Prediction.fromMap(jsonDecode(jsonEncode(response.data[fileName])));
+        return Prediction.fromMap(
+            jsonDecode(jsonEncode(response.data[fileName])));
       } else {
         throw Exception('Prediction failed');
       }

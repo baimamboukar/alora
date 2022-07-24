@@ -1,5 +1,4 @@
 import 'package:alora/src/configs/index.dart';
-import 'package:alora/src/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 
