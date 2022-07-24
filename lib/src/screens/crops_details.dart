@@ -2,6 +2,7 @@ import 'package:alora/src/configs/index.dart';
 import 'package:alora/src/extensions/extensions.dart';
 import 'package:alora/src/models/crop_model.dart';
 import 'package:alora/src/widgets/index.dart';
+import 'package:cinetpay/cinetpay.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:line_icons/line_icons.dart';
@@ -125,7 +126,34 @@ class _CropsDetailsState extends ConsumerState<CropsDetails> {
                     ),
                     const SizedBox(height: 28),
                     Button(
-                      callback: () {},
+                      callback: () {
+                        showDialog(
+                            context: context,
+                            builder: (context) => CinetPayCheckout(
+                                  title: 'Alora Prenium',
+                                  configData: const <String, dynamic>{
+                                    'apikey':
+                                        '182473934962dd5dfc165aa0.79719255',
+                                    'site_id': 'alora',
+                                    'notify_url':
+                                        'https://baimamboukar.hashnode.com/',
+                                    'mode': 'test',
+                                  },
+                                  paymentData: const <String, dynamic>{
+                                    'transaction_id': '8111322',
+                                    'amount': 200,
+                                    'currency': 'XAF',
+                                    'channels': 'CREDIT_CARD',
+                                    'description': 'Alora payment test',
+                                  },
+                                  waitResponse: (data) {
+                                    debugPrint(data.toString());
+                                  },
+                                  onError: (data) {
+                                    debugPrint(data.toString());
+                                  },
+                                ));
+                      },
                       isLoading: false,
                       label: "Solution",
                     )
