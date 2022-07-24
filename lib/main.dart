@@ -27,6 +27,12 @@ Future<void> main() async {
   // await Hive.deleteBoxFromDisk('user');
   await Hive.openBox<dynamic>('settings');
   await Hive.openBox('user');
+  Hive.box('settings').isEmpty
+      ? {
+          Hive.box('settings').put('language', 'en'),
+          Hive.box('settings').put('theme', false),
+        }
+      : null;
   runApp(const ProviderScope(child: Alora()));
 }
 
