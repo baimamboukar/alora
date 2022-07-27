@@ -19,10 +19,15 @@ class AuthGuard extends AutoRouteGuard {
     // final user = ref.watch(firebaseAuthRiverpod).getAuthUser;
     if (initialLink != null) {
       final Uri deepLink = initialLink!.link;
-      if (deepLink.path.startsWith('/payment')) {
-        router.replaceNamed(deepLink.path);
+      if (deepLink.path.contains('payment')) {
+        router.pushNamed(deepLink.path);
       }
     }
+    FirebaseDynamicLinks.instance.onLink.listen((dynamicLinkData) {
+      router.pushNamed(dynamicLinkData.link.path);
+    }).onError((error) {
+      // Handle errors
+    });
     FirebaseAuth.instance.authStateChanges().listen(
       (state) {
         //debugPrint('auth state changed => $state');
