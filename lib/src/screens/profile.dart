@@ -142,11 +142,12 @@ class _ProfileState extends ConsumerState<Profile> {
                 valueListenable: Hive.box('settings').listenable(),
                 builder: (BuildContext context, Box box, Widget? widget) {
                   return CupertinoSwitch(
-                      activeColor: Palette.primary,
-                      value: box.get('theme'),
-                      onChanged: (value) {
-                        box.put('theme', value);
-                      });
+                    activeColor: Palette.primary,
+                    value: box.get('theme'),
+                    onChanged: (value) {
+                      box.put('theme', value);
+                    },
+                  );
                 },
               ),
               subtitle: Text("change app theme",
