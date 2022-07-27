@@ -159,15 +159,13 @@ class _CropsViewState extends ConsumerState<CropsView> {
                       body: Padding(
                         padding: const EdgeInsets.all(12.0),
                         child: WebViewPlus(
-                          onWebViewCreated: (controller) {
-                            controller.loadUrl(
-                              'https://s.htr.cm/9iAq',
-                            );
-                          },
-
-                          // initialUrl:
-                          //  'https://mesomb.hachther.com/en/web/payment/CM/?widget=242',
+                          debuggingEnabled: true,
                           javascriptMode: JavascriptMode.unrestricted,
+                          onWebViewCreated: (controller) {
+                            // controller.loadUrl("https://s.htr.cm/9iAq");
+                          },
+                          initialUrl:
+                              "https://mesomb.hachther.com/en/web/payment/CM/?widget=253",
                         ),
                       ),
                     ),
