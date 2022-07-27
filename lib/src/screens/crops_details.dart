@@ -127,32 +127,33 @@ class _CropsDetailsState extends ConsumerState<CropsDetails> {
                     const SizedBox(height: 28),
                     Button(
                       callback: () {
-                        showDialog(
-                            context: context,
-                            builder: (context) => CinetPayCheckout(
-                                  title: 'Alora Prenium',
-                                  configData: const <String, dynamic>{
-                                    'apikey':
-                                        '182473934962dd5dfc165aa0.79719255',
-                                    'site_id': 'alora',
-                                    'notify_url':
-                                        'https://baimamboukar.hashnode.com/',
-                                    'mode': 'test',
-                                  },
-                                  paymentData: const <String, dynamic>{
-                                    'transaction_id': '8111322',
-                                    'amount': 200,
-                                    'currency': 'XAF',
-                                    'channels': 'CREDIT_CARD',
-                                    'description': 'Alora payment test',
-                                  },
-                                  waitResponse: (data) {
-                                    debugPrint(data.toString());
-                                  },
-                                  onError: (data) {
-                                    debugPrint(data.toString());
-                                  },
-                                ));
+                        context.autorouter.pushNamed('/purchase');
+                        // showDialog(
+                        //     context: context,
+                        //     builder: (context) => CinetPayCheckout(
+                        //           title: 'Alora Prenium',
+                        //           configData: const <String, dynamic>{
+                        //             'apikey':
+                        //                 '182473934962dd5dfc165aa0.79719255',
+                        //             'site_id': 'alora',
+                        //             'notify_url':
+                        //                 'https://baimamboukar.hashnode.com/',
+                        //             'mode': 'test',
+                        //           },
+                        //           paymentData: const <String, dynamic>{
+                        //             'transaction_id': '8111322',
+                        //             'amount': 200,
+                        //             'currency': 'XAF',
+                        //             'channels': 'CREDIT_CARD',
+                        //             'description': 'Alora payment test',
+                        //           },
+                        //           waitResponse: (data) {
+                        //             debugPrint(data.toString());
+                        //           },
+                        //           onError: (data) {
+                        //             debugPrint(data.toString());
+                        //           },
+                        //         ));
                       },
                       isLoading: false,
                       label: "Solution",
