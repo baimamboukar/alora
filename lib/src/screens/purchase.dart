@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:lottie/lottie.dart';
+import 'package:webview_flutter_plus/webview_flutter_plus.dart';
 
 class Purchase extends StatelessWidget {
   const Purchase({Key? key}) : super(key: key);
@@ -109,7 +110,42 @@ class Purchase extends StatelessWidget {
                             height: 20,
                           ),
                           Button(
-                            callback: () {},
+                            callback: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return SafeArea(
+                                    child: Scaffold(
+                                      appBar: AppBar(
+                                        //backgroundColor: Colors.transparent,
+                                        backgroundColor: Palette.primary,
+                                        elevation: 0,
+                                        title: Text(
+                                          "Payment Checkout",
+                                          style: Styles.designText(
+                                              bold: false,
+                                              size: 14,
+                                              color: Palette.light),
+                                        ),
+                                      ),
+                                      body: Padding(
+                                        padding: const EdgeInsets.all(12.0),
+                                        child: WebViewPlus(
+                                          debuggingEnabled: true,
+                                          javascriptMode:
+                                              JavascriptMode.unrestricted,
+                                          onWebViewCreated: (controller) {
+                                            // controller.loadUrl("https://s.htr.cm/9iAq");
+                                          },
+                                          initialUrl:
+                                              "https://mesomb.hachther.com/en/web/payment/CM/?widget=253",
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
+                            },
                             label: "Purchase",
                             isLoading: false,
                           )
