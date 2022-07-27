@@ -1,15 +1,20 @@
-import 'package:alora/src/configs/index.dart';
-import 'package:alora/src/router/guards/index.dart';
-import 'package:alora/src/router/router.gr.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:alora/src/extensions/extensions.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+
+import 'package:alora/src/configs/index.dart';
+import 'package:alora/src/router/guards/index.dart';
+import 'package:alora/src/router/router.gr.dart';
+
 import 'firebase_options.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 final appKeyProvider = Provider<GlobalKey>((ref) {
   return GlobalKey();
@@ -32,11 +37,17 @@ Future<void> main() async {
           Hive.box('settings').put('theme', false),
         }
       : null;
-  runApp(const ProviderScope(child: Alora()));
+  final PendingDynamicLinkData? initialLink =
+      await FirebaseDynamicLinks.instance.getInitialLink();
+  runApp(ProviderScope(child: Alora(initialLink: initialLink)));
 }
 
 class Alora extends ConsumerStatefulWidget {
-  const Alora({Key? key}) : super(key: key);
+  final PendingDynamicLinkData? initialLink;
+  const Alora({
+    Key? key,
+    this.initialLink,
+  }) : super(key: key);
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _AloraState();
@@ -53,6 +64,10 @@ class _AloraState extends ConsumerState<Alora> {
 
   @override
   Widget build(BuildContext context) {
+    if (widget.initialLink != null) {
+      final Uri deepLink = widget.initialLink!.link;
+      context.autorouter.pushNamed(deepLink.path);
+    }
     return ValueListenableBuilder(
       valueListenable: Hive.box<dynamic>('settings').listenable(),
       builder: (context, Box box, widget) => MaterialApp.router(
