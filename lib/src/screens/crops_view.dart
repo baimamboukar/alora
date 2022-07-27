@@ -10,7 +10,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:line_icons/line_icons.dart';
-
+import 'package:webview_flutter_plus/webview_flutter_plus.dart';
 import 'library_search_delegate.dart';
 
 class CropsView extends ConsumerStatefulWidget {
@@ -141,13 +141,46 @@ class _CropsViewState extends ConsumerState<CropsView> {
         backgroundColor: Palette.primary,
         child: IconButton(
             onPressed: () {
-              showModalBottomSheet(
-                backgroundColor: Colors.transparent,
+              showDialog(
                 context: context,
                 builder: (context) {
-                  return const ImagePickModal();
+                  return SafeArea(
+                    child: Scaffold(
+                      appBar: AppBar(
+                        //backgroundColor: Colors.transparent,
+                        backgroundColor: Palette.primary,
+                        elevation: 0,
+                        title: Text(
+                          "Payment Checkout",
+                          style: Styles.designText(
+                              bold: false, size: 14, color: Palette.light),
+                        ),
+                      ),
+                      body: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: WebViewPlus(
+                          onWebViewCreated: (controller) {
+                            controller.loadUrl(
+                              'https://mesomb.hachther.com/en/web/payment/CM/?widget=242',
+                            );
+                          },
+
+                          // initialUrl:
+                          //  'https://mesomb.hachther.com/en/web/payment/CM/?widget=242',
+                          javascriptMode: JavascriptMode.unrestricted,
+                        ),
+                      ),
+                    ),
+                  );
                 },
               );
+              // showModalBottomSheet(
+              //   backgroundColor: Colors.transparent,
+              //   context: context,
+              //   builder: (context) {
+              //     return const ImagePickModal();
+              //   },
+              // );
             },
             icon: const Icon(
               Icons.document_scanner,
