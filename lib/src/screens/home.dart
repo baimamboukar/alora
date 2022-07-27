@@ -2,17 +2,34 @@ import 'package:alora/src/configs/index.dart';
 import 'package:alora/src/extensions/extensions.dart';
 import 'package:alora/src/router/router.gr.dart' as routes;
 import 'package:auto_route/auto_route.dart';
+import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:line_icons/line_icons.dart';
 
 final _key = GlobalKey<ScaffoldState>();
+late PendingDynamicLinkData? initialLink;
 
-class Home extends ConsumerWidget {
+class Home extends ConsumerStatefulWidget {
   const Home({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() => _HomeState();
+}
+
+class _HomeState extends ConsumerState<Home> {
+  @override
+  void initState() async {
+    initialLink = await FirebaseDynamicLinks.instance.getInitialLink();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (initialLink != null) {
+      final Uri deepLink = initialLink!.link;
+      context.autorouter.pushNamed(deepLink.path);
+    }
     return AutoTabsScaffold(
       scaffoldKey: _key,
       routes: const [
