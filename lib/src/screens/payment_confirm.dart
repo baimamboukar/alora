@@ -3,6 +3,7 @@
 import 'package:alora/src/configs/index.dart';
 import 'package:alora/src/extensions/extensions.dart';
 import 'package:alora/src/widgets/index.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -14,6 +15,14 @@ class PaymentConfirm extends ConsumerStatefulWidget {
 }
 
 class _PaymentConfirmState extends ConsumerState<PaymentConfirm> {
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAuth.instance.currentUser?.updateDisplayName(
+      "${FirebaseAuth.instance.currentUser?.displayName} - prenium",
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -48,6 +57,7 @@ class _PaymentConfirmState extends ConsumerState<PaymentConfirm> {
             ),
             Button(
               callback: () {
+                FirebaseAuth.instance.currentUser?.reload();
                 context.autorouter.popUntilRoot();
               },
               isLoading: false,
