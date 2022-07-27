@@ -2,6 +2,7 @@ import 'package:alora/src/configs/data.dart';
 import 'package:alora/src/configs/index.dart';
 import 'package:alora/src/extensions/extensions.dart';
 import 'package:alora/src/router/router.gr.dart';
+import 'package:alora/src/services/auth/firebase_auth.dart';
 import 'package:alora/src/services/mobile/image_picker_services.dart';
 import 'package:alora/src/widgets/index.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -23,6 +24,7 @@ class CropsView extends ConsumerStatefulWidget {
 class _CropsViewState extends ConsumerState<CropsView> {
   @override
   Widget build(BuildContext context) {
+    debugPrint(FirebaseAuth.instance.currentUser?.displayName);
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -95,13 +97,15 @@ class _CropsViewState extends ConsumerState<CropsView> {
                 const SizedBox(width: 22),
                 GestureDetector(
                   onTap: () {
-                    showModalBottomSheet(
-                      backgroundColor: Colors.transparent,
-                      context: context,
-                      builder: (context) {
-                        return const ImagePickModal();
-                      },
-                    );
+                    FirebaseAuthentication.isPreniumUser
+                        ? showModalBottomSheet(
+                            backgroundColor: Colors.transparent,
+                            context: context,
+                            builder: (context) {
+                              return const ImagePickModal();
+                            },
+                          )
+                        : context.autorouter.pushNamed('/purchase');
                   },
                   child: Container(
                     width: 50.0,
@@ -141,44 +145,15 @@ class _CropsViewState extends ConsumerState<CropsView> {
         backgroundColor: Palette.primary,
         child: IconButton(
             onPressed: () {
-              showDialog(
-                context: context,
-                builder: (context) {
-                  return SafeArea(
-                    child: Scaffold(
-                      appBar: AppBar(
-                        //backgroundColor: Colors.transparent,
-                        backgroundColor: Palette.primary,
-                        elevation: 0,
-                        title: Text(
-                          "Payment Checkout",
-                          style: Styles.designText(
-                              bold: false, size: 14, color: Palette.light),
-                        ),
-                      ),
-                      body: Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: WebViewPlus(
-                          debuggingEnabled: true,
-                          javascriptMode: JavascriptMode.unrestricted,
-                          onWebViewCreated: (controller) {
-                            // controller.loadUrl("https://s.htr.cm/9iAq");
-                          },
-                          initialUrl:
-                              "https://mesomb.hachther.com/en/web/payment/CM/?widget=253",
-                        ),
-                      ),
-                    ),
-                  );
-                },
-              );
-              // showModalBottomSheet(
-              //   backgroundColor: Colors.transparent,
-              //   context: context,
-              //   builder: (context) {
-              //     return const ImagePickModal();
-              //   },
-              // );
+              FirebaseAuthentication.isPreniumUser
+                  ? showModalBottomSheet(
+                      backgroundColor: Colors.transparent,
+                      context: context,
+                      builder: (context) {
+                        return const ImagePickModal();
+                      },
+                    )
+                  : context.autorouter.pushNamed('/purchase');
             },
             icon: const Icon(
               Icons.document_scanner,
