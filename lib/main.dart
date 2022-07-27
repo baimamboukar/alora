@@ -64,10 +64,6 @@ class _AloraState extends ConsumerState<Alora> {
 
   @override
   Widget build(BuildContext context) {
-    if (widget.initialLink != null) {
-      final Uri deepLink = widget.initialLink!.link;
-      context.autorouter.pushNamed(deepLink.path);
-    }
     return ValueListenableBuilder(
       valueListenable: Hive.box<dynamic>('settings').listenable(),
       builder: (context, Box box, widget) => MaterialApp.router(
