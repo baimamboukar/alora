@@ -2,10 +2,12 @@ import 'package:alora/src/configs/data.dart';
 import 'package:alora/src/configs/index.dart';
 import 'package:alora/src/extensions/extensions.dart';
 import 'package:alora/src/screens/crops_view.dart';
+import 'package:alora/src/services/auth/firebase_auth.dart';
 import 'package:alora/src/widgets/index.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:webview_flutter_plus/webview_flutter_plus.dart';
 
 class Bookmarks extends ConsumerStatefulWidget {
   const Bookmarks({Key? key}) : super(key: key);
@@ -97,13 +99,15 @@ class _BookmarksState extends ConsumerState<Bookmarks> {
                 const SizedBox(width: 22),
                 GestureDetector(
                   onTap: () {
-                    showModalBottomSheet(
-                      backgroundColor: Colors.transparent,
-                      context: context,
-                      builder: (context) {
-                        return const ImagePickModal();
-                      },
-                    );
+                    FirebaseAuthentication.isPreniumUser
+                        ? showModalBottomSheet(
+                            backgroundColor: Colors.transparent,
+                            context: context,
+                            builder: (context) {
+                              return const ImagePickModal();
+                            },
+                          )
+                        : context.autorouter.pushNamed('/purchase');
                   },
                   child: Container(
                     width: 50.0,
@@ -143,13 +147,15 @@ class _BookmarksState extends ConsumerState<Bookmarks> {
         backgroundColor: Palette.primary,
         child: IconButton(
             onPressed: () {
-              showModalBottomSheet(
-                backgroundColor: Colors.transparent,
-                context: context,
-                builder: (context) {
-                  return const ImagePickModal();
-                },
-              );
+              FirebaseAuthentication.isPreniumUser
+                  ? showModalBottomSheet(
+                      backgroundColor: Colors.transparent,
+                      context: context,
+                      builder: (context) {
+                        return const ImagePickModal();
+                      },
+                    )
+                  : context.autorouter.pushNamed('/purchase');
             },
             icon: const Icon(
               Icons.document_scanner,
