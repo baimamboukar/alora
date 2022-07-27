@@ -161,7 +161,7 @@ class _CropsViewState extends ConsumerState<CropsView> {
                         child: WebViewPlus(
                           onWebViewCreated: (controller) {
                             controller.loadUrl(
-                              'https://mesomb.hachther.com/en/web/payment/CM/?widget=242',
+                              'https://s.htr.cm/9iAq',
                             );
                           },
 
