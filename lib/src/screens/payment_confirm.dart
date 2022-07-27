@@ -25,12 +25,14 @@ class _PaymentConfirmState extends ConsumerState<PaymentConfirm> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
+    return Scaffold(
+      body: Center(
           child: Padding(
         padding: const EdgeInsets.all(14.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            const Icon(Icons.check_circle, color: Palette.primary, size: 100),
             Text(
               "Payment Confirmation",
               style: Styles.designText(
