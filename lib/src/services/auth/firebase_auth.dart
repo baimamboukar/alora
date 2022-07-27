@@ -1,12 +1,16 @@
+// ignore_for_file: unused_field
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class FirebaseAuthentication {
-  // ignore: unused_field
   final Ref _ref;
   final FirebaseAuth _auth;
   const FirebaseAuthentication(this._ref, this._auth);
+  static bool get isPreniumUser =>
+      FirebaseAuth.instance.currentUser?.displayName?.endsWith(' - prenium') ??
+      false;
   Stream<User?> get getAuthUser => _auth.authStateChanges();
   bool get isSignedIn => _auth.currentUser != null;
   //login user and provide his data to the app once done
