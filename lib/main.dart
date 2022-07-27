@@ -56,8 +56,8 @@ class _AloraState extends ConsumerState<Alora> {
   late AppRouter appRouter;
   @override
   void initState() {
-    appRouter = AppRouter(authGuard: AuthGuard(ref: ref));
-
+    appRouter = AppRouter(
+        authGuard: AuthGuard(ref: ref, initialLink: widget.initialLink));
     super.initState();
   }
 
