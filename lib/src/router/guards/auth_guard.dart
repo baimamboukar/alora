@@ -1,22 +1,33 @@
-
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:auto_route/auto_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class AuthGuard extends AutoRouteGuard {
   final WidgetRef ref;
 
-  AuthGuard({required this.ref});
+  final PendingDynamicLinkData? initialLink;
+  AuthGuard({
+    required this.ref,
+    this.initialLink,
+  });
 
   @override
   void onNavigation(NavigationResolver resolver, StackRouter router) {
     // final user = ref.watch(firebaseAuthRiverpod).getAuthUser;
+    if (initialLink != null) {
+      final Uri deepLink = initialLink!.link;
+      if (deepLink.path.startsWith('/payment')) {
+        router.replaceNamed(deepLink.path);
+      }
+    }
     FirebaseAuth.instance.authStateChanges().listen(
       (state) {
-        debugPrint('auth state changed => $state');
+        //debugPrint('auth state changed => $state');
 
         state != null
             ? {
