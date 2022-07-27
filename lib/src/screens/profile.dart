@@ -87,7 +87,9 @@ class _ProfileState extends ConsumerState<Profile> {
                 ),
               ),
               title: Text(
-                  FirebaseAuth.instance.currentUser?.displayName ?? "User",
+                  FirebaseAuth.instance.currentUser?.displayName
+                          ?.split('-')[0] ??
+                      "User",
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: Styles.designText(
