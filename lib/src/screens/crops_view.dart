@@ -11,7 +11,6 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:webview_flutter_plus/webview_flutter_plus.dart';
 import 'library_search_delegate.dart';
 
 class CropsView extends ConsumerStatefulWidget {
