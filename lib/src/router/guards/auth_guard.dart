@@ -17,12 +17,7 @@ class AuthGuard extends AutoRouteGuard {
   @override
   void onNavigation(NavigationResolver resolver, StackRouter router) {
     // final user = ref.watch(firebaseAuthRiverpod).getAuthUser;
-    if (initialLink != null) {
-      final Uri deepLink = initialLink!.link;
-      if (deepLink.path.contains('payment')) {
-        router.pushNamed(deepLink.path);
-      }
-    }
+
     FirebaseDynamicLinks.instance.onLink.listen((dynamicLinkData) {
       router.pushNamed(dynamicLinkData.link.path);
     }).onError((error) {
@@ -32,11 +27,18 @@ class AuthGuard extends AutoRouteGuard {
       (state) {
         //debugPrint('auth state changed => $state');
 
-        state != null
-            ? {
-                resolver.next(),
-              }
-            : router.replaceNamed('/signup');
+        if (state != null) {
+          if (initialLink != null) {
+            final Uri deepLink = initialLink!.link;
+            if (deepLink.path.contains('purchase')) {
+              router.pushNamed('/payment-confirm');
+            }
+          } else {
+            resolver.next(true);
+          }
+        } else {
+          router.replaceNamed('/signup');
+        }
       },
       onError: (err) {
         EasyLoading.showError("Something went wrong");
