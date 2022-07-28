@@ -86,14 +86,38 @@ class _ProfileState extends ConsumerState<Profile> {
                       ''),
                 ),
               ),
-              title: Text(
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    FirebaseAuth.instance.currentUser?.displayName
+                            ?.split('-')[0]
+                            .substring(0, 12) ??
+                        "User",
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: Styles.designText(
+                        bold: true, color: Palette.primary, size: 14),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
                   FirebaseAuth.instance.currentUser?.displayName
-                          ?.split('-')[0] ??
-                      "User",
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: Styles.designText(
-                      bold: true, color: Palette.primary, size: 14)),
+                              ?.endsWith('- prenium') ??
+                          false
+                      ? GestureDetector(
+                          onTap: () {
+                            FirebaseAuth.instance.currentUser?.updateDisplayName(
+                                "${FirebaseAuth.instance.currentUser?.displayName?.split('-')[0].trimRight()}");
+                          },
+                          child: const Icon(
+                            Icons.verified,
+                            color: Palette.primary,
+                          ),
+                        )
+                      : const SizedBox.shrink(),
+                ],
+              ),
               subtitle: Text(FirebaseAuth.instance.currentUser?.email ?? "...",
                   style: Styles.designText(
                       bold: false, color: Palette.primary, size: 12)),
