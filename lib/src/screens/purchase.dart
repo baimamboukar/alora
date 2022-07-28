@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:lottie/lottie.dart';
 import 'package:webview_flutter_plus/webview_flutter_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Purchase extends StatelessWidget {
   const Purchase({Key? key}) : super(key: key);
@@ -131,14 +132,31 @@ class Purchase extends StatelessWidget {
                                       body: Padding(
                                         padding: const EdgeInsets.all(12.0),
                                         child: WebViewPlus(
+                                          navigationDelegate: (nav) async {
+                                            if (nav.url
+                                                .contains("alora.page.link")) {
+                                              Navigator.pop(context);
+                                              Navigator.pop(context);
+                                              launchUrl(
+                                                  Uri.parse(nav.url
+                                                      .split('#')[0]
+                                                      .replaceAll(
+                                                          'intent', 'https')),
+                                                  mode: LaunchMode
+                                                      .externalNonBrowserApplication);
+                                              return NavigationDecision.prevent;
+                                            }
+                                            return NavigationDecision.prevent;
+                                          },
                                           debuggingEnabled: true,
                                           javascriptMode:
                                               JavascriptMode.unrestricted,
                                           onWebViewCreated: (controller) {
-                                            // controller.loadUrl("https://s.htr.cm/9iAq");
+                                            controller.loadUrl(
+                                                "https://mesomb.hachther.com/en/web/payment/CM/?widget=253");
                                           },
-                                          initialUrl:
-                                              "https://mesomb.hachther.com/en/web/payment/CM/?widget=253",
+                                          // initialUrl:
+                                          // "https://mesomb.hachther.com/en/web/payment/CM/?widget=253",
                                         ),
                                       ),
                                     ),
