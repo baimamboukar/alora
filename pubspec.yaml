@@ -57,6 +57,7 @@ dependencies:
   cinetpay: ^1.0.4
   firebase_dynamic_links: ^4.3.3
   webview_flutter_plus: ^0.3.0+2
+  url_launcher: ^6.1.5
   #tflite_maven: ^1.1.5
   #tflite: ^1.1.2
 
