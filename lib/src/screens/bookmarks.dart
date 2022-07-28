@@ -7,7 +7,6 @@ import 'package:alora/src/widgets/index.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:webview_flutter_plus/webview_flutter_plus.dart';
 
 class Bookmarks extends ConsumerStatefulWidget {
   const Bookmarks({Key? key}) : super(key: key);
