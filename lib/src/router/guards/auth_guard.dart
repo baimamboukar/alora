@@ -28,13 +28,12 @@ class AuthGuard extends AutoRouteGuard {
         //debugPrint('auth state changed => $state');
 
         if (state != null) {
+          resolver.next();
           if (initialLink != null) {
             final Uri deepLink = initialLink!.link;
             if (deepLink.path.contains('purchase')) {
               router.pushNamed('/payment-confirm');
             }
-          } else {
-            resolver.next(true);
           }
         } else {
           router.replaceNamed('/signup');
