@@ -1,4 +1,4 @@
-package com.example.alora
+package com.mysdgsdockta.app
 
 import io.flutter.embedding.android.FlutterActivity
 
