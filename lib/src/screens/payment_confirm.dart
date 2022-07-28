@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_unnecessary_containers
 
+import 'dart:io';
+
 import 'package:alora/src/configs/index.dart';
 import 'package:alora/src/extensions/extensions.dart';
 import 'package:alora/src/widgets/index.dart';
@@ -50,7 +52,7 @@ class _PaymentConfirmState extends ConsumerState<PaymentConfirm> {
               height: 22,
             ),
             Text(
-              "In order to apply changes in the app, go back to the home screen",
+              "In order to apply changes in the app, the app should be restarted",
               style:
                   Styles.designText(size: 10, color: Palette.dark, bold: false),
             ),
@@ -60,10 +62,10 @@ class _PaymentConfirmState extends ConsumerState<PaymentConfirm> {
             Button(
               callback: () {
                 FirebaseAuth.instance.currentUser?.reload();
-                context.autorouter.popUntilRoot();
+                exit(0);
               },
               isLoading: false,
-              label: "Go back Home",
+              label: "Restart App",
             )
           ],
         ),
