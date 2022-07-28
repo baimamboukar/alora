@@ -74,7 +74,7 @@ class _AloraState extends ConsumerState<Alora> {
         debugShowCheckedModeBanner: false,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
-        title: 'Alora',
+        title: 'My SDGs Dockta',
         themeMode: box.get('theme') ? ThemeMode.dark : ThemeMode.light,
         darkTheme: ThemeData.dark(),
         theme: ThemeData(
