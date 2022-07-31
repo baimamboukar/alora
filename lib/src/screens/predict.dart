@@ -93,12 +93,63 @@ class Predict extends ConsumerWidget {
                       borderRadius: BorderRadius.circular(20)),
                   child: Padding(
                     padding: const EdgeInsets.all(12.0),
-                    child: Text(data.description,
-                        style: Styles.designText(
-                            bold: false, size: 14, color: Palette.light)),
+                    child: Column(
+                      children: [
+                        Text(
+                          data.description,
+                          style: Styles.designText(
+                              bold: false, size: 14, color: Palette.light),
+                        ),
+                        const SizedBox(
+                          height: 14,
+                        ),
+                        Text(
+                          "Symptoms",
+                          style: Styles.designText(
+                              bold: true, size: 16, color: Palette.light),
+                        ),
+                        Text(data.symptoms,
+                            style: Styles.designText(
+                                bold: true, size: 16, color: Palette.light)),
+                      ],
+                    ),
                   ),
                 ),
-              )
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 18.0),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          "Get to the source",
+                          style: Styles.designText(
+                              bold: true, size: 16, color: Palette.primary),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 18.0),
+                child: Row(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                          color: Palette.primary,
+                          borderRadius: BorderRadius.circular(20)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Text(data.source,
+                            style: Styles.designText(
+                                bold: true, size: 14, color: Palette.light)),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ],
           );
         },
