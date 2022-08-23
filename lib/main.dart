@@ -39,6 +39,8 @@ Future<void> main() async {
       : null;
   final PendingDynamicLinkData? initialLink =
       await FirebaseDynamicLinks.instance.getInitialLink();
+
+  LocaleSettings.useDeviceLocale();
   runApp(ProviderScope(
       child: TranslationProvider(child: Alora(initialLink: initialLink))));
 }
