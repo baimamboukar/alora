@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_tts/flutter_tts_web.dart';
 
 class TextToSpeechServices {
+  // ignore: unused_field
   final Reader _read;
   TextToSpeechServices(this._read);
   FlutterTtsPlugin tts = FlutterTtsPlugin();
