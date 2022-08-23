@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:alora/i18n/strings.g.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +39,8 @@ Future<void> main() async {
       : null;
   final PendingDynamicLinkData? initialLink =
       await FirebaseDynamicLinks.instance.getInitialLink();
-  runApp(ProviderScope(child: Alora(initialLink: initialLink)));
+  runApp(ProviderScope(
+      child: TranslationProvider(child: Alora(initialLink: initialLink))));
 }
 
 class Alora extends ConsumerStatefulWidget {
@@ -67,10 +69,10 @@ class _AloraState extends ConsumerState<Alora> {
       valueListenable: Hive.box<dynamic>('settings').listenable(),
       builder: (context, Box box, widget) => MaterialApp.router(
         builder: EasyLoading.init(),
+        locale: TranslationProvider.of(context).flutterLocale,
         routerDelegate: appRouter.delegate(),
         routeInformationParser: appRouter.defaultRouteParser(),
         restorationScopeId: 'app',
-        locale: const Locale('en-US'),
         debugShowCheckedModeBanner: false,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
