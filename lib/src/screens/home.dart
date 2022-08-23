@@ -1,3 +1,4 @@
+import 'package:alora/i18n/strings.g.dart';
 import 'package:alora/src/configs/index.dart';
 import 'package:alora/src/extensions/extensions.dart';
 import 'package:alora/src/router/router.gr.dart' as routes;
@@ -39,7 +40,7 @@ class Home extends ConsumerWidget {
                 LineIcons.leaf,
                 size: 22,
               ),
-              label: context.loc.library,
+              label: t.save,
             ),
             BottomNavigationBarItem(
               icon: const Icon(
