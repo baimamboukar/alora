@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 /*
  * Generated file. Do not edit.
  *
@@ -120,6 +122,7 @@ class AppLocaleUtils {
   /// Returns the locale of the device as the enum type.
   /// Fallbacks to base locale.
   static AppLocale findDeviceLocale() {
+    // ignore: unnecessary_nullable_for_final_variable_declarations
     final String? deviceLocale =
         WidgetsBinding.instance.window.locale.toLanguageTag();
     if (deviceLocale != null) {
@@ -144,8 +147,8 @@ class AppLocaleUtils {
 
 // translation instances
 
-late _StringsEn _translationsEn = _StringsEn.build();
-late _StringsDe _translationsDe = _StringsDe.build();
+_StringsEn _translationsEn = _StringsEn.build();
+_StringsDe _translationsDe = _StringsDe.build();
 
 // extensions for AppLocale
 
