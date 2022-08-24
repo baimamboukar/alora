@@ -8,8 +8,23 @@ List<Crop> crops = [
         " Melanose disease is one the most widely distributed and economically important fungal diseases of citrus worldwide. The causative agent isthe filamentous fungus Diaporthe citri (syn. Phomopsis citri).",
     scienticName: "Melanose Diaporthe citri",
     imageURL: PhotoThumbails(
-        caption: "assets/images/oranges.png",
-        details: "assets/images/orange_details.png"),
+      caption: "assets/images/oranges.png",
+      details: "assets/images/orange_details.png",
+    ),
+    treatment: Treatment(
+        intro:
+            "The following control measures have all been proven effective against scab in potatoes. However, in most cases a combination of these techniques will be required.",
+        steps: [
+          "Plant certified, disease-free seed potatoes and resistant varieties whenever possible. We suggest using the russet-skinned varieties since they have more resistance to the disease.",
+          "Rotate root crops by planting in alternate locations to limit the disease.",
+          "Potato scab is most prevalent in dry, alkaline soils. Decrease soil pH by adding elemental sulfur. The disease is controlled or greatly suppressed at soil pH levels of 5.2 or lower. Simple and affordable soil test kits are available to check pH often.",
+          "Tilling in a cover crop — mustard, canola, alfalfa — prior to planting potatoes will help reduce infection.",
+          "Some growers report success spreading agricultural gypsum prior to planting at a rate of 25 lbs per 2,000 sq ft. This will raise the calcium content of your soil and help build strong cell walls in plants. (Note: S. scabies disrupts the development of cell walls resulting in lesions.)",
+          "Adequate irrigation during early tuber development may have a dramatic effect on common scab infection, but you will need to keep the soil damp for 2-6 weeks. This technique is effective because high soil moisture promotes growth of a bacteria that can crowd out S. scabies on the potato surface.",
+          "Do NOT overwater."
+        ],
+        outtro:
+            " If you will be planting in soil where tubers have not been grown before, or where the area is known to be scab-free, treat seed potatoes with sulfur fungicides to reduce scab introduction."),
   ),
   Crop(
     bookMarked: false,
@@ -20,6 +35,20 @@ List<Crop> crops = [
     imageURL: PhotoThumbails(
         caption: "assets/images/potato.png",
         details: "assets/images/potato_details.png"),
+    treatment: Treatment(
+        intro:
+            "The following control measures have all been proven effective against scab in potatoes. However, in most cases a combination of these techniques will be required.",
+        steps: [
+          "Plant certified, disease-free seed potatoes and resistant varieties whenever possible. We suggest using the russet-skinned varieties since they have more resistance to the disease.",
+          "Rotate root crops by planting in alternate locations to limit the disease.",
+          "Potato scab is most prevalent in dry, alkaline soils. Decrease soil pH by adding elemental sulfur. The disease is controlled or greatly suppressed at soil pH levels of 5.2 or lower. Simple and affordable soil test kits are available to check pH often.",
+          "Tilling in a cover crop — mustard, canola, alfalfa — prior to planting potatoes will help reduce infection.",
+          "Some growers report success spreading agricultural gypsum prior to planting at a rate of 25 lbs per 2,000 sq ft. This will raise the calcium content of your soil and help build strong cell walls in plants. (Note: S. scabies disrupts the development of cell walls resulting in lesions.)",
+          "Adequate irrigation during early tuber development may have a dramatic effect on common scab infection, but you will need to keep the soil damp for 2-6 weeks. This technique is effective because high soil moisture promotes growth of a bacteria that can crowd out S. scabies on the potato surface.",
+          "Do NOT overwater."
+        ],
+        outtro:
+            " If you will be planting in soil where tubers have not been grown before, or where the area is known to be scab-free, treat seed potatoes with sulfur fungicides to reduce scab introduction."),
   ),
   Crop(
     bookMarked: true,
@@ -30,6 +59,20 @@ List<Crop> crops = [
     imageURL: PhotoThumbails(
         caption: "assets/images/tomato.png",
         details: "assets/images/tomato_details.png"),
+    treatment: Treatment(
+        intro:
+            "The following control measures have all been proven effective against scab in potatoes. However, in most cases a combination of these techniques will be required.",
+        steps: [
+          "Plant certified, disease-free seed potatoes and resistant varieties whenever possible. We suggest using the russet-skinned varieties since they have more resistance to the disease.",
+          "Rotate root crops by planting in alternate locations to limit the disease.",
+          "Potato scab is most prevalent in dry, alkaline soils. Decrease soil pH by adding elemental sulfur. The disease is controlled or greatly suppressed at soil pH levels of 5.2 or lower. Simple and affordable soil test kits are available to check pH often.",
+          "Tilling in a cover crop — mustard, canola, alfalfa — prior to planting potatoes will help reduce infection.",
+          "Some growers report success spreading agricultural gypsum prior to planting at a rate of 25 lbs per 2,000 sq ft. This will raise the calcium content of your soil and help build strong cell walls in plants. (Note: S. scabies disrupts the development of cell walls resulting in lesions.)",
+          "Adequate irrigation during early tuber development may have a dramatic effect on common scab infection, but you will need to keep the soil damp for 2-6 weeks. This technique is effective because high soil moisture promotes growth of a bacteria that can crowd out S. scabies on the potato surface.",
+          "Do NOT overwater."
+        ],
+        outtro:
+            " If you will be planting in soil where tubers have not been grown before, or where the area is known to be scab-free, treat seed potatoes with sulfur fungicides to reduce scab introduction."),
   ),
   Crop(
     bookMarked: true,
@@ -40,6 +83,20 @@ List<Crop> crops = [
     imageURL: PhotoThumbails(
         caption: "assets/images/broccoli.png",
         details: "assets/images/broccoli_details.png"),
+    treatment: Treatment(
+        intro:
+            "The following control measures have all been proven effective against scab in potatoes. However, in most cases a combination of these techniques will be required.",
+        steps: [
+          "Plant certified, disease-free seed potatoes and resistant varieties whenever possible. We suggest using the russet-skinned varieties since they have more resistance to the disease.",
+          "Rotate root crops by planting in alternate locations to limit the disease.",
+          "Potato scab is most prevalent in dry, alkaline soils. Decrease soil pH by adding elemental sulfur. The disease is controlled or greatly suppressed at soil pH levels of 5.2 or lower. Simple and affordable soil test kits are available to check pH often.",
+          "Tilling in a cover crop — mustard, canola, alfalfa — prior to planting potatoes will help reduce infection.",
+          "Some growers report success spreading agricultural gypsum prior to planting at a rate of 25 lbs per 2,000 sq ft. This will raise the calcium content of your soil and help build strong cell walls in plants. (Note: S. scabies disrupts the development of cell walls resulting in lesions.)",
+          "Adequate irrigation during early tuber development may have a dramatic effect on common scab infection, but you will need to keep the soil damp for 2-6 weeks. This technique is effective because high soil moisture promotes growth of a bacteria that can crowd out S. scabies on the potato surface.",
+          "Do NOT overwater."
+        ],
+        outtro:
+            " If you will be planting in soil where tubers have not been grown before, or where the area is known to be scab-free, treat seed potatoes with sulfur fungicides to reduce scab introduction."),
   ),
   Crop(
     bookMarked: true,
@@ -50,6 +107,20 @@ List<Crop> crops = [
     imageURL: PhotoThumbails(
         caption: "assets/images/potato.png",
         details: "assets/images/potato_details.png"),
+    treatment: Treatment(
+        intro:
+            "The following control measures have all been proven effective against scab in potatoes. However, in most cases a combination of these techniques will be required.",
+        steps: [
+          "Plant certified, disease-free seed potatoes and resistant varieties whenever possible. We suggest using the russet-skinned varieties since they have more resistance to the disease.",
+          "Rotate root crops by planting in alternate locations to limit the disease.",
+          "Potato scab is most prevalent in dry, alkaline soils. Decrease soil pH by adding elemental sulfur. The disease is controlled or greatly suppressed at soil pH levels of 5.2 or lower. Simple and affordable soil test kits are available to check pH often.",
+          "Tilling in a cover crop — mustard, canola, alfalfa — prior to planting potatoes will help reduce infection.",
+          "Some growers report success spreading agricultural gypsum prior to planting at a rate of 25 lbs per 2,000 sq ft. This will raise the calcium content of your soil and help build strong cell walls in plants. (Note: S. scabies disrupts the development of cell walls resulting in lesions.)",
+          "Adequate irrigation during early tuber development may have a dramatic effect on common scab infection, but you will need to keep the soil damp for 2-6 weeks. This technique is effective because high soil moisture promotes growth of a bacteria that can crowd out S. scabies on the potato surface.",
+          "Do NOT overwater."
+        ],
+        outtro:
+            " If you will be planting in soil where tubers have not been grown before, or where the area is known to be scab-free, treat seed potatoes with sulfur fungicides to reduce scab introduction."),
   ),
   Crop(
     bookMarked: false,
@@ -60,6 +131,20 @@ List<Crop> crops = [
     imageURL: PhotoThumbails(
         caption: "assets/images/oranges.png",
         details: "assets/images/orange_details.png"),
+    treatment: Treatment(
+        intro:
+            "The following control measures have all been proven effective against scab in potatoes. However, in most cases a combination of these techniques will be required.",
+        steps: [
+          "Plant certified, disease-free seed potatoes and resistant varieties whenever possible. We suggest using the russet-skinned varieties since they have more resistance to the disease.",
+          "Rotate root crops by planting in alternate locations to limit the disease.",
+          "Potato scab is most prevalent in dry, alkaline soils. Decrease soil pH by adding elemental sulfur. The disease is controlled or greatly suppressed at soil pH levels of 5.2 or lower. Simple and affordable soil test kits are available to check pH often.",
+          "Tilling in a cover crop — mustard, canola, alfalfa — prior to planting potatoes will help reduce infection.",
+          "Some growers report success spreading agricultural gypsum prior to planting at a rate of 25 lbs per 2,000 sq ft. This will raise the calcium content of your soil and help build strong cell walls in plants. (Note: S. scabies disrupts the development of cell walls resulting in lesions.)",
+          "Adequate irrigation during early tuber development may have a dramatic effect on common scab infection, but you will need to keep the soil damp for 2-6 weeks. This technique is effective because high soil moisture promotes growth of a bacteria that can crowd out S. scabies on the potato surface.",
+          "Do NOT overwater."
+        ],
+        outtro:
+            " If you will be planting in soil where tubers have not been grown before, or where the area is known to be scab-free, treat seed potatoes with sulfur fungicides to reduce scab introduction."),
   ),
   Crop(
     bookMarked: true,
@@ -70,6 +155,20 @@ List<Crop> crops = [
     imageURL: PhotoThumbails(
         caption: "assets/images/pomme.png",
         details: "assets/images/potato_details.png"),
+    treatment: Treatment(
+        intro:
+            "The following control measures have all been proven effective against scab in potatoes. However, in most cases a combination of these techniques will be required.",
+        steps: [
+          "Plant certified, disease-free seed potatoes and resistant varieties whenever possible. We suggest using the russet-skinned varieties since they have more resistance to the disease.",
+          "Rotate root crops by planting in alternate locations to limit the disease.",
+          "Potato scab is most prevalent in dry, alkaline soils. Decrease soil pH by adding elemental sulfur. The disease is controlled or greatly suppressed at soil pH levels of 5.2 or lower. Simple and affordable soil test kits are available to check pH often.",
+          "Tilling in a cover crop — mustard, canola, alfalfa — prior to planting potatoes will help reduce infection.",
+          "Some growers report success spreading agricultural gypsum prior to planting at a rate of 25 lbs per 2,000 sq ft. This will raise the calcium content of your soil and help build strong cell walls in plants. (Note: S. scabies disrupts the development of cell walls resulting in lesions.)",
+          "Adequate irrigation during early tuber development may have a dramatic effect on common scab infection, but you will need to keep the soil damp for 2-6 weeks. This technique is effective because high soil moisture promotes growth of a bacteria that can crowd out S. scabies on the potato surface.",
+          "Do NOT overwater."
+        ],
+        outtro:
+            " If you will be planting in soil where tubers have not been grown before, or where the area is known to be scab-free, treat seed potatoes with sulfur fungicides to reduce scab introduction."),
   ),
 ];
 
