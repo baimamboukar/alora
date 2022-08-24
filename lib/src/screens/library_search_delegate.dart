@@ -1,4 +1,4 @@
-import 'package:alora/src/configs/index.dart';
+import 'package:grnagain/src/configs/index.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 
