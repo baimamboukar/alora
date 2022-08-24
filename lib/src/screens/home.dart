@@ -1,7 +1,7 @@
-import 'package:alora/i18n/strings.g.dart';
-import 'package:alora/src/configs/index.dart';
-import 'package:alora/src/extensions/extensions.dart';
-import 'package:alora/src/router/router.gr.dart' as routes;
+import 'package:grnagain/i18n/strings.g.dart';
+import 'package:grnagain/src/configs/index.dart';
+import 'package:grnagain/src/extensions/extensions.dart';
+import 'package:grnagain/src/router/router.gr.dart' as routes;
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
