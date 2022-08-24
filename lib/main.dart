@@ -1,5 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:alora/i18n/strings.g.dart';
+import 'package:grnagain/i18n/strings.g.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
@@ -10,9 +10,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-import 'package:alora/src/configs/index.dart';
-import 'package:alora/src/router/guards/index.dart';
-import 'package:alora/src/router/router.gr.dart';
+import 'package:grnagain/src/configs/index.dart';
+import 'package:grnagain/src/router/guards/index.dart';
+import 'package:grnagain/src/router/router.gr.dart';
 
 import 'firebase_options.dart';
 
@@ -42,21 +42,21 @@ Future<void> main() async {
 
   LocaleSettings.useDeviceLocale();
   runApp(ProviderScope(
-      child: TranslationProvider(child: Alora(initialLink: initialLink))));
+      child: TranslationProvider(child: grnagain(initialLink: initialLink))));
 }
 
-class Alora extends ConsumerStatefulWidget {
+class grnagain extends ConsumerStatefulWidget {
   final PendingDynamicLinkData? initialLink;
-  const Alora({
+  const grnagain({
     Key? key,
     this.initialLink,
   }) : super(key: key);
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _AloraState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _grnagainState();
 }
 
-class _AloraState extends ConsumerState<Alora> {
+class _grnagainState extends ConsumerState<grnagain> {
   late AppRouter appRouter;
   @override
   void initState() {
