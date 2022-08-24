@@ -1,5 +1,5 @@
-import 'package:alora/src/services/auth/auth_with_google.dart';
-import 'package:alora/src/services/auth/firebase_auth.dart';
+import 'package:grnagain/src/services/auth/auth_with_google.dart';
+import 'package:grnagain/src/services/auth/firebase_auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
