@@ -7,20 +7,12 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:132950112983:android:78b596055d9d0470c84e92",
+        "mobilesdk_app_id": "1:132950112983:android:04334241db8ac59ec84e92",
         "android_client_info": {
           "package_name": "com.mysdgsdockta.app"
         }
       },
       "oauth_client": [
-        {
-          "client_id": "132950112983-vtv7ejco8e7sau3dmpt2r1e85gcffk44.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.mysdgsdockta.app",
-            "certificate_hash": "74b35519bddff39e054cab58b20f25e52f1ed328"
-          }
-        },
         {
           "client_id": "132950112983-e391l9bpikspch47ikkgae0tfg6e5c21.apps.googleusercontent.com",
           "client_type": 3
