@@ -49,7 +49,7 @@ android {
     }
    
     defaultConfig {
-        applicationId "com.mysdgsdockta.app"
+        applicationId "com.grnagain.app"
         minSdkVersion 21
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
