@@ -1,5 +1,5 @@
-import 'package:alora/src/configs/index.dart';
-import 'package:alora/src/extensions/extensions.dart';
+import 'package:grnagain/src/configs/index.dart';
+import 'package:grnagain/src/extensions/extensions.dart';
 import 'package:flutter/cupertino.dart';
 
 class Button extends StatelessWidget {
