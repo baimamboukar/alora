@@ -1,9 +1,9 @@
-import 'package:alora/src/configs/data.dart';
-import 'package:alora/src/configs/index.dart';
-import 'package:alora/src/extensions/extensions.dart';
-import 'package:alora/src/screens/crops_view.dart';
-import 'package:alora/src/services/auth/firebase_auth.dart';
-import 'package:alora/src/widgets/index.dart';
+import 'package:grnagain/src/configs/data.dart';
+import 'package:grnagain/src/configs/index.dart';
+import 'package:grnagain/src/extensions/extensions.dart';
+import 'package:grnagain/src/screens/crops_view.dart';
+import 'package:grnagain/src/services/auth/firebase_auth.dart';
+import 'package:grnagain/src/widgets/index.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
