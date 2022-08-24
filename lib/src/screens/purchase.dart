@@ -1,6 +1,6 @@
-import 'package:alora/src/configs/index.dart';
-import 'package:alora/src/extensions/extensions.dart';
-import 'package:alora/src/widgets/button.dart';
+import 'package:grnagain/src/configs/index.dart';
+import 'package:grnagain/src/extensions/extensions.dart';
+import 'package:grnagain/src/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:line_icons/line_icons.dart';
@@ -134,7 +134,7 @@ class Purchase extends StatelessWidget {
                                         child: WebViewPlus(
                                           navigationDelegate: (nav) async {
                                             if (nav.url
-                                                .contains("alora.page.link")) {
+                                                .contains("grnagain.page.link")) {
                                               Navigator.pop(context);
                                               Navigator.pop(context);
                                               launchUrl(
