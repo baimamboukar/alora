@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:132950112983:android:04334241db8ac59ec84e92",
+        "mobilesdk_app_id": "1:132950112983:android:813bbab2b2dc0792c84e92",
         "android_client_info": {
-          "package_name": "com.mysdgsdockta.app"
+          "package_name": "com.grnagain.app"
         }
       },
       "oauth_client": [
