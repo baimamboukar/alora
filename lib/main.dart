@@ -23,7 +23,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   await Firebase.initializeApp(
-    name: 'Alora',
+    name: 'grnagain',
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await Hive.initFlutter();
@@ -78,7 +78,7 @@ class _AloraState extends ConsumerState<Alora> {
         debugShowCheckedModeBanner: false,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
-        title: 'My SDGs Dockta',
+        title: 'grnagain',
         themeMode: box.get('theme') ? ThemeMode.dark : ThemeMode.light,
         darkTheme: ThemeData.dark(),
         theme: ThemeData(
