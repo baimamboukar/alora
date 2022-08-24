@@ -8,6 +8,8 @@ class TextToSpeechServices {
   FlutterTts tts = FlutterTts();
   Future<FlutterTts> configure({required String locale, double? volume}) async {
     await tts.setQueueMode(2);
+    await tts.setPitch(1);
+    await tts.setSpeechRate(.7);
     await tts.setVolume(volume ?? 1.0);
 
     await tts.setLanguage(locale);
