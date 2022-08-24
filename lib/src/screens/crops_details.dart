@@ -1,7 +1,7 @@
-import 'package:alora/src/configs/index.dart';
-import 'package:alora/src/extensions/extensions.dart';
-import 'package:alora/src/models/crop_model.dart';
-import 'package:alora/src/widgets/index.dart';
+import 'package:grnagain/src/configs/index.dart';
+import 'package:grnagain/src/extensions/extensions.dart';
+import 'package:grnagain/src/models/crop_model.dart';
+import 'package:grnagain/src/widgets/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:line_icons/line_icons.dart';
@@ -130,11 +130,11 @@ class _CropsDetailsState extends ConsumerState<CropsDetails> {
                         // showDialog(
                         //     context: context,
                         //     builder: (context) => CinetPayCheckout(
-                        //           title: 'Alora Prenium',
+                        //           title: 'grnagain Prenium',
                         //           configData: const <String, dynamic>{
                         //             'apikey':
                         //                 '182473934962dd5dfc165aa0.79719255',
-                        //             'site_id': 'alora',
+                        //             'site_id': 'grnagain',
                         //             'notify_url':
                         //                 'https://baimamboukar.hashnode.com/',
                         //             'mode': 'test',
@@ -144,7 +144,7 @@ class _CropsDetailsState extends ConsumerState<CropsDetails> {
                         //             'amount': 200,
                         //             'currency': 'XAF',
                         //             'channels': 'CREDIT_CARD',
-                        //             'description': 'Alora payment test',
+                        //             'description': 'grnagain payment test',
                         //           },
                         //           waitResponse: (data) {
                         //             debugPrint(data.toString());
