@@ -10,16 +10,16 @@
 //
 // ignore_for_file: type=lint
 
-import 'package:alora/src/models/crop_model.dart' as _i12;
-import 'package:alora/src/router/guards/index.dart' as _i11;
-import 'package:alora/src/screens/crops_details.dart' as _i2;
-import 'package:alora/src/screens/crops_view.dart' as _i8;
-import 'package:alora/src/screens/index.dart' as _i1;
-import 'package:alora/src/screens/notifications.dart' as _i3;
-import 'package:alora/src/screens/payment_confirm.dart' as _i5;
-import 'package:alora/src/screens/predict.dart' as _i4;
-import 'package:alora/src/screens/purchase.dart' as _i6;
-import 'package:alora/src/screens/solution.dart' as _i7;
+import 'package:grnagain/src/models/crop_model.dart' as _i12;
+import 'package:grnagain/src/router/guards/index.dart' as _i11;
+import 'package:grnagain/src/screens/crops_details.dart' as _i2;
+import 'package:grnagain/src/screens/crops_view.dart' as _i8;
+import 'package:grnagain/src/screens/index.dart' as _i1;
+import 'package:grnagain/src/screens/notifications.dart' as _i3;
+import 'package:grnagain/src/screens/payment_confirm.dart' as _i5;
+import 'package:grnagain/src/screens/predict.dart' as _i4;
+import 'package:grnagain/src/screens/purchase.dart' as _i6;
+import 'package:grnagain/src/screens/solution.dart' as _i7;
 import 'package:auto_route/auto_route.dart' as _i9;
 import 'package:flutter/material.dart' as _i10;
 import 'package:image_picker/image_picker.dart' as _i13;
