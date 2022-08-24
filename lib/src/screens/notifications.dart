@@ -1,5 +1,5 @@
-import 'package:alora/src/configs/index.dart';
-import 'package:alora/src/extensions/extensions.dart';
+import 'package:grnagain/src/configs/index.dart';
+import 'package:grnagain/src/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
