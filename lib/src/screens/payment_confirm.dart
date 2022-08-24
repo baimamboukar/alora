@@ -2,8 +2,8 @@
 
 import 'dart:io';
 
-import 'package:alora/src/configs/index.dart';
-import 'package:alora/src/widgets/index.dart';
+import 'package:grnagain/src/configs/index.dart';
+import 'package:grnagain/src/widgets/index.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
