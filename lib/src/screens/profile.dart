@@ -1,3 +1,4 @@
+import 'package:grnagain/i18n/strings.g.dart';
 import 'package:grnagain/src/configs/index.dart';
 import 'package:grnagain/src/extensions/extensions.dart';
 import 'package:grnagain/src/riverpods/index.dart';
@@ -8,6 +9,8 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+
+final langRiverpod = StateProvider<String>((ref) => "English");
 
 class Profile extends ConsumerStatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -24,6 +27,7 @@ class _ProfileState extends ConsumerState<Profile> {
 
   @override
   Widget build(BuildContext context) {
+    final lang = ref.watch(langRiverpod.state).state;
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -143,8 +147,21 @@ class _ProfileState extends ConsumerState<Profile> {
                           ),
                         ))
                     .toList(),
-                onChanged: (value) {},
-                value: "English",
+                onChanged: (value) {
+                  ref.read(langRiverpod.state).state = value ?? "English";
+                  switch (value) {
+                    case "Deutsch":
+                      LocaleSettings.setLocale(AppLocale.de);
+                      context.autorouter.notifyAll(forceUrlRebuild: true);
+                      break;
+                    case "English":
+                      LocaleSettings.setLocale(AppLocale.en);
+                      break;
+
+                    default:
+                  }
+                },
+                value: lang,
               ),
               leading: const Icon(
                 Icons.language,
