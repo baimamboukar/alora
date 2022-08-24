@@ -1,5 +1,5 @@
-import 'package:alora/src/models/prediction.dart';
-import 'package:alora/src/services/api/prediction_api_services.dart';
+import 'package:grnagain/src/models/prediction.dart';
+import 'package:grnagain/src/services/api/prediction_api_services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
