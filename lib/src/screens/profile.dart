@@ -1,6 +1,6 @@
-import 'package:alora/src/configs/index.dart';
-import 'package:alora/src/extensions/extensions.dart';
-import 'package:alora/src/riverpods/index.dart';
+import 'package:grnagain/src/configs/index.dart';
+import 'package:grnagain/src/extensions/extensions.dart';
+import 'package:grnagain/src/riverpods/index.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
