@@ -1,18 +1,22 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
+
 class Crop {
   final String name;
   final String scienticName;
   final PhotoThumbails imageURL;
   final String description;
   final bool bookMarked;
+  final Treatment treatment;
   Crop({
     required this.name,
     required this.scienticName,
     required this.imageURL,
     required this.description,
     required this.bookMarked,
+    required this.treatment,
   });
 
   Crop copyWith({
@@ -21,6 +25,7 @@ class Crop {
     PhotoThumbails? imageURL,
     String? description,
     bool? bookMarked,
+    Treatment? treatment,
   }) {
     return Crop(
       name: name ?? this.name,
@@ -28,37 +33,64 @@ class Crop {
       imageURL: imageURL ?? this.imageURL,
       description: description ?? this.description,
       bookMarked: bookMarked ?? this.bookMarked,
+      treatment: treatment ?? this.treatment,
     );
   }
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'scienticName': scienticName,
-      'imageURL': imageURL,
-      'description': description,
-      'bookMarked': bookMarked,
-    };
+    final result = <String, dynamic>{};
+
+    result.addAll({'name': name});
+    result.addAll({'scienticName': scienticName});
+    result.addAll({'imageURL': imageURL.toMap()});
+    result.addAll({'description': description});
+    result.addAll({'bookMarked': bookMarked});
+    result.addAll({'treatment': treatment.toMap()});
+
+    return result;
   }
 
   factory Crop.fromMap(Map<String, dynamic> map) {
     return Crop(
-      name: (map['name'] ?? '') as String,
-      scienticName: (map['scienticName'] ?? '') as String,
-      imageURL: PhotoThumbails.fromMap(map['imageURL'] ?? ''),
-      description: (map['description'] ?? '') as String,
-      bookMarked: (map['bookMarked'] ?? false) as bool,
+      name: map['name'] ?? '',
+      scienticName: map['scienticName'] ?? '',
+      imageURL: PhotoThumbails.fromMap(map['imageURL']),
+      description: map['description'] ?? '',
+      bookMarked: map['bookMarked'] ?? false,
+      treatment: Treatment.fromMap(map['treatment']),
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory Crop.fromJson(String source) =>
-      Crop.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory Crop.fromJson(String source) => Crop.fromMap(json.decode(source));
 
   @override
   String toString() {
-    return 'Crop(name: $name, scienticName: $scienticName, imageURL: $imageURL, description: $description, bookMarked: $bookMarked)';
+    return 'Crop(name: $name, scienticName: $scienticName, imageURL: $imageURL, description: $description, bookMarked: $bookMarked, treatment: $treatment)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is Crop &&
+        other.name == name &&
+        other.scienticName == scienticName &&
+        other.imageURL == imageURL &&
+        other.description == description &&
+        other.bookMarked == bookMarked &&
+        other.treatment == treatment;
+  }
+
+  @override
+  int get hashCode {
+    return name.hashCode ^
+        scienticName.hashCode ^
+        imageURL.hashCode ^
+        description.hashCode ^
+        bookMarked.hashCode ^
+        treatment.hashCode;
   }
 }
 
@@ -93,4 +125,71 @@ class PhotoThumbails {
       details: (map['details'] ?? '') as String,
     );
   }
+}
+
+class Treatment {
+  final String? intro;
+  final List<String> steps;
+  final String? outtro;
+  Treatment({
+    this.intro,
+    required this.steps,
+    this.outtro,
+  });
+
+  Treatment copyWith({
+    String? intro,
+    List<String>? steps,
+    String? outtro,
+  }) {
+    return Treatment(
+      intro: intro ?? this.intro,
+      steps: steps ?? this.steps,
+      outtro: outtro ?? this.outtro,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    final result = <String, dynamic>{};
+
+    if (intro != null) {
+      result.addAll({'intro': intro});
+    }
+    result.addAll({'steps': steps});
+    if (outtro != null) {
+      result.addAll({'outtro': outtro});
+    }
+
+    return result;
+  }
+
+  factory Treatment.fromMap(Map<String, dynamic> map) {
+    return Treatment(
+      intro: map['intro'],
+      steps: List<String>.from(map['steps'] ?? const []),
+      outtro: map['outtro'],
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory Treatment.fromJson(String source) =>
+      Treatment.fromMap(json.decode(source));
+
+  @override
+  String toString() =>
+      'Treatment(intro: $intro, steps: $steps, outtro: $outtro)';
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is Treatment &&
+        other.intro == intro &&
+        listEquals(other.steps, steps) &&
+        other.outtro == outtro;
+  }
+
+  @override
+  int get hashCode => intro.hashCode ^ steps.hashCode ^ outtro.hashCode;
 }
