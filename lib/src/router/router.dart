@@ -1,12 +1,12 @@
-import 'package:alora/src/router/guards/index.dart';
-import 'package:alora/src/screens/crops_details.dart';
-import 'package:alora/src/screens/crops_view.dart';
-import 'package:alora/src/screens/index.dart';
-import 'package:alora/src/screens/notifications.dart';
-import 'package:alora/src/screens/payment_confirm.dart';
-import 'package:alora/src/screens/predict.dart';
-import 'package:alora/src/screens/purchase.dart';
-import 'package:alora/src/screens/solution.dart';
+import 'package:grnagain/src/router/guards/index.dart';
+import 'package:grnagain/src/screens/crops_details.dart';
+import 'package:grnagain/src/screens/crops_view.dart';
+import 'package:grnagain/src/screens/index.dart';
+import 'package:grnagain/src/screens/notifications.dart';
+import 'package:grnagain/src/screens/payment_confirm.dart';
+import 'package:grnagain/src/screens/predict.dart';
+import 'package:grnagain/src/screens/purchase.dart';
+import 'package:grnagain/src/screens/solution.dart';
 import 'package:auto_route/auto_route.dart';
 
 @AdaptiveAutoRouter(replaceInRouteName: 'Page,Route', routes: <AutoRoute>[
