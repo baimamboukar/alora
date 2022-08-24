@@ -3,7 +3,10 @@ import 'package:grnagain/src/extensions/extensions.dart';
 import 'package:grnagain/src/models/crop_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:grnagain/src/widgets/text_to_speech.dart';
 import 'package:line_icons/line_icons.dart';
+
+final currentStepRiverpod = StateProvider<int>((ref) => 0);
 
 class Solution extends ConsumerStatefulWidget {
   final Crop model;
@@ -19,6 +22,7 @@ class Solution extends ConsumerStatefulWidget {
 class _SolutionState extends ConsumerState<Solution> {
   @override
   Widget build(BuildContext context) {
+    final _currentStep = ref.watch(currentStepRiverpod.state).state;
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -115,21 +119,72 @@ class _SolutionState extends ConsumerState<Solution> {
                         ),
                       ],
                     ),
+                    TextToSpeech(
+                      text: widget.model.treatment.intro ?? "",
+                      lang: "en-US",
+                    ),
+                    const SizedBox(height: 14),
+                    Text("Solution & Treatment",
+                        style: Styles.designText(
+                            bold: true, size: 16.5, color: Palette.primary)),
                     const SizedBox(height: 14),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: Palette.primary,
-                            borderRadius: BorderRadius.circular(20)),
-                        child: Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: Text(widget.model.description,
-                              style: Styles.designText(
-                                  bold: false, size: 14, color: Palette.light)),
-                        ),
+                      padding: const EdgeInsets.symmetric(horizontal: 14),
+                      child: Column(
+                        children: [
+                          Text(widget.model.treatment.intro ?? ""),
+                          const SizedBox(height: 14),
+                          ...widget.model.treatment.steps
+                              .map((step) => ExpansionTile(
+                                    trailing: const Icon(
+                                        Icons.lightbulb_circle_rounded),
+                                    title: Text(
+                                        "🔖 STEP ${widget.model.treatment.steps.indexOf(step) + 1}"),
+                                    children: [
+                                      Text(step,
+                                          style: Styles.designText(
+                                              bold: false,
+                                              size: 14,
+                                              color: Palette.dark))
+                                    ],
+                                  ))
+                        ],
                       ),
                     ),
+                    Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "💡 Important Tip",
+                            style: Styles.designText(
+                                bold: true, size: 14.5, color: Palette.primary),
+                          ),
+                          Text(
+                            widget.model.treatment.outtro ?? "",
+                            style: Styles.designText(
+                                bold: false,
+                                size: 14.5,
+                                color: Palette.primary),
+                          ),
+                        ],
+                      ),
+                    ),
+                    // Padding(
+                    //   padding: const EdgeInsets.all(8.0),
+                    //   child: Container(
+                    //     decoration: BoxDecoration(
+                    //         color: Palette.primary,
+                    //         borderRadius: BorderRadius.circular(20)),
+                    //     child: Padding(
+                    //       padding: const EdgeInsets.all(12.0),
+                    //       child: Text(widget.model.description,
+                    //           style: Styles.designText(
+                    //               bold: false, size: 14, color: Palette.light)),
+                    //     ),
+                    //   ),
+                    // ),
                     const SizedBox(height: 28),
                   ],
                 ),
