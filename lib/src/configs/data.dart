@@ -1,4 +1,4 @@
-import 'package:alora/src/models/crop_model.dart';
+import '../models/crop_model.dart';
 
 List<Crop> crops = [
   Crop(
