@@ -1,4 +1,4 @@
-import 'package:alora/src/configs/index.dart';
+import 'package:grnagain/src/configs/index.dart';
 import 'package:flutter/widgets.dart';
 
 class ErrorView extends StatelessWidget {
