@@ -25,7 +25,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -54,7 +57,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyAqLMYdRz07snb1PfFGj8XBJaZ_Nb4ttlc',
-    appId: '1:132950112983:android:04334241db8ac59ec84e92',
+    appId: '1:132950112983:android:813bbab2b2dc0792c84e92',
     messagingSenderId: '132950112983',
     projectId: 'alora-b477f',
     storageBucket: 'alora-b477f.appspot.com',
@@ -62,18 +65,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyAZLusR13ve6imRJKzB9EFiFtnzJuvC49U',
-    appId: '1:132950112983:ios:9316c74d959ea86cc84e92',
-    messagingSenderId: '132950112983',
-    projectId: 'alora-b477f',
-    storageBucket: 'alora-b477f.appspot.com',
-    androidClientId: '132950112983-3fkppampdkqnlct051nb1m9obpm093ap.apps.googleusercontent.com',
-    iosClientId: '132950112983-no5gbn17htu6vcbcv25ev2j96qeaipq9.apps.googleusercontent.com',
-    iosBundleId: 'com.mysdgsdockta.app',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyAZLusR13ve6imRJKzB9EFiFtnzJuvC49U',
-    appId: '1:132950112983:ios:9316c74d959ea86cc84e92',
+    appId: '1:132950112983:ios:1f52dcf0a0303cf5c84e92',
     messagingSenderId: '132950112983',
     projectId: 'alora-b477f',
     storageBucket: 'alora-b477f.appspot.com',
