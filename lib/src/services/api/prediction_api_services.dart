@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:alora/src/models/prediction.dart';
-import 'package:alora/src/riverpods/dio_riverpod.dart';
+import 'package:grnagain/src/models/prediction.dart';
+import 'package:grnagain/src/riverpods/dio_riverpod.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
