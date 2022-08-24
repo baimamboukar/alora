@@ -54,7 +54,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyAqLMYdRz07snb1PfFGj8XBJaZ_Nb4ttlc',
-    appId: '1:132950112983:android:78b596055d9d0470c84e92',
+    appId: '1:132950112983:android:04334241db8ac59ec84e92',
     messagingSenderId: '132950112983',
     projectId: 'alora-b477f',
     storageBucket: 'alora-b477f.appspot.com',
@@ -62,7 +62,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyAZLusR13ve6imRJKzB9EFiFtnzJuvC49U',
-    appId: '1:132950112983:ios:0330fcbf8bfc921dc84e92',
+    appId: '1:132950112983:ios:9316c74d959ea86cc84e92',
     messagingSenderId: '132950112983',
     projectId: 'alora-b477f',
     storageBucket: 'alora-b477f.appspot.com',
@@ -73,7 +73,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyAZLusR13ve6imRJKzB9EFiFtnzJuvC49U',
-    appId: '1:132950112983:ios:0330fcbf8bfc921dc84e92',
+    appId: '1:132950112983:ios:9316c74d959ea86cc84e92',
     messagingSenderId: '132950112983',
     projectId: 'alora-b477f',
     storageBucket: 'alora-b477f.appspot.com',
