@@ -1,10 +1,16 @@
 import 'package:grnagain/src/configs/index.dart';
 import 'package:grnagain/src/extensions/extensions.dart';
 import 'package:grnagain/src/models/crop_model.dart';
+import 'package:grnagain/src/router/router.gr.dart';
+import 'package:grnagain/src/services/auth/firebase_auth.dart';
+import 'package:grnagain/src/services/tts/text_to_speech_services.dart';
 import 'package:grnagain/src/widgets/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:lottie/lottie.dart';
+
+import '../widgets/text_to_speech.dart';
 
 class CropsDetails extends ConsumerStatefulWidget {
   final Crop model;
@@ -18,6 +24,7 @@ class CropsDetails extends ConsumerStatefulWidget {
 }
 
 class _CropsDetailsState extends ConsumerState<CropsDetails> {
+  @override
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -117,6 +124,7 @@ class _CropsDetailsState extends ConsumerState<CropsDetails> {
                       ],
                     ),
                     const SizedBox(height: 14),
+                    const TextToSpeech(text: "lorem ipsum", lang: "en-US"),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 14),
                       child: Text(widget.model.description,
@@ -126,33 +134,10 @@ class _CropsDetailsState extends ConsumerState<CropsDetails> {
                     const SizedBox(height: 28),
                     Button(
                       callback: () {
-                        context.autorouter.pushNamed('/purchase');
-                        // showDialog(
-                        //     context: context,
-                        //     builder: (context) => CinetPayCheckout(
-                        //           title: 'grnagain Prenium',
-                        //           configData: const <String, dynamic>{
-                        //             'apikey':
-                        //                 '182473934962dd5dfc165aa0.79719255',
-                        //             'site_id': 'grnagain',
-                        //             'notify_url':
-                        //                 'https://baimamboukar.hashnode.com/',
-                        //             'mode': 'test',
-                        //           },
-                        //           paymentData: const <String, dynamic>{
-                        //             'transaction_id': '8111322',
-                        //             'amount': 200,
-                        //             'currency': 'XAF',
-                        //             'channels': 'CREDIT_CARD',
-                        //             'description': 'grnagain payment test',
-                        //           },
-                        //           waitResponse: (data) {
-                        //             debugPrint(data.toString());
-                        //           },
-                        //           onError: (data) {
-                        //             debugPrint(data.toString());
-                        //           },
-                        //         ));
+                        FirebaseAuthentication.isPreniumUser
+                            ? context.autorouter
+                                .push(Solution(model: widget.model))
+                            : context.autorouter.pushNamed('/purchase');
                       },
                       isLoading: false,
                       label: "Solution",
