@@ -37,9 +37,6 @@ Future<void> main() async {
         }
       : null;
 
-  Hive.box('bookmarks').isEmpty
-      ? Hive.box('bookmarks').put('crops', <String>[])
-      : null;
   final PendingDynamicLinkData? initialLink =
       await FirebaseDynamicLinks.instance.getInitialLink();
 
@@ -83,7 +80,14 @@ class _GrnAgainState extends ConsumerState<GrnAgain> {
         supportedLocales: AppLocalizations.supportedLocales,
         title: 'grnagain',
         themeMode: box.get('theme') ? ThemeMode.dark : ThemeMode.light,
-        darkTheme: ThemeData.dark(),
+        darkTheme: ThemeData.dark().copyWith(
+          typography: Typography.material2021(),
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+          textTheme: GoogleFonts.poppinsTextTheme(
+            const TextTheme()
+                .apply(bodyColor: Palette.light, displayColor: Palette.light),
+          ),
+        ),
         theme: ThemeData(
           useMaterial3: true,
           typography: Typography.material2021(),
