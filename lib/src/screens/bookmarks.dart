@@ -18,6 +18,7 @@ class Bookmarks extends ConsumerStatefulWidget {
 }
 
 class _BookmarksState extends ConsumerState<Bookmarks> {
+  // ignore: unused_field
   late List<String> _bookmarked;
   @override
   void initState() {
