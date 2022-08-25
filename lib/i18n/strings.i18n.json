@@ -49,5 +49,30 @@
     "disease": "Disease",
     "description": "Description",
     "prediction": "Prediction",
-    "getToSource": "Copy the source url 📋"
+    "getToSource": "Copy the source url 📋",
+    "desc": "Failed to upload image, connection timeout",
+   "error": "Something went wrong",
+   "logginOUt": "Logging out...",
+   "loggedOut": "Logged out",
+   "changesApply":  "In order to apply changes in the app, the app should be restarted",
+   "paidSuccess": "You have successfully subscribed to the premium plan",
+   "restartApp": "Restart App",
+   "paymentConfirmation": "Payment Confirmation",
+   "features": {
+    "detectDisease": "Detect Disease",
+    "getInfos": "Get Infos",
+    "viewSolution": "View Solution",
+    "viewTreatment": "View Treatment",
+    "accessRessources": "Access Ressources",
+    "customizeApp": "Customize App Settings",
+    "bookmarkForFuture": "Bookmark for Future reads"
+   },
+   "purchasePrenium": "Purchase Prenium",
+   "enterValidName": "Please enter valid name",
+   "enterValidEMail": "Please enter valid email",
+   "signingUp": "Signing Up...",
+   "mathingItems": "Matching items",
+   "bookmarkedCrops": "Bookmarked Crops",
+   "matchingResults": "Matching Results",
+   "noIMageSelected": "No Image Selected"
 }
