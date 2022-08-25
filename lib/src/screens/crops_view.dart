@@ -191,7 +191,7 @@ class ImagePickModal extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 20),
-          Text("Pick image either from gallery or camera",
+          Text(t.pickImageFromGallery,
               style: Styles.designText(
                   bold: false, color: Palette.primary, size: 16)),
           Column(
