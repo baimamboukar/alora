@@ -46,7 +46,14 @@ Future<void> main() async {
   final PendingDynamicLinkData? initialLink =
       await FirebaseDynamicLinks.instance.getInitialLink();
 
-  LocaleSettings.useDeviceLocale();
+  final locale = Hive.box('settings').get('language');
+  if (locale == 'English') {
+    LocaleSettings.setLocale(AppLocale.en);
+  }
+  if (locale == 'Deutsch') {
+    LocaleSettings.setLocale(AppLocale.de);
+  }
+
   runApp(ProviderScope(
       child: TranslationProvider(child: GrnAgain(initialLink: initialLink))));
 }
