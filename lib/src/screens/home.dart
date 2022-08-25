@@ -1,6 +1,5 @@
 import 'package:grnagain/i18n/strings.g.dart';
 import 'package:grnagain/src/configs/index.dart';
-import 'package:grnagain/src/extensions/extensions.dart';
 import 'package:grnagain/src/router/router.gr.dart' as routes;
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +39,7 @@ class Home extends ConsumerWidget {
                 LineIcons.leaf,
                 size: 22,
               ),
-              label: t.save,
+              label: t.library,
             ),
             BottomNavigationBarItem(
               icon: const Icon(
