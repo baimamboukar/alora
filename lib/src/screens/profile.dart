@@ -175,7 +175,7 @@ class _ProfileState extends ConsumerState<Profile> {
               subtitle: Text("change app language",
                   style: Styles.designText(
                       bold: false, color: Palette.secondary, size: 11)),
-              title: Text("Language",
+              title: Text(t.language,
                   style: Styles.designText(
                       bold: false, color: Palette.primary, size: 16)),
             ),
@@ -210,7 +210,7 @@ class _ProfileState extends ConsumerState<Profile> {
                 color: Palette.primary,
                 size: 32,
               ),
-              title: Text("Contact us",
+              title: Text(t.createAccount,
                   style: Styles.designText(
                       bold: false, color: Palette.primary, size: 16)),
             ),
