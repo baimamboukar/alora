@@ -1,3 +1,4 @@
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:grnagain/src/configs/index.dart';
 import 'package:grnagain/src/extensions/extensions.dart';
 import 'package:grnagain/src/models/crop_model.dart';
@@ -83,18 +84,21 @@ class _CropsDetailsState extends ConsumerState<CropsDetails> {
                         Positioned(
                           right: 24,
                           top: -32,
-                          child: CircleAvatar(
-                            radius: 28,
-                            backgroundColor: Palette.primary,
-                            child: IconButton(
-                              onPressed: () {
-                                final Box box = Hive.box('bookmarks');
-                                List<String> bookmarked =
-                                    box.get('crops') ?? <String>[];
-                                box.put(
-                                    'crops', [widget.model.id, ...bookmarked]);
-                              },
-                              icon: Icon(
+                          child: GestureDetector(
+                            onTap: () {
+                              final Box box = Hive.box('user');
+                              List<String> bookmarked =
+                                  box.get('bookmarks') ?? <String>[];
+                              box.put('bookmarks', [
+                                widget.model.id,
+                                ...bookmarked.toSet().toList()
+                              ]);
+                              setState(() {});
+                            },
+                            child: CircleAvatar(
+                              radius: 28,
+                              backgroundColor: Palette.primary,
+                              child: Icon(
                                 widget.model.isBookmarked
                                     ? LineIcons.heartAlt
                                     : LineIcons.heart,
@@ -129,7 +133,7 @@ class _CropsDetailsState extends ConsumerState<CropsDetails> {
                       ],
                     ),
                     const SizedBox(height: 14),
-                    const TextToSpeech(text: "lorem ipsum", lang: "en-US"),
+                    TextToSpeech(text: widget.model.description, lang: "en-US"),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 14),
                       child: Text(widget.model.description,
