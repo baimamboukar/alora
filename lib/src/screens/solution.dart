@@ -1,3 +1,4 @@
+import 'package:grnagain/i18n/strings.g.dart';
 import 'package:grnagain/src/configs/index.dart';
 import 'package:grnagain/src/extensions/extensions.dart';
 import 'package:grnagain/src/models/crop_model.dart';
@@ -129,7 +130,7 @@ class _SolutionState extends ConsumerState<Solution> {
                     TextToSpeech.forSteps(
                         widget.model.treatment.steps, "en-AU", ref),
                     const SizedBox(height: 14),
-                    Text("Solution & Treatment",
+                    Text(t.solutionAndTreatment,
                         style: Styles.designText(
                             bold: true, size: 16.5, color: Palette.primary)),
                     const SizedBox(height: 14),
@@ -147,7 +148,7 @@ class _SolutionState extends ConsumerState<Solution> {
                                     controlAffinity:
                                         ListTileControlAffinity.platform,
                                     title: Text(
-                                        "🔖 STEP ${widget.model.treatment.steps.indexOf(step) + 1}"),
+                                        "🔖 ${t.step} ${widget.model.treatment.steps.indexOf(step) + 1}"),
                                     children: [
                                       Text(step,
                                           style: Styles.designText(
@@ -165,7 +166,7 @@ class _SolutionState extends ConsumerState<Solution> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "💡 Important Tip",
+                            "💡 ${t.importantTips}",
                             style: Styles.designText(
                                 bold: true, size: 14.5, color: Palette.primary),
                           ),
