@@ -135,7 +135,7 @@ class _ProfileState extends ConsumerState<Profile> {
                   return DropdownButton<String>(
                     underline: const SizedBox.shrink(),
                     elevation: 0,
-                    items: ["English", "Francais", "Deutsch"]
+                    items: ["English", "Deutsch"]
                         .map((item) => DropdownMenuItem<String>(
                               value: item,
                               child: Text(
@@ -172,7 +172,7 @@ class _ProfileState extends ConsumerState<Profile> {
                 color: Palette.primary,
                 size: 32,
               ),
-              subtitle: Text("change app language",
+              subtitle: Text(t.changeAppLanguage,
                   style: Styles.designText(
                       bold: false, color: Palette.secondary, size: 11)),
               title: Text(t.language,
@@ -197,10 +197,10 @@ class _ProfileState extends ConsumerState<Profile> {
                   );
                 },
               ),
-              subtitle: Text("change app theme",
+              subtitle: Text(t.changeAppTheme,
                   style: Styles.designText(
                       bold: false, color: Palette.secondary, size: 11)),
-              title: Text("Theme mode",
+              title: Text(t.themeMode,
                   style: Styles.designText(
                       bold: false, color: Palette.primary, size: 16)),
             ),
@@ -220,7 +220,7 @@ class _ProfileState extends ConsumerState<Profile> {
                 color: Palette.primary,
                 size: 32,
               ),
-              title: Text("Terms & Conditions",
+              title: Text(t.termsOfService,
                   style: Styles.designText(
                       bold: false, color: Palette.primary, size: 16)),
             ),
@@ -230,18 +230,18 @@ class _ProfileState extends ConsumerState<Profile> {
                 color: Palette.primary,
                 size: 32,
               ),
-              title: Text("Help center",
+              title: Text(t.helpCenter,
                   style: Styles.designText(
                       bold: false, color: Palette.primary, size: 16)),
             ),
             ListTile(
               onTap: () async {
                 await EasyLoading.show(
-                    status: "Logging out..", dismissOnTap: false);
+                    status: t.logginOUt, dismissOnTap: false);
                 ref.read(firebaseAuthRiverpod).logoutUser().then((done) async {
                   context.autorouter.popUntilRoot();
                   await EasyLoading.dismiss();
-                  await EasyLoading.showSuccess("Logged out successfully");
+                  await EasyLoading.showSuccess(t.loggedOut);
                 });
               },
               leading: const Icon(
@@ -249,7 +249,7 @@ class _ProfileState extends ConsumerState<Profile> {
                 color: Palette.primary,
                 size: 32,
               ),
-              title: Text("Logout",
+              title: Text(t.logout,
                   style: Styles.designText(
                       bold: false, color: Palette.primary, size: 16)),
             )
