@@ -1,10 +1,8 @@
-import 'package:uuid/uuid.dart';
-
 import '../models/crop_model.dart';
 
 List<Crop> crops = [
   Crop(
-    id: const Uuid().v4(),
+    id: "crop-01",
     bookMarked: false,
     name: "Orange",
     description:
@@ -30,7 +28,7 @@ List<Crop> crops = [
             " If you will be planting in soil where tubers have not been grown before, or where the area is known to be scab-free, treat seed potatoes with sulfur fungicides to reduce scab introduction."),
   ),
   Crop(
-    id: const Uuid().v4(),
+    id: "crop-02",
     bookMarked: false,
     name: "Potato",
     description:
@@ -55,7 +53,7 @@ List<Crop> crops = [
             " If you will be planting in soil where tubers have not been grown before, or where the area is known to be scab-free, treat seed potatoes with sulfur fungicides to reduce scab introduction."),
   ),
   Crop(
-    id: const Uuid().v4(),
+    id: "crop-03",
     bookMarked: true,
     name: "Tomato",
     description:
@@ -80,7 +78,7 @@ List<Crop> crops = [
             " If you will be planting in soil where tubers have not been grown before, or where the area is known to be scab-free, treat seed potatoes with sulfur fungicides to reduce scab introduction."),
   ),
   Crop(
-    id: const Uuid().v4(),
+    id: "crop-04",
     bookMarked: true,
     name: "Broccoli",
     description:
@@ -105,7 +103,7 @@ List<Crop> crops = [
             " If you will be planting in soil where tubers have not been grown before, or where the area is known to be scab-free, treat seed potatoes with sulfur fungicides to reduce scab introduction."),
   ),
   Crop(
-    id: const Uuid().v4(),
+    id: "crop-05",
     bookMarked: true,
     name: "Potato",
     description:
@@ -130,7 +128,7 @@ List<Crop> crops = [
             " If you will be planting in soil where tubers have not been grown before, or where the area is known to be scab-free, treat seed potatoes with sulfur fungicides to reduce scab introduction."),
   ),
   Crop(
-    id: const Uuid().v4(),
+    id: "crop-06",
     bookMarked: false,
     name: "Orange",
     description:
@@ -155,7 +153,7 @@ List<Crop> crops = [
             " If you will be planting in soil where tubers have not been grown before, or where the area is known to be scab-free, treat seed potatoes with sulfur fungicides to reduce scab introduction."),
   ),
   Crop(
-    id: const Uuid().v4(),
+    id: "crop-07",
     bookMarked: true,
     name: "Pomme",
     description:
