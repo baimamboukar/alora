@@ -3,9 +3,9 @@
  * Generated file. Do not edit.
  *
  * Locales: 2
- * Strings: 58 (29.0 per locale)
+ * Strings: 80 (40.0 per locale)
  *
- * Built on 2022-08-25 at 13:48 UTC
+ * Built on 2022-08-25 at 14:38 UTC
  */
 
 import 'package:flutter/widgets.dart';
@@ -337,6 +337,28 @@ class _StringsEn {
 	String get bookmarks => 'Bookmarks';
 	String get alreadyHaveAccount => 'Already have an account?';
 	String get orSignInWith => 'Or sign in with';
+	String get contactUS => 'Contact Us';
+	String get helpCenter => 'Help Center';
+	String get termsOfService => 'Terms and Service';
+	String get themeMode => 'Theme Mode';
+	String get changeAppTheme => 'Change App Theme';
+	String get changeAppLanguage => 'Change App Language';
+	String get pickImageFromGallery => 'Pick Image from Gallery or Camera';
+	String get camera => 'Camera';
+	String get gallery => 'Gallery';
+	String get playSound => 'Play Sound';
+	String get listenToText => 'Listen to Text';
+	String get solution => 'Solution';
+	String get step => 'Step';
+	String get solutionAndTreatment => 'Solution and Treatment';
+	String get treatment => 'Treatment';
+	String get importantTips => 'Important Tips';
+	String get processingIMage => 'Processing Image';
+	String get symptoms => 'Symptoms';
+	String get disease => 'Disease';
+	String get description => 'Description';
+	String get prediction => 'Prediction';
+	String get getToSource => 'Copy the source url 📋';
 }
 
 // Path: <root>
@@ -355,35 +377,35 @@ class _StringsDe implements _StringsEn {
 	@override late final _StringsDe _root = this; // ignore: unused_field
 
 	// Translations
-	@override String hello({required Object name}) => 'Hallo $name';
-	@override String get save => 'Speichern';
-	@override String get login => 'Anmelden';
-	@override String get singup => 'Anmelden';
+	@override String get yourBookmarks => 'Ihre Lesezeichen';
+	@override String get save => 'Speichern Sie';
+	@override String get language => 'Sprache';
+	@override String get crops => 'Kulturpflanzen';
+	@override String get login => 'Anmeldung';
+	@override String get bookmarks => 'Lesezeichen';
+	@override String get loginToAccount => 'Anmeldung bei Ihrem Konto';
+	@override String get forgotPassword => 'Passwort vergessen?';
+	@override String get logout => 'Abmeldung';
+	@override String get password => 'Passwort';
+	@override String get singup => 'Singup';
+	@override String get library => 'Bibliothek';
+	@override String get alreadyHaveAccount => 'Sie haben bereits ein Konto?';
+	@override String get welcomeBack => 'Willkommen zurück';
+	@override String get language_en => 'Englisch';
+	@override String get enterCorrectPassword => 'Bitte korrektes Passwort eingeben';
 	@override String get email => 'E-Mail';
-	@override String get enterEmail => 'E-Mail eingeben';
-	@override String get createAccount => 'Konto erstellen';
-	@override String get register => 'Registrieren';
-	@override String get yourLibary => 'Ihre Bibliothek';
+	@override String get language_de => 'Deutsch';
+	@override String get settings => 'Einstellungen';
+	@override String get enterEmail => 'Ihre E-Mail eingeben';
 	@override String get searchLinary => 'Bibliothek durchsuchen';
-	@override String get yourBookmarks => 'Speichern0';
-	@override String get library => 'Speichern1';
-	@override String get logout => 'Speichern2';
-	@override String get profile => 'Speichern3';
-	@override String get settings => 'Speichern4';
-	@override String get language => 'Speichern5';
-	@override String get language_en => 'Speichern6';
-	@override String get language_de => 'Speichern7';
-	@override String get fullName => 'Speichern8';
-	@override String get dontHaveAccount => 'Speichern9';
-	@override String get forgotPassword => 'Anmelden0';
-	@override String get password => 'Anmelden1';
-	@override String get welcomeBack => 'Anmelden2';
-	@override String get loginToAccount => 'Anmelden3';
-	@override String get enterCorrectPassword => 'Anmelden4';
-	@override String get crops => 'Anmelden5';
-	@override String get bookmarks => 'Anmelden6';
-	@override String get alreadyHaveAccount => 'Anmelden7';
-	@override String get orSignInWith => 'Anmelden8';
+	@override String get orSignInWith => 'Oder melden Sie sich an mit';
+	@override String get profile => 'Profil';
+	@override String get fullName => 'Vollständiger Name';
+	@override String get createAccount => 'Ein Konto erstellen';
+	@override String get dontHaveAccount => 'Sie haben noch kein Konto?';
+	@override String get yourLibary => 'Your library';
+	@override String hello({required Object name}) => 'Hallo $name';
+	@override String get register => 'Register';
 }
 
 /// Flat map(s) containing all translations.
@@ -421,6 +443,28 @@ extension on _StringsEn {
 			'bookmarks': 'Bookmarks',
 			'alreadyHaveAccount': 'Already have an account?',
 			'orSignInWith': 'Or sign in with',
+			'contactUS': 'Contact Us',
+			'helpCenter': 'Help Center',
+			'termsOfService': 'Terms and Service',
+			'themeMode': 'Theme Mode',
+			'changeAppTheme': 'Change App Theme',
+			'changeAppLanguage': 'Change App Language',
+			'pickImageFromGallery': 'Pick Image from Gallery or Camera',
+			'camera': 'Camera',
+			'gallery': 'Gallery',
+			'playSound': 'Play Sound',
+			'listenToText': 'Listen to Text',
+			'solution': 'Solution',
+			'step': 'Step',
+			'solutionAndTreatment': 'Solution and Treatment',
+			'treatment': 'Treatment',
+			'importantTips': 'Important Tips',
+			'processingIMage': 'Processing Image',
+			'symptoms': 'Symptoms',
+			'disease': 'Disease',
+			'description': 'Description',
+			'prediction': 'Prediction',
+			'getToSource': 'Copy the source url 📋',
 		};
 	}
 }
@@ -428,35 +472,35 @@ extension on _StringsEn {
 extension on _StringsDe {
 	Map<String, dynamic> _buildFlatMap() {
 		return <String, dynamic>{
-			'hello': ({required Object name}) => 'Hallo $name',
-			'save': 'Speichern',
-			'login': 'Anmelden',
-			'singup': 'Anmelden',
+			'yourBookmarks': 'Ihre Lesezeichen',
+			'save': 'Speichern Sie',
+			'language': 'Sprache',
+			'crops': 'Kulturpflanzen',
+			'login': 'Anmeldung',
+			'bookmarks': 'Lesezeichen',
+			'loginToAccount': 'Anmeldung bei Ihrem Konto',
+			'forgotPassword': 'Passwort vergessen?',
+			'logout': 'Abmeldung',
+			'password': 'Passwort',
+			'singup': 'Singup',
+			'library': 'Bibliothek',
+			'alreadyHaveAccount': 'Sie haben bereits ein Konto?',
+			'welcomeBack': 'Willkommen zurück',
+			'language_en': 'Englisch',
+			'enterCorrectPassword': 'Bitte korrektes Passwort eingeben',
 			'email': 'E-Mail',
-			'enterEmail': 'E-Mail eingeben',
-			'createAccount': 'Konto erstellen',
-			'register': 'Registrieren',
-			'yourLibary': 'Ihre Bibliothek',
+			'language_de': 'Deutsch',
+			'settings': 'Einstellungen',
+			'enterEmail': 'Ihre E-Mail eingeben',
 			'searchLinary': 'Bibliothek durchsuchen',
-			'yourBookmarks': 'Speichern0',
-			'library': 'Speichern1',
-			'logout': 'Speichern2',
-			'profile': 'Speichern3',
-			'settings': 'Speichern4',
-			'language': 'Speichern5',
-			'language_en': 'Speichern6',
-			'language_de': 'Speichern7',
-			'fullName': 'Speichern8',
-			'dontHaveAccount': 'Speichern9',
-			'forgotPassword': 'Anmelden0',
-			'password': 'Anmelden1',
-			'welcomeBack': 'Anmelden2',
-			'loginToAccount': 'Anmelden3',
-			'enterCorrectPassword': 'Anmelden4',
-			'crops': 'Anmelden5',
-			'bookmarks': 'Anmelden6',
-			'alreadyHaveAccount': 'Anmelden7',
-			'orSignInWith': 'Anmelden8',
+			'orSignInWith': 'Oder melden Sie sich an mit',
+			'profile': 'Profil',
+			'fullName': 'Vollständiger Name',
+			'createAccount': 'Ein Konto erstellen',
+			'dontHaveAccount': 'Sie haben noch kein Konto?',
+			'yourLibary': 'Your library',
+			'hello': ({required Object name}) => 'Hallo $name',
+			'register': 'Register',
 		};
 	}
 }
