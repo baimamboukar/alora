@@ -29,6 +29,7 @@ class CropsSearch extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
+    // ignore: no_leading_underscores_for_local_identifiers
     final List<Crop> _crops = crops.where((crop) {
       bool matches = crop.name.toLowerCase().contains(query.toLowerCase()) ||
           crop.scienticName.toLowerCase().contains(query.toLowerCase()) ||
