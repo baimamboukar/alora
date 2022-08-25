@@ -95,7 +95,6 @@ class _GrnAgainState extends ConsumerState<GrnAgain> {
         themeMode: box.get('theme') ? ThemeMode.dark : ThemeMode.light,
         darkTheme: ThemeData.dark().copyWith(
           scaffoldBackgroundColor: Colors.black26,
-          cardColor: Colors.black26,
           bottomNavigationBarTheme: const BottomNavigationBarThemeData(
               backgroundColor: Colors.black12),
           typography: Typography.material2021(),
