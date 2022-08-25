@@ -5,6 +5,7 @@ import 'package:grnagain/src/riverpods/prediction_services_riverpod.dart';
 import 'package:grnagain/src/widgets/error.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:grnagain/src/widgets/text_to_speech.dart';
 import 'package:image_picker/image_picker.dart';
 
 import 'package:lottie/lottie.dart';
@@ -37,6 +38,11 @@ class Predict extends ConsumerWidget {
                   File(image.path),
                   fit: BoxFit.fitWidth,
                 ),
+              ),
+              const SizedBox(height: 10),
+              TextToSpeech(
+                text: data.description,
+                lang: "en-AU",
               ),
               const SizedBox(height: 10),
               Padding(
@@ -94,6 +100,7 @@ class Predict extends ConsumerWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(12.0),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           data.description,
