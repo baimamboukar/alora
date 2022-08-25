@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:grnagain/i18n/strings.g.dart';
 
 final formKey = GlobalKey<FormState>();
 TextEditingController emailController = TextEditingController();
@@ -32,18 +33,18 @@ class Login extends ConsumerWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30.0),
                 child: Column(children: [
-                  Text(context.loc.welcomeBack,
+                  Text(t.welcomeBack,
                       style: Styles.designText(
                           bold: true, color: Palette.primary, size: 30)),
-                  Text(context.loc.loginToAccount,
+                  Text(t.loginToAccount,
                       style: Styles.designText(
                           bold: false, color: Palette.primary, size: 20)),
                   const SizedBox(height: 32),
                   Input(
                     controller: emailController,
                     icon: LineIcons.lock,
-                    label: context.loc.email,
-                    hint: context.loc.enterEmail,
+                    label: t.email,
+                    hint: t.enterEmail,
                     validator: (data) {
                       return null;
                     },
@@ -53,12 +54,10 @@ class Login extends ConsumerWidget {
                   Input(
                     controller: passwordController,
                     icon: Icons.email,
-                    label: context.loc.password,
+                    label: t.password,
                     hint: '••••••••',
                     validator: (data) {
-                      return data!.length > 5
-                          ? null
-                          : context.loc.enterCorrectPassword;
+                      return data!.length > 5 ? null : t.enterCorrectPassword;
                     },
                     isPassword: true,
                   ),
@@ -66,7 +65,7 @@ class Login extends ConsumerWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text(context.loc.forgotPassword,
+                      Text(t.forgotPassword,
                           style: Styles.designText(
                               bold: true, color: Palette.primary, size: 16)),
                     ],
@@ -104,20 +103,20 @@ class Login extends ConsumerWidget {
                       }
                     },
                     isLoading: false,
-                    label: context.loc.login,
+                    label: t.login,
                   ),
                   const SizedBox(height: 14),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(context.loc.dontHaveAccount,
+                      Text(t.dontHaveAccount,
                           style: Styles.designText(
                               bold: false, color: Palette.dark, size: 16)),
                       const SizedBox(width: 7),
                       TextButton(
                         onPressed: () =>
                             context.autorouter.replaceNamed('/signup'),
-                        child: Text(context.loc.singup,
+                        child: Text(t.singup,
                             style: Styles.designText(
                                 bold: true, color: Palette.primary, size: 16)),
                       ),
