@@ -2,6 +2,7 @@
 
 import 'dart:io';
 
+import 'package:grnagain/i18n/strings.g.dart';
 import 'package:grnagain/src/configs/index.dart';
 import 'package:grnagain/src/widgets/index.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -35,7 +36,7 @@ class _PaymentConfirmState extends ConsumerState<PaymentConfirm> {
           children: [
             const Icon(Icons.check_circle, color: Palette.primary, size: 100),
             Text(
-              "Payment Confirmation",
+              t.paymentConfirmation,
               style: Styles.designText(
                   bold: true, size: 18, color: Palette.primary),
             ),
@@ -43,7 +44,7 @@ class _PaymentConfirmState extends ConsumerState<PaymentConfirm> {
               height: 22,
             ),
             Text(
-              "You have successfully paid for your order",
+              t.paidSuccess,
               style:
                   Styles.designText(size: 14, color: Palette.dark, bold: false),
             ),
@@ -51,7 +52,7 @@ class _PaymentConfirmState extends ConsumerState<PaymentConfirm> {
               height: 22,
             ),
             Text(
-              "In order to apply changes in the app, the app should be restarted",
+              t.changesApply,
               style:
                   Styles.designText(size: 10, color: Palette.dark, bold: false),
             ),
@@ -64,7 +65,7 @@ class _PaymentConfirmState extends ConsumerState<PaymentConfirm> {
                 exit(0);
               },
               isLoading: false,
-              label: "Restart App",
+              label: t.restartApp,
             )
           ],
         ),
