@@ -27,7 +27,8 @@ class _CropsDetailsState extends ConsumerState<CropsDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor:
+          Hive.box('settings').get('theme') ? Colors.black : Colors.white,
       body: SingleChildScrollView(
         child: Container(
           decoration: BoxDecoration(
@@ -67,9 +68,11 @@ class _CropsDetailsState extends ConsumerState<CropsDetails> {
               height: 200,
             ),
             Container(
-              decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
+              decoration: BoxDecoration(
+                  color: Hive.box('settings').get('theme')
+                      ? Colors.black
+                      : Colors.white,
+                  borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(32),
                     topRight: Radius.circular(32),
                   )),
@@ -132,7 +135,7 @@ class _CropsDetailsState extends ConsumerState<CropsDetails> {
                       ],
                     ),
                     const SizedBox(height: 14),
-                    TextToSpeech(text: widget.model.description, lang: "en-US"),
+                    TextToSpeech(text: widget.model.description, lang: "en-AU"),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 14),
                       child: Text(widget.model.description,
