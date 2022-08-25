@@ -10,6 +10,7 @@ class TextToSpeechServices {
     FlutterTts tts = FlutterTts();
     await tts.setPitch(1);
     await tts.setSpeechRate(.35);
+    await tts.setVoice({"name": "en-AU-language", "locale": "en-AU"});
     await tts.setVolume(volume ?? 1.0);
     await tts.setLanguage(locale);
     return tts;
