@@ -30,7 +30,12 @@ Future<void> main() async {
   await Hive.openBox<dynamic>('settings');
   //Hive.box('settings').put('language', 'English');
   //await Hive.openBox<dynamic>('bookmarks');
-  await Hive.openBox('user');
+  await Hive.openBox<dynamic>('user');
+  Hive.box('user').isEmpty
+      ? {
+          Hive.box('user').put('bookmarks', <String>[]),
+        }
+      : null;
   Hive.box('settings').isEmpty
       ? {
           Hive.box('settings').put('language', 'English'),
