@@ -39,7 +39,7 @@ class Login extends ConsumerWidget {
                   Text(t.loginToAccount,
                       style: Styles.designText(
                           bold: false, color: Palette.primary, size: 20)),
-                  const SizedBox(height: 32),
+                  const SizedBox(height: 18),
                   Input(
                     controller: emailController,
                     icon: LineIcons.lock,
@@ -50,7 +50,7 @@ class Login extends ConsumerWidget {
                     },
                     isPassword: false,
                   ),
-                  const SizedBox(height: 22),
+                  const SizedBox(height: 16),
                   Input(
                     controller: passwordController,
                     icon: Icons.email,
@@ -70,7 +70,7 @@ class Login extends ConsumerWidget {
                               bold: true, color: Palette.primary, size: 16)),
                     ],
                   ),
-                  const SizedBox(height: 24),
+                  const SizedBox(height: 18),
                   Button(
                     callback: () async {
                       if (formKey.currentState!.validate()) {
@@ -104,20 +104,20 @@ class Login extends ConsumerWidget {
                     isLoading: false,
                     label: t.login,
                   ),
-                  const SizedBox(height: 14),
+                  const SizedBox(height: 12),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(t.dontHaveAccount,
                           style: Styles.designText(
-                              bold: false, color: Palette.dark, size: 16)),
+                              bold: false, color: Palette.dark, size: 12)),
                       const SizedBox(width: 7),
                       TextButton(
                         onPressed: () =>
                             context.autorouter.replaceNamed('/signup'),
                         child: Text(t.singup,
                             style: Styles.designText(
-                                bold: true, color: Palette.primary, size: 16)),
+                                bold: true, color: Palette.primary, size: 14)),
                       ),
                     ],
                   ),
