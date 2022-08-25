@@ -12,7 +12,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:line_icons/line_icons.dart';
 import 'library_search_delegate.dart';
-
+import 'package:grnagain/i18n/strings.g.dart';
 class CropsView extends ConsumerStatefulWidget {
   const CropsView({Key? key}) : super(key: key);
 
@@ -63,7 +63,7 @@ class _CropsViewState extends ConsumerState<CropsView> {
             const SizedBox(height: 14),
             Row(
               children: [
-                Text(context.loc.yourLibary,
+                Text(t.yourLibary,
                     style: Styles.designText(
                         bold: true, color: Palette.primary, size: 26)),
               ],
@@ -84,7 +84,7 @@ class _CropsViewState extends ConsumerState<CropsView> {
                         onTap: () => showSearch(
                             context: context, delegate: CropsSearch()),
                         decoration: InputDecoration(
-                          hintText: context.loc.searchLinary,
+                          hintText: t.searchLinary,
                           border: InputBorder.none,
                           prefixIcon: const Icon(
                             Icons.search,
