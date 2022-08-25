@@ -6,6 +6,8 @@ import '../configs/palette.dart';
 import '../configs/styles.dart';
 import '../services/tts/text_to_speech_services.dart';
 
+final isPlayingRiverpod = StateProvider<bool>((ref) => false);
+
 class TextToSpeech extends ConsumerWidget {
   final String text;
   final String lang;
@@ -19,15 +21,45 @@ class TextToSpeech extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final isPlaying = ref.watch(isPlayingRiverpod.state).state;
     return Row(
       children: [
-        Lottie.asset("assets/images/play.json", height: 70, width: 70),
+        GestureDetector(
+            onTap: callback ??
+                () async {
+                  final tts = await TextToSpeechServices(ref.read)
+                      .configure(locale: lang);
+                  if (isPlaying == false) {
+                    tts.setCompletionHandler(() {
+                      ref.read(isPlayingRiverpod.state).state = false;
+                    });
+                    tts.setCancelHandler(() {
+                      ref.read(isPlayingRiverpod.state).state = false;
+                    });
+                    ref.read(isPlayingRiverpod.state).state = true;
+                    await tts.speak(text);
+                  } else {
+                    ref.read(isPlayingRiverpod.state).state = false;
+                    await tts.stop();
+                  }
+                },
+            child: Visibility(
+                visible: !isPlaying,
+                replacement: const Icon(Icons.cancel, size: 54),
+                child: Lottie.asset("assets/images/play.json",
+                    height: 70, width: 70))),
         GestureDetector(
           onTap: callback ??
               () async {
-                final tts = await TextToSpeechServices(ref.read)
-                    .configure(locale: lang);
-                tts.speak(text);
+                if (isPlaying == false) {
+                  final tts = await TextToSpeechServices(ref.read)
+                      .configure(locale: lang);
+                  tts.setCompletionHandler(() {
+                    ref.read(isPlayingRiverpod.state).state = false;
+                  });
+                  ref.read(isPlayingRiverpod.state).state = true;
+                  await tts.speak(text);
+                }
               },
           child: Column(
             children: [
@@ -41,9 +73,12 @@ class TextToSpeech extends ConsumerWidget {
           ),
         ),
         const Spacer(),
-        Lottie.asset(
-          "assets/images/audio.json",
-          height: 70,
+        Visibility(
+          visible: isPlaying,
+          child: Lottie.asset(
+            "assets/images/audio.json",
+            height: 70,
+          ),
         ),
       ],
     );
@@ -57,16 +92,26 @@ class TextToSpeech extends ConsumerWidget {
       callback: () async {
         final tts =
             await TextToSpeechServices(ref.read).configure(locale: lang);
-        tts.setVoice({"name": "en-AU-language", "locale": "en-AU"});
+        tts.setCompletionHandler(() {
+          ref.read(isPlayingRiverpod.state).state = false;
+        });
+        tts.setCancelHandler(() {
+          ref.read(isPlayingRiverpod.state).state = false;
+        });
+        if (ref.read(isPlayingRiverpod.state).state) {
+          ref.read(isPlayingRiverpod.state).state = false;
+          await tts.stop();
+          return;
+        }
         StringBuffer buffer = StringBuffer();
         for (var i = 0; i < steps.length; i++) {
           buffer.write("step $i");
           buffer.write(steps[i]);
           buffer.write("\n ");
         }
-        var voices = await tts.getVoices;
-        print(voices);
-        //  tts.speak(buffer.toString());
+        ref.read(isPlayingRiverpod.state).state = true;
+
+        tts.speak(buffer.toString());
       },
     );
   }
