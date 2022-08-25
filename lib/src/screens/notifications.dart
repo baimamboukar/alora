@@ -40,7 +40,7 @@ class Notifications extends ConsumerWidget {
             children: [
               Align(
                 alignment: Alignment.bottomCenter,
-                child: Text(context.loc.settings,
+                child: Text("Notificaions",
                     style: Styles.designText(
                         bold: true, color: Palette.primary, size: 26)),
               ),
@@ -50,11 +50,8 @@ class Notifications extends ConsumerWidget {
           const SizedBox(
             height: 120,
           ),
-          Image.asset(
-            "assets/images/notif.png",
-            width: 200,
-            height: 170,
-          )
+          const Icon(Icons.notifications_active,
+              size: 100, color: Palette.primary)
         ],
       ),
     );
