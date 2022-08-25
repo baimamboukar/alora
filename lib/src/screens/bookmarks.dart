@@ -2,11 +2,13 @@ import 'package:grnagain/src/configs/data.dart';
 import 'package:grnagain/src/configs/index.dart';
 import 'package:grnagain/src/extensions/extensions.dart';
 import 'package:grnagain/src/screens/crops_view.dart';
+import 'package:grnagain/src/screens/library_search_delegate.dart';
 import 'package:grnagain/src/services/auth/firebase_auth.dart';
 import 'package:grnagain/src/widgets/index.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class Bookmarks extends ConsumerStatefulWidget {
   const Bookmarks({Key? key}) : super(key: key);
@@ -16,6 +18,13 @@ class Bookmarks extends ConsumerStatefulWidget {
 }
 
 class _BookmarksState extends ConsumerState<Bookmarks> {
+  late List<String> _bookmarked;
+  @override
+  void initState() {
+    _bookmarked = Hive.box('bookmarks').get('crops') ?? <String>[];
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,6 +94,8 @@ class _BookmarksState extends ConsumerState<Bookmarks> {
                     ),
                     child: Center(
                       child: TextFormField(
+                        onTap: () => showSearch(
+                            context: context, delegate: CropsSearch()),
                         decoration: InputDecoration(
                           hintText: context.loc.searchLinary,
                           border: InputBorder.none,
@@ -125,18 +136,23 @@ class _BookmarksState extends ConsumerState<Bookmarks> {
                 )
               ],
             ),
-            Expanded(
-              child: GridView.count(
-                shrinkWrap: true,
-                crossAxisSpacing: 4,
-                mainAxisSpacing: 4,
-                crossAxisCount: 2,
-                children: <Widget>[
-                  ...crops.where((crop) => crop.isBookmarked).map(
-                        (crop) => CropCaption(crop),
-                      ),
-                ],
-              ),
+            ValueListenableBuilder(
+              valueListenable: Hive.box('user').listenable(),
+              builder: (BuildContext context, Box box, Widget? widget) {
+                return Expanded(
+                  child: GridView.count(
+                    shrinkWrap: true,
+                    crossAxisSpacing: 4,
+                    mainAxisSpacing: 4,
+                    crossAxisCount: 2,
+                    children: <Widget>[
+                      ...crops.where((crop) => crop.isBookmarked).map(
+                            (crop) => CropCaption(crop),
+                          ),
+                    ],
+                  ),
+                );
+              },
             ),
           ],
         ),
