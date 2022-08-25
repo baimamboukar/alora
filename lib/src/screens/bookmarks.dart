@@ -132,7 +132,7 @@ class _BookmarksState extends ConsumerState<Bookmarks> {
                 mainAxisSpacing: 4,
                 crossAxisCount: 2,
                 children: <Widget>[
-                  ...crops.where((crop) => crop.bookMarked).map(
+                  ...crops.where((crop) => crop.isBookmarked).map(
                         (crop) => CropCaption(crop),
                       ),
                 ],
