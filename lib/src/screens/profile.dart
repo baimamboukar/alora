@@ -58,7 +58,7 @@ class _ProfileState extends ConsumerState<Profile> {
               children: [
                 Align(
                   alignment: Alignment.bottomCenter,
-                  child: Text(context.loc.profile,
+                  child: Text(t.profile,
                       style: Styles.designText(
                           bold: true, color: Palette.primary, size: 26)),
                 ),
