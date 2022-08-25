@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:grnagain/i18n/strings.g.dart';
 import 'package:lottie/lottie.dart';
 
 import '../configs/palette.dart';
@@ -62,11 +63,12 @@ class TextToSpeech extends ConsumerWidget {
                 }
               },
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Play sound",
+              Text(t.playSound,
                   style: Styles.designText(
                       bold: true, color: Palette.dark, size: 16)),
-              Text("Listen to the text",
+              Text(t.listenToText,
                   style: Styles.designText(
                       bold: false, color: Palette.dark, size: 10)),
             ],
