@@ -28,11 +28,12 @@ Future<void> main() async {
   );
   await Hive.initFlutter();
   await Hive.openBox<dynamic>('settings');
-  await Hive.openBox<dynamic>('bookmarks');
+  //Hive.box('settings').put('language', 'English');
+  //await Hive.openBox<dynamic>('bookmarks');
   await Hive.openBox('user');
   Hive.box('settings').isEmpty
       ? {
-          Hive.box('settings').put('language', 'en'),
+          Hive.box('settings').put('language', 'English'),
           Hive.box('settings').put('theme', false),
         }
       : null;
@@ -81,6 +82,10 @@ class _GrnAgainState extends ConsumerState<GrnAgain> {
         title: 'grnagain',
         themeMode: box.get('theme') ? ThemeMode.dark : ThemeMode.light,
         darkTheme: ThemeData.dark().copyWith(
+          scaffoldBackgroundColor: Colors.black26,
+          cardColor: Colors.black26,
+          bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+              backgroundColor: Colors.black12),
           typography: Typography.material2021(),
           visualDensity: VisualDensity.adaptivePlatformDensity,
           textTheme: GoogleFonts.poppinsTextTheme(
