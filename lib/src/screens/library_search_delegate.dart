@@ -1,3 +1,4 @@
+import 'package:grnagain/i18n/strings.g.dart';
 import 'package:grnagain/src/configs/data.dart';
 import 'package:grnagain/src/configs/index.dart';
 import 'package:flutter/material.dart';
@@ -45,7 +46,7 @@ class CropsSearch extends SearchDelegate {
           children: [
             const SizedBox(height: 14),
             Text(
-              "Matching items",
+              t.mathingItems,
               style: Styles.designText(
                   bold: true, size: 16, color: Palette.primary),
             ),
@@ -104,7 +105,7 @@ class CropsSearch extends SearchDelegate {
           children: [
             const SizedBox(height: 14),
             Text(
-              query.isEmpty ? "Bookmared crops" : "Matching results",
+              query.isEmpty ? t.bookmarkedCrops : t.matchingResults,
               style: Styles.designText(
                   bold: true, size: 16, color: Palette.primary),
             ),
