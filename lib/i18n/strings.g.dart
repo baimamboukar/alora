@@ -3,9 +3,9 @@
  * Generated file. Do not edit.
  *
  * Locales: 2
- * Strings: 80 (40.0 per locale)
+ * Strings: 103 (51.5 per locale)
  *
- * Built on 2022-08-25 at 14:38 UTC
+ * Built on 2022-08-25 at 15:11 UTC
  */
 
 import 'package:flutter/widgets.dart';
@@ -359,6 +359,39 @@ class _StringsEn {
 	String get description => 'Description';
 	String get prediction => 'Prediction';
 	String get getToSource => 'Copy the source url 📋';
+	String get desc => 'Failed to upload image, connection timeout';
+	String get error => 'Something went wrong';
+	String get logginOUt => 'Logging out...';
+	String get loggedOut => 'Logged out';
+	String get changesApply => 'In order to apply changes in the app, the app should be restarted';
+	String get paidSuccess => 'You have successfully subscribed to the premium plan';
+	String get restartApp => 'Restart App';
+	String get paymentConfirmation => 'Payment Confirmation';
+	late final _StringsFeaturesEn features = _StringsFeaturesEn._(_root);
+	String get purchasePrenium => 'Purchase Prenium';
+	String get enterValidName => 'Please enter valid name';
+	String get enterValidEMail => 'Please enter valid email';
+	String get signingUp => 'Signing Up...';
+	String get mathingItems => 'Matching items';
+	String get bookmarkedCrops => 'Bookmarked Crops';
+	String get matchingResults => 'Matching Results';
+	String get noIMageSelected => 'No Image Selected';
+}
+
+// Path: features
+class _StringsFeaturesEn {
+	_StringsFeaturesEn._(this._root);
+
+	final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	String get detectDisease => 'Detect Disease';
+	String get getInfos => 'Get Infos';
+	String get viewSolution => 'View Solution';
+	String get viewTreatment => 'View Treatment';
+	String get accessRessources => 'Access Ressources';
+	String get customizeApp => 'Customize App Settings';
+	String get bookmarkForFuture => 'Bookmark for Future reads';
 }
 
 // Path: <root>
@@ -465,6 +498,29 @@ extension on _StringsEn {
 			'description': 'Description',
 			'prediction': 'Prediction',
 			'getToSource': 'Copy the source url 📋',
+			'desc': 'Failed to upload image, connection timeout',
+			'error': 'Something went wrong',
+			'logginOUt': 'Logging out...',
+			'loggedOut': 'Logged out',
+			'changesApply': 'In order to apply changes in the app, the app should be restarted',
+			'paidSuccess': 'You have successfully subscribed to the premium plan',
+			'restartApp': 'Restart App',
+			'paymentConfirmation': 'Payment Confirmation',
+			'features.detectDisease': 'Detect Disease',
+			'features.getInfos': 'Get Infos',
+			'features.viewSolution': 'View Solution',
+			'features.viewTreatment': 'View Treatment',
+			'features.accessRessources': 'Access Ressources',
+			'features.customizeApp': 'Customize App Settings',
+			'features.bookmarkForFuture': 'Bookmark for Future reads',
+			'purchasePrenium': 'Purchase Prenium',
+			'enterValidName': 'Please enter valid name',
+			'enterValidEMail': 'Please enter valid email',
+			'signingUp': 'Signing Up...',
+			'mathingItems': 'Matching items',
+			'bookmarkedCrops': 'Bookmarked Crops',
+			'matchingResults': 'Matching Results',
+			'noIMageSelected': 'No Image Selected',
 		};
 	}
 }
