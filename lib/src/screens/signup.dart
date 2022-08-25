@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:line_icons/line_icons.dart';
-
+import 'package:grnagain/i18n/strings.g.dart';
 import '../router/router.gr.dart';
 
 class Signup extends ConsumerWidget {
@@ -33,10 +33,10 @@ class Signup extends ConsumerWidget {
                   key: formKey,
                   child: Column(
                     children: [
-                      Text(context.loc.register,
+                      Text(t.register,
                           style: Styles.designText(
                               bold: true, color: Palette.primary, size: 30)),
-                      Text(context.loc.createAccount,
+                      Text(t.createAccount,
                           style: Styles.designText(
                               bold: false, color: Palette.primary, size: 15)),
                     ],
@@ -49,8 +49,8 @@ class Signup extends ConsumerWidget {
             Input(
               controller: nameController,
               icon: LineIcons.lock,
-              label: context.loc.fullName,
-              hint: context.loc.fullName,
+              label: t.fullName,
+              hint: t.fullName,
               validator: (data) {
                 return data!.length >= 6 ? null : "Please enter valid name";
               },
@@ -60,8 +60,8 @@ class Signup extends ConsumerWidget {
             Input(
               controller: emailController,
               icon: LineIcons.lock,
-              label: context.loc.email,
-              hint: context.loc.enterEmail,
+              label: t.email,
+              hint: t.enterEmail,
               validator: (data) {
                 return data!.contains("@")
                     ? null
@@ -73,12 +73,10 @@ class Signup extends ConsumerWidget {
             Input(
               controller: passwordController,
               icon: Icons.email,
-              label: context.loc.password,
+              label: t.password,
               hint: '*******',
               validator: (data) {
-                return data!.length > 6
-                    ? null
-                    : context.loc.enterCorrectPassword;
+                return data!.length > 6 ? null : t.enterCorrectPassword;
               },
               isPassword: true,
             ),
@@ -111,10 +109,10 @@ class Signup extends ConsumerWidget {
                 }
               },
               isLoading: false,
-              label: context.loc.singup,
+              label: t.singup,
             ),
             const SizedBox(height: 25),
-            Text(context.loc.orSignInWith,
+            Text(t.orSignInWith,
                 style: Styles.designText(
                     bold: true, color: Palette.primary, size: 20)),
             const SizedBox(height: 25),
@@ -142,13 +140,13 @@ class Signup extends ConsumerWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(context.loc.alreadyHaveAccount,
+                Text(t.alreadyHaveAccount,
                     style: Styles.designText(
                         bold: false, color: Palette.dark, size: 16)),
                 const SizedBox(width: 7),
                 TextButton(
                   onPressed: () => context.autorouter.replaceNamed('/login'),
-                  child: Text(context.loc.login,
+                  child: Text(t.login,
                       style: Styles.designText(
                           bold: true, color: Palette.primary, size: 16)),
                 ),
