@@ -210,7 +210,7 @@ class _ProfileState extends ConsumerState<Profile> {
                 color: Palette.primary,
                 size: 32,
               ),
-              title: Text(t.createAccount,
+              title: Text(t.contactUS,
                   style: Styles.designText(
                       bold: false, color: Palette.primary, size: 16)),
             ),
