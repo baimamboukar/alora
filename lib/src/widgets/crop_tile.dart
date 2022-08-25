@@ -7,7 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:line_icons/line_icons.dart';
 
-class CropCaption extends ConsumerWidget {
+class CropCaption extends ConsumerStatefulWidget {
   final Crop crop;
   const CropCaption(
     this.crop, {
@@ -15,10 +15,15 @@ class CropCaption extends ConsumerWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() => _CropCaptionState();
+}
+
+class _CropCaptionState extends ConsumerState<CropCaption> {
+  @override
+  Widget build(BuildContext context) {
     return GestureDetector(
         onTap: () {
-          context.autorouter.navigate(CropsDetails(model: crop));
+          context.autorouter.navigate(CropsDetails(model: widget.crop));
         },
         child: Card(
           shape: RoundedRectangleBorder(
@@ -36,7 +41,7 @@ class CropCaption extends ConsumerWidget {
               Align(
                 alignment: Alignment.topCenter,
                 child: Image.asset(
-                  crop.imageURL.caption,
+                  widget.crop.imageURL.caption,
                   width: 165,
                   height: 116,
                 ),
@@ -58,7 +63,7 @@ class CropCaption extends ConsumerWidget {
                               Padding(
                                 padding:
                                     const EdgeInsets.only(left: 8, top: 24),
-                                child: Text(crop.name,
+                                child: Text(widget.crop.name,
                                     style: Styles.designText(
                                         bold: false,
                                         color: Palette.primary,
@@ -66,7 +71,7 @@ class CropCaption extends ConsumerWidget {
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(left: 8.0),
-                                child: Text(crop.scienticName,
+                                child: Text(widget.crop.scienticName,
                                     overflow: TextOverflow.ellipsis,
                                     softWrap: true,
                                     style: Styles.designText(
@@ -81,17 +86,23 @@ class CropCaption extends ConsumerWidget {
                             padding: const EdgeInsets.only(right: 8.0, top: 12),
                             child: GestureDetector(
                               onTap: () {
-                                final Box box = Hive.box('bookmarks');
+                                final Box box = Hive.box('user');
                                 List<String> bookmarked =
-                                    box.get('crops') ?? <String>[];
-                                box.put('crops', [crop.id, ...bookmarked]);
+                                    box.get('bookmarks') ?? <String>[];
+                                box.put('bookmarks',
+                                    [widget.crop.id, ...bookmarked]);
+
+                                setState(() {});
                               },
-                              child: Icon(
-                                crop.isBookmarked
-                                    ? LineIcons.heart
-                                    : LineIcons.heartAlt,
-                                size: 18,
-                              ),
+                              child: widget.crop.isBookmarked
+                                  ? const Icon(
+                                      LineIcons.heartAlt,
+                                      size: 18,
+                                    )
+                                  : const Icon(
+                                      LineIcons.heart,
+                                      size: 18,
+                                    ),
                             )),
                       ],
                     ),
