@@ -1,3 +1,4 @@
+import 'package:grnagain/i18n/strings.g.dart';
 import 'package:grnagain/src/configs/index.dart';
 import 'package:grnagain/src/extensions/extensions.dart';
 import 'package:grnagain/src/widgets/button.dart';
@@ -13,13 +14,13 @@ class Purchase extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Feature> features = const [
-      Feature(name: "Detect diseases on crops", isPrenium: true),
-      Feature(name: "Get Infos on diseases", isPrenium: false),
-      Feature(name: "View the solutions", isPrenium: true),
-      Feature(name: "Bookmark for future read", isPrenium: false),
-      Feature(name: "Acess ressources", isPrenium: true),
-      Feature(name: "Customize app settings", isPrenium: false),
+    List<Feature> features = [
+      Feature(name: t.features.detectDisease, isPrenium: true),
+      Feature(name: t.features.getInfos, isPrenium: false),
+      Feature(name: t.features.viewSolution, isPrenium: true),
+      Feature(name: t.features.bookmarkForFuture, isPrenium: false),
+      Feature(name: t.features.accessRessources, isPrenium: true),
+      Feature(name: t.features.customizeApp, isPrenium: false),
     ];
     return Scaffold(
       body: Container(
@@ -44,17 +45,17 @@ class Purchase extends StatelessWidget {
                       height: 150,
                     ),
                     Column(
-                      children: const [
+                      children: [
                         Center(
                           child: Text(
-                            'Purchase prenium',
-                            style: TextStyle(
+                            t.purchasePrenium,
+                            style: const TextStyle(
                                 fontSize: 22,
                                 fontWeight: FontWeight.bold,
                                 color: Palette.primary),
                           ),
                         ),
-                        Icon(LineIcons.medal,
+                        const Icon(LineIcons.medal,
                             color: Colors.orangeAccent, size: 100),
                       ],
                     )
@@ -133,8 +134,8 @@ class Purchase extends StatelessWidget {
                                         padding: const EdgeInsets.all(12.0),
                                         child: WebViewPlus(
                                           navigationDelegate: (nav) async {
-                                            if (nav.url
-                                                .contains("grnagain.page.link")) {
+                                            if (nav.url.contains(
+                                                "grnagain.page.link")) {
                                               Navigator.pop(context);
                                               Navigator.pop(context);
                                               launchUrl(
