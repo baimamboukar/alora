@@ -10,8 +10,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-final langRiverpod = StateProvider<String>((ref) => "English");
-
 class Profile extends ConsumerStatefulWidget {
   const Profile({Key? key}) : super(key: key);
 
@@ -27,7 +25,6 @@ class _ProfileState extends ConsumerState<Profile> {
 
   @override
   Widget build(BuildContext context) {
-    final lang = ref.watch(langRiverpod.state).state;
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -132,36 +129,43 @@ class _ProfileState extends ConsumerState<Profile> {
             ListTile(
               style: ListTileStyle.drawer,
               dense: false,
-              trailing: DropdownButton<String>(
-                underline: const SizedBox.shrink(),
-                elevation: 0,
-                items: ["English", "Francais", "Deutsch"]
-                    .map((item) => DropdownMenuItem<String>(
-                          value: item,
-                          child: Text(
-                            item,
-                            style: Styles.designText(
-                                size: 14.0,
-                                bold: false,
-                                color: Palette.primary),
-                          ),
-                        ))
-                    .toList(),
-                onChanged: (value) {
-                  ref.read(langRiverpod.state).state = value ?? "English";
-                  switch (value) {
-                    case "Deutsch":
-                      LocaleSettings.setLocale(AppLocale.de);
-                      context.autorouter.notifyAll(forceUrlRebuild: true);
-                      break;
-                    case "English":
-                      LocaleSettings.setLocale(AppLocale.en);
-                      break;
-
-                    default:
-                  }
+              trailing: ValueListenableBuilder(
+                valueListenable: Hive.box('settings').listenable(),
+                builder: (BuildContext context, Box box, Widget? widget) {
+                  return DropdownButton<String>(
+                    underline: const SizedBox.shrink(),
+                    elevation: 0,
+                    items: ["English", "Francais", "Deutsch"]
+                        .map((item) => DropdownMenuItem<String>(
+                              value: item,
+                              child: Text(
+                                item,
+                                style: Styles.designText(
+                                    size: 14.0,
+                                    bold: false,
+                                    color: Palette.primary),
+                              ),
+                            ))
+                        .toList(),
+                    onChanged: (value) {
+                      switch (value) {
+                        case "Deutsch":
+                          LocaleSettings.setLocale(AppLocale.de);
+                          box.put('language', value);
+                          setState(() {});
+                          break;
+                        case "English":
+                          LocaleSettings.setLocale(AppLocale.en);
+                          box.put('language', value);
+                          setState(() {});
+                          break;
+                        default:
+                          LocaleSettings.setLocale(AppLocale.en);
+                      }
+                    },
+                    value: box.get('language'),
+                  );
                 },
-                value: lang,
               ),
               leading: const Icon(
                 Icons.language,
