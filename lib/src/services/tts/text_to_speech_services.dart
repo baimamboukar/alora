@@ -5,13 +5,12 @@ class TextToSpeechServices {
   // ignore: unused_field
   final Reader _read;
   TextToSpeechServices(this._read);
-  FlutterTts tts = FlutterTts();
-  Future<FlutterTts> configure({required String locale, double? volume}) async {
-    await tts.setQueueMode(2);
-    await tts.setPitch(1);
-    await tts.setSpeechRate(.7);
-    await tts.setVolume(volume ?? 1.0);
 
+  Future<FlutterTts> configure({required String locale, double? volume}) async {
+    FlutterTts tts = FlutterTts();
+    await tts.setPitch(1);
+    await tts.setSpeechRate(.35);
+    await tts.setVolume(volume ?? 1.0);
     await tts.setLanguage(locale);
     return tts;
   }
