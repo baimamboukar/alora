@@ -1,3 +1,4 @@
+import 'package:grnagain/i18n/strings.g.dart';
 import 'package:grnagain/src/configs/index.dart';
 import 'package:grnagain/src/extensions/extensions.dart';
 import 'package:grnagain/src/models/crop_model.dart';
@@ -144,15 +145,14 @@ class _CropsDetailsState extends ConsumerState<CropsDetails> {
                     ),
                     const SizedBox(height: 28),
                     Button(
-                      callback: () {
-                        FirebaseAuthentication.isPreniumUser
-                            ? context.autorouter
-                                .push(Solution(model: widget.model))
-                            : context.autorouter.pushNamed('/purchase');
-                      },
-                      isLoading: false,
-                      label: "Solution",
-                    )
+                        callback: () {
+                          FirebaseAuthentication.isPreniumUser
+                              ? context.autorouter
+                                  .push(Solution(model: widget.model))
+                              : context.autorouter.pushNamed('/purchase');
+                        },
+                        isLoading: false,
+                        label: t.solution)
                   ],
                 ),
               ),
