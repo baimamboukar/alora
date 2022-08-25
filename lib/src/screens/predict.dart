@@ -129,7 +129,11 @@ class Predict extends ConsumerWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      const SizedBox(
+                        height: 14,
+                      ),
                       Row(
                         children: [
                           Text(
@@ -139,10 +143,14 @@ class Predict extends ConsumerWidget {
                           ),
                         ],
                       ),
+                      const SizedBox(height: 10),
                       GestureDetector(
                         onTap: () {
                           //copy data.source to clipboad
                           Clipboard.setData(ClipboardData(text: data.source));
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content: Text(data.source),
+                          ));
                         },
                         child: Container(
                           decoration: BoxDecoration(
