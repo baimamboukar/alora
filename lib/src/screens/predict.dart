@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/services.dart';
 import 'package:grnagain/src/configs/index.dart';
 import 'package:grnagain/src/riverpods/prediction_services_riverpod.dart';
 import 'package:grnagain/src/widgets/error.dart';
@@ -9,6 +10,7 @@ import 'package:grnagain/src/widgets/text_to_speech.dart';
 import 'package:image_picker/image_picker.dart';
 
 import 'package:lottie/lottie.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Predict extends ConsumerWidget {
   final XFile image;
@@ -26,138 +28,143 @@ class Predict extends ConsumerWidget {
       ),
       body: predicter.when(
         data: (data) {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Container(
-                height: 200,
-                width: MediaQuery.of(context).size.width,
-                decoration:
-                    BoxDecoration(borderRadius: BorderRadius.circular(20)),
-                child: Image.file(
-                  File(image.path),
-                  fit: BoxFit.fitWidth,
+          return SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
+                  height: 200,
+                  width: MediaQuery.of(context).size.width,
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                  child: Image.file(
+                    File(image.path),
+                    fit: BoxFit.fitWidth,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 10),
-              TextToSpeech(
-                text: data.description,
-                lang: "en-AU",
-              ),
-              const SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.only(left: 18.0),
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          "Disease",
-                          style: Styles.designText(
-                              bold: true, size: 16, color: Palette.primary),
-                        ),
-                      ],
-                    ),
-                  ],
+                const SizedBox(height: 10),
+                TextToSpeech(
+                  text: data.description,
+                  lang: "en-AU",
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 18.0),
-                child: Row(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                          color: Palette.primary,
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Text(data.prediction,
+                const SizedBox(height: 10),
+                Padding(
+                  padding: const EdgeInsets.only(left: 18.0),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            "Disease",
                             style: Styles.designText(
-                                bold: true, size: 14, color: Palette.light)),
+                                bold: true, size: 16, color: Palette.primary),
+                          ),
+                        ],
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 18.0, top: 14),
-                child: Row(
-                  children: [
-                    Text(
-                      "Description",
-                      style: Styles.designText(
-                          bold: true, size: 16, color: Palette.primary),
-                    ),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.only(left: 18.0),
+                  child: Row(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                            color: Palette.primary,
+                            borderRadius: BorderRadius.circular(20)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: Text(data.prediction,
+                              style: Styles.designText(
+                                  bold: true, size: 14, color: Palette.light)),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Palette.primary,
-                      borderRadius: BorderRadius.circular(20)),
-                  child: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          data.description,
-                          style: Styles.designText(
-                              bold: false, size: 14, color: Palette.light),
-                        ),
-                        const SizedBox(
-                          height: 14,
-                        ),
-                        Text(
-                          "Symptoms",
-                          style: Styles.designText(
-                              bold: true, size: 16, color: Palette.light),
-                        ),
-                        Text(data.symptoms,
+                Padding(
+                  padding: const EdgeInsets.only(left: 18.0, top: 14),
+                  child: Row(
+                    children: [
+                      Text(
+                        "Description",
+                        style: Styles.designText(
+                            bold: true, size: 16, color: Palette.primary),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Palette.primary,
+                        borderRadius: BorderRadius.circular(20)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            data.description,
                             style: Styles.designText(
-                                bold: true, size: 16, color: Palette.light)),
-                      ],
+                                bold: false, size: 14, color: Palette.light),
+                          ),
+                          const SizedBox(
+                            height: 14,
+                          ),
+                          Text(
+                            "Symptoms",
+                            style: Styles.designText(
+                                bold: true, size: 16, color: Palette.light),
+                          ),
+                          Text(data.symptoms,
+                              style: Styles.designText(
+                                  bold: true, size: 16, color: Palette.light)),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 18.0),
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          "Get to the source",
-                          style: Styles.designText(
-                              bold: true, size: 16, color: Palette.primary),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 18.0),
-                child: Row(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                          color: Palette.primary,
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Text(data.source,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            "Copy to the source url 📋",
                             style: Styles.designText(
-                                bold: true, size: 14, color: Palette.light)),
+                                bold: true, size: 16, color: Palette.primary),
+                          ),
+                        ],
                       ),
-                    ),
-                  ],
+                      GestureDetector(
+                        onTap: () {
+                          //copy data.source to clipboad
+                          Clipboard.setData(ClipboardData(text: data.source));
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                              color: Palette.primary,
+                              borderRadius: BorderRadius.circular(20)),
+                          child: Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: Text(data.source,
+                                overflow: TextOverflow.ellipsis,
+                                style: Styles.designText(
+                                    bold: true,
+                                    size: 14,
+                                    color: Palette.light)),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+                const SizedBox(height: 30),
+              ],
+            ),
           );
         },
         loading: () => Center(
