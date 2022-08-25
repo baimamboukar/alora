@@ -57,8 +57,8 @@ class Crop {
   }
 
   bool get isBookmarked {
-    final Box box = Hive.box('bookmarks');
-    List<String> bookmarked = box.get('crops') ?? <String>[];
+    final Box box = Hive.box('user');
+    List<String> bookmarked = box.get('bookmarks') ?? <String>[];
     return bookmarked.contains(id);
   }
 
