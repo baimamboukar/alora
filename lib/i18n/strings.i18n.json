@@ -2,7 +2,7 @@
   "hello": "Hello $name",
   "save": "Save",
     "login": "Login",
-    "singup": "Singup",
+    "singup": "Sign up",
     "email": "Email",
     "enterEmail": "Enter your email",
     "createAccount": "Create an account",
