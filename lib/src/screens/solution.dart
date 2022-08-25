@@ -4,6 +4,7 @@ import 'package:grnagain/src/models/crop_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:grnagain/src/widgets/text_to_speech.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:line_icons/line_icons.dart';
 
 final currentStepRiverpod = StateProvider<int>((ref) => 0);
@@ -84,9 +85,15 @@ class _SolutionState extends ConsumerState<Solution> {
                             radius: 28,
                             backgroundColor: Palette.primary,
                             child: IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                final Box box = Hive.box('bookmarks');
+                                List<String> bookmarked =
+                                    box.get('crops') ?? <String>[];
+                                box.put(
+                                    'crops', [widget.model.id, ...bookmarked]);
+                              },
                               icon: Icon(
-                                widget.model.bookMarked
+                                widget.model.isBookmarked
                                     ? LineIcons.heartAlt
                                     : LineIcons.heart,
                                 color: Palette.light,
@@ -119,10 +126,8 @@ class _SolutionState extends ConsumerState<Solution> {
                         ),
                       ],
                     ),
-                    TextToSpeech(
-                      text: widget.model.treatment.intro ?? "",
-                      lang: "en-US",
-                    ),
+                    TextToSpeech.forSteps(
+                        widget.model.treatment.steps, "en-US", ref),
                     const SizedBox(height: 14),
                     Text("Solution & Treatment",
                         style: Styles.designText(
