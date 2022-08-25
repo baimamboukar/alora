@@ -75,7 +75,7 @@ class Login extends ConsumerWidget {
                     callback: () async {
                       if (formKey.currentState!.validate()) {
                         await EasyLoading.show(
-                            status: "login...",
+                            status: t.loginToAccount,
                             maskType: EasyLoadingMaskType.black,
                             dismissOnTap: false);
                         ref
@@ -96,8 +96,7 @@ class Login extends ConsumerWidget {
                             context.autorouter.push(const Home());
                           } else {
                             await EasyLoading.dismiss();
-                            await EasyLoading.showError(
-                                "Something went wrong, please try again later");
+                            await EasyLoading.showError(t.error);
                           }
                         });
                       }
