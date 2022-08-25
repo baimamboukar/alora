@@ -52,7 +52,7 @@ class Signup extends ConsumerWidget {
               label: t.fullName,
               hint: t.fullName,
               validator: (data) {
-                return data!.length >= 6 ? null : "Please enter valid name";
+                return data!.length >= 6 ? null : t.enterValidName;
               },
               isPassword: false,
             ),
@@ -63,9 +63,7 @@ class Signup extends ConsumerWidget {
               label: t.email,
               hint: t.enterEmail,
               validator: (data) {
-                return data!.contains("@")
-                    ? null
-                    : "Please enter a correct email";
+                return data!.contains("@") ? null : t.enterValidEMail;
               },
               isPassword: false,
             ),
@@ -85,7 +83,7 @@ class Signup extends ConsumerWidget {
               callback: () async {
                 if (formKey.currentState!.validate()) {
                   await EasyLoading.show(
-                      status: "Signing up...",
+                      status: t.signingUp,
                       maskType: EasyLoadingMaskType.black,
                       dismissOnTap: false);
                   final res = await ref.read(firebaseAuthRiverpod).signupUser(
@@ -103,8 +101,7 @@ class Signup extends ConsumerWidget {
                     context.autorouter.push(const Home());
                   } else {
                     await EasyLoading.dismiss();
-                    await EasyLoading.showError(
-                        "Something went wrong, please try again later");
+                    await EasyLoading.showError(t.error);
                   }
                 }
               },
