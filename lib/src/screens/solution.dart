@@ -7,8 +7,6 @@ import 'package:grnagain/src/widgets/text_to_speech.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:line_icons/line_icons.dart';
 
-final currentStepRiverpod = StateProvider<int>((ref) => 0);
-
 class Solution extends ConsumerStatefulWidget {
   final Crop model;
   const Solution({
@@ -23,7 +21,6 @@ class Solution extends ConsumerStatefulWidget {
 class _SolutionState extends ConsumerState<Solution> {
   @override
   Widget build(BuildContext context) {
-    final _currentStep = ref.watch(currentStepRiverpod.state).state;
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -141,8 +138,11 @@ class _SolutionState extends ConsumerState<Solution> {
                           const SizedBox(height: 14),
                           ...widget.model.treatment.steps
                               .map((step) => ExpansionTile(
-                                    trailing: const Icon(
-                                        Icons.lightbulb_circle_rounded),
+                                    // trailing: const Icon(
+                                    //     Icons.lightbulb_circle_rounded),
+                                    initiallyExpanded: true,
+                                    controlAffinity:
+                                        ListTileControlAffinity.platform,
                                     title: Text(
                                         "🔖 STEP ${widget.model.treatment.steps.indexOf(step) + 1}"),
                                     children: [
