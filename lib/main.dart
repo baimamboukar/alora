@@ -27,9 +27,8 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await Hive.initFlutter();
-  // await Hive.deleteBoxFromDisk('settings');
-  // await Hive.deleteBoxFromDisk('user');
   await Hive.openBox<dynamic>('settings');
+  await Hive.openBox<dynamic>('bookmarks');
   await Hive.openBox('user');
   Hive.box('settings').isEmpty
       ? {
@@ -37,26 +36,30 @@ Future<void> main() async {
           Hive.box('settings').put('theme', false),
         }
       : null;
+
+  Hive.box('bookmarks').isEmpty
+      ? Hive.box('bookmarks').put('crops', <String>[])
+      : null;
   final PendingDynamicLinkData? initialLink =
       await FirebaseDynamicLinks.instance.getInitialLink();
 
   LocaleSettings.useDeviceLocale();
   runApp(ProviderScope(
-      child: TranslationProvider(child: grnagain(initialLink: initialLink))));
+      child: TranslationProvider(child: GrnAgain(initialLink: initialLink))));
 }
 
-class grnagain extends ConsumerStatefulWidget {
+class GrnAgain extends ConsumerStatefulWidget {
   final PendingDynamicLinkData? initialLink;
-  const grnagain({
+  const GrnAgain({
     Key? key,
     this.initialLink,
   }) : super(key: key);
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _grnagainState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _GrnAgainState();
 }
 
-class _grnagainState extends ConsumerState<grnagain> {
+class _GrnAgainState extends ConsumerState<GrnAgain> {
   late AppRouter appRouter;
   @override
   void initState() {
