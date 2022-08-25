@@ -108,11 +108,11 @@ class Signup extends ConsumerWidget {
               isLoading: false,
               label: t.singup,
             ),
-            const SizedBox(height: 25),
+            const SizedBox(height: 30),
             Text(t.orSignInWith,
                 style: Styles.designText(
-                    bold: true, color: Palette.primary, size: 20)),
-            const SizedBox(height: 25),
+                    bold: true, color: Palette.primary, size: 16)),
+            const SizedBox(height: 14),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -126,26 +126,26 @@ class Signup extends ConsumerWidget {
                   },
                   iconAsset: 'assets/images/google.png',
                 ),
-                const SizedBox(width: 30),
+                const SizedBox(width: 18),
                 SocialButton(
                   callback: () {},
                   iconAsset: 'assets/images/facebook.png',
                 )
               ],
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(t.alreadyHaveAccount,
                     style: Styles.designText(
-                        bold: false, color: Palette.dark, size: 16)),
+                        bold: false, color: Palette.dark, size: 12)),
                 const SizedBox(width: 7),
                 TextButton(
                   onPressed: () => context.autorouter.replaceNamed('/login'),
                   child: Text(t.login,
                       style: Styles.designText(
-                          bold: true, color: Palette.primary, size: 16)),
+                          bold: true, color: Palette.primary, size: 14)),
                 ),
               ],
             ),
