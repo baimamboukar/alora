@@ -1,3 +1,4 @@
+import 'package:grnagain/i18n/strings.g.dart';
 import 'package:grnagain/src/configs/data.dart';
 import 'package:grnagain/src/configs/index.dart';
 import 'package:grnagain/src/extensions/extensions.dart';
@@ -21,11 +22,6 @@ class _BookmarksState extends ConsumerState<Bookmarks> {
   // ignore: unused_field
   late List<String> _bookmarked;
   @override
-  void initState() {
-    _bookmarked = Hive.box('bookmarks').get('crops') ?? <String>[];
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,12 +32,12 @@ class _BookmarksState extends ConsumerState<Bookmarks> {
             const SizedBox(height: 40),
             // Button(
             //   isLoading: false,
-            //   label: context.loc.login,
+            //   label: t.login,
             //   callback: () => context.autorouter.pushNamed('/login'),
             // ),
             // Button(
             //   isLoading: false,
-            //   label: context.loc.singup,
+            //   label: t.singup,
             //   callback: () => context.autorouter.pushNamed('/signup'),
             // ),
             Row(
@@ -98,7 +94,7 @@ class _BookmarksState extends ConsumerState<Bookmarks> {
                         onTap: () => showSearch(
                             context: context, delegate: CropsSearch()),
                         decoration: InputDecoration(
-                          hintText: context.loc.searchLinary,
+                          hintText: t.searchLinary,
                           border: InputBorder.none,
                           prefixIcon: const Icon(
                             Icons.search,
