@@ -73,7 +73,7 @@ class _BookmarksState extends ConsumerState<Bookmarks> {
             const SizedBox(height: 14),
             Row(
               children: [
-                Text("Your bookmarks",
+                Text(t.yourBookmarks,
                     style: Styles.designText(
                         bold: true, color: Palette.primary, size: 26)),
               ],
