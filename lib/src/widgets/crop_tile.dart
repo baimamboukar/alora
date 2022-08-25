@@ -4,6 +4,7 @@ import 'package:grnagain/src/models/crop_model.dart';
 import 'package:grnagain/src/router/router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:line_icons/line_icons.dart';
 
 class CropCaption extends ConsumerWidget {
@@ -78,11 +79,19 @@ class CropCaption extends ConsumerWidget {
                         ),
                         Padding(
                             padding: const EdgeInsets.only(right: 8.0, top: 12),
-                            child: Icon(
-                              crop.bookMarked
-                                  ? LineIcons.heart
-                                  : LineIcons.heartAlt,
-                              size: 18,
+                            child: GestureDetector(
+                              onTap: () {
+                                final Box box = Hive.box('bookmarks');
+                                List<String> bookmarked =
+                                    box.get('crops') ?? <String>[];
+                                box.put('crops', [crop.id, ...bookmarked]);
+                              },
+                              child: Icon(
+                                crop.isBookmarked
+                                    ? LineIcons.heart
+                                    : LineIcons.heartAlt,
+                                size: 18,
+                              ),
                             )),
                       ],
                     ),
