@@ -1,8 +1,31 @@
 {
   "hello": "Hello $name",
   "save": "Save",
-  "login": {
-    "success": "Logged in successfully",
-    "fail": "Logged in failed"
-  }
+    "login": "Login",
+    "singup": "Singup",
+    "email": "Email",
+    "enterEmail": "Enter your email",
+    "createAccount": "Create an account",
+    "register": "Register",
+    "yourLibary": "Your library",
+    "searchLinary": "Search library",
+    "yourBookmarks": "Your bookmarks",
+    "library": "Library",
+    "logout": "Logout",
+    "profile": "Profile",
+    "settings": "Settings",
+    "language": "Language",
+    "language_en": "English",
+    "language_de": "German",
+    "fullName": "Full name",
+    "dontHaveAccount": "Don't have an account?",
+    "forgotPassword": "Forgot password?",
+    "password": "Password",
+    "welcomeBack": "Welcome back",
+    "loginToAccount": "Login to your account",
+    "enterCorrectPassword": "Please Enter correct password",
+    "crops": "Crops",
+    "bookmarks": "Bookmarks",
+    "alreadyHaveAccount": "Already have an account?",
+    "orSignInWith": "Or sign in with"
 }
