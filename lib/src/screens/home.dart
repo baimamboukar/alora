@@ -47,7 +47,7 @@ class Home extends ConsumerWidget {
                 LineIcons.heart,
                 size: 22,
               ),
-              label: context.loc.bookmarks,
+              label: t.bookmarks,
             ),
             BottomNavigationBarItem(
               icon: const Icon(
@@ -55,7 +55,7 @@ class Home extends ConsumerWidget {
                 size: 22,
               ),
               backgroundColor: Palette.dark,
-              label: context.loc.profile,
+              label: t.profile,
             ),
           ],
         );
