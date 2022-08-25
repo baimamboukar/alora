@@ -1,8 +1,31 @@
 {
   "hello": "Hallo $name",
   "save": "Speichern",
-  "login": {
-    "success": "Login erfolgreich",
-    "fail": "Login fehlgeschlagen"
-  }
+  "login": "Anmelden",
+  "singup": "Anmelden",
+  "email": "E-Mail",
+  "enterEmail": "E-Mail eingeben",
+  "createAccount": "Konto erstellen",
+  "register": "Registrieren",
+  "yourLibary": "Ihre Bibliothek",
+  "searchLinary": "Bibliothek durchsuchen",
+  "yourBookmarks": "Speichern0",
+  "library": "Speichern1",
+  "logout": "Speichern2",
+  "profile": "Speichern3",
+  "settings": "Speichern4",
+  "language": "Speichern5",
+  "language_en": "Speichern6",
+  "language_de": "Speichern7",
+  "fullName": "Speichern8",
+  "dontHaveAccount": "Speichern9",
+  "forgotPassword": "Anmelden0",
+  "password": "Anmelden1",
+  "welcomeBack": "Anmelden2",
+  "loginToAccount": "Anmelden3",
+  "enterCorrectPassword": "Anmelden4",
+  "crops": "Anmelden5",
+  "bookmarks": "Anmelden6",
+  "alreadyHaveAccount": "Anmelden7",
+  "orSignInWith": "Anmelden8"
 }
