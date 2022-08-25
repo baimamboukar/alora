@@ -3,9 +3,9 @@
  * Generated file. Do not edit.
  *
  * Locales: 2
- * Strings: 103 (51.5 per locale)
+ * Strings: 148 (74.0 per locale)
  *
- * Built on 2022-08-25 at 15:11 UTC
+ * Built on 2022-08-25 at 15:38 UTC
  */
 
 import 'package:flutter/widgets.dart';
@@ -311,7 +311,7 @@ class _StringsEn {
 	String hello({required Object name}) => 'Hello $name';
 	String get save => 'Save';
 	String get login => 'Login';
-	String get singup => 'Singup';
+	String get singup => 'Sign up';
 	String get email => 'Email';
 	String get enterEmail => 'Enter your email';
 	String get createAccount => 'Create an account';
@@ -410,35 +410,90 @@ class _StringsDe implements _StringsEn {
 	@override late final _StringsDe _root = this; // ignore: unused_field
 
 	// Translations
-	@override String get yourBookmarks => 'Ihre Lesezeichen';
-	@override String get save => 'Speichern Sie';
-	@override String get language => 'Sprache';
-	@override String get crops => 'Kulturpflanzen';
-	@override String get login => 'Anmeldung';
-	@override String get bookmarks => 'Lesezeichen';
-	@override String get loginToAccount => 'Anmeldung bei Ihrem Konto';
-	@override String get forgotPassword => 'Passwort vergessen?';
-	@override String get logout => 'Abmeldung';
-	@override String get password => 'Passwort';
-	@override String get singup => 'Singup';
-	@override String get library => 'Bibliothek';
-	@override String get alreadyHaveAccount => 'Sie haben bereits ein Konto?';
-	@override String get welcomeBack => 'Willkommen zurück';
-	@override String get language_en => 'Englisch';
-	@override String get enterCorrectPassword => 'Bitte korrektes Passwort eingeben';
-	@override String get email => 'E-Mail';
-	@override String get language_de => 'Deutsch';
-	@override String get settings => 'Einstellungen';
-	@override String get enterEmail => 'Ihre E-Mail eingeben';
-	@override String get searchLinary => 'Bibliothek durchsuchen';
-	@override String get orSignInWith => 'Oder melden Sie sich an mit';
-	@override String get profile => 'Profil';
-	@override String get fullName => 'Vollständiger Name';
-	@override String get createAccount => 'Ein Konto erstellen';
-	@override String get dontHaveAccount => 'Sie haben noch kein Konto?';
-	@override String get yourLibary => 'Your library';
 	@override String hello({required Object name}) => 'Hallo $name';
-	@override String get register => 'Register';
+	@override String get save => 'Speichern';
+	@override String get login => 'Anmelden';
+	@override String get singup => 'Anmelden';
+	@override String get email => 'E-Mail';
+	@override String get enterEmail => 'Geben Sie Ihre E-Mail ein';
+	@override String get createAccount => 'Ein Konto erstellen';
+	@override String get register => 'Registrieren';
+	@override String get yourLibary => 'Ihre Bibliothek';
+	@override String get searchLinary => 'Bibliothek durchsuchen';
+	@override String get yourBookmarks => 'Ihre Lesezeichen';
+	@override String get library => 'Bibliothek';
+	@override String get logout => 'Abmelden';
+	@override String get profile => 'Profil';
+	@override String get settings => 'Einstellungen';
+	@override String get language => 'Sprache';
+	@override String get language_en => 'Englisch';
+	@override String get language_de => 'Deutsch';
+	@override String get fullName => 'Vollständiger Name';
+	@override String get dontHaveAccount => 'Sie haben noch kein Konto?';
+	@override String get forgotPassword => 'Passwort vergessen?';
+	@override String get password => 'Kennwort';
+	@override String get welcomeBack => 'Willkommen zurück';
+	@override String get loginToAccount => 'Einloggen in Ihr Konto';
+	@override String get enterCorrectPassword => 'Bitte korrektes Passwort eingeben';
+	@override String get crops => 'Kulturpflanzen';
+	@override String get bookmarks => 'Lesezeichen';
+	@override String get alreadyHaveAccount => 'Sie haben bereits ein Konto?';
+	@override String get orSignInWith => 'Oder melden Sie sich an mit';
+	@override String get contactUS => 'Kontakt';
+	@override String get helpCenter => 'Hilfe-Center';
+	@override String get termsOfService => 'Bedingungen und Service';
+	@override String get themeMode => 'Theme-Modus';
+	@override String get changeAppTheme => 'App-Thema ändern';
+	@override String get changeAppLanguage => 'App-Sprache ändern';
+	@override String get pickImageFromGallery => 'Bild aus Galerie oder Kamera auswählen';
+	@override String get camera => 'Kamera';
+	@override String get gallery => 'Galerie';
+	@override String get playSound => 'Ton abspielen';
+	@override String get listenToText => 'Text anhören';
+	@override String get solution => 'Lösung';
+	@override String get step => 'Schritt';
+	@override String get solutionAndTreatment => 'Lösung und Behandlung';
+	@override String get treatment => 'Behandlung';
+	@override String get importantTips => 'Wichtige Tipps';
+	@override String get processingIMage => 'Verarbeitung Bild';
+	@override String get symptoms => 'Symptome';
+	@override String get disease => 'Krankheit';
+	@override String get description => 'Beschreibung';
+	@override String get prediction => 'Vorhersage';
+	@override String get getToSource => 'Kopieren der Quell-URL 📋';
+	@override String get desc => 'Bild konnte nicht hochgeladen werden, Zeitüberschreitung der Verbindung';
+	@override String get error => 'Etwas ist schief gelaufen';
+	@override String get logginOUt => 'Abmelden...';
+	@override String get loggedOut => 'Ausgeloggt';
+	@override String get changesApply => 'Um Änderungen in der App zu übernehmen, sollte die App neu gestartet werden';
+	@override String get paidSuccess => 'Sie haben den Premium-Plan erfolgreich abonniert';
+	@override String get restartApp => 'App neu starten';
+	@override String get paymentConfirmation => 'Zahlungsbestätigung';
+	@override late final _StringsFeaturesDe features = _StringsFeaturesDe._(_root);
+	@override String get purchasePrenium => 'Prenium kaufen';
+	@override String get enterValidName => 'Bitte geben Sie einen gültigen Namen ein';
+	@override String get enterValidEMail => 'Bitte gültige E-Mail eingeben';
+	@override String get signingUp => 'Angemeldet...';
+	@override String get mathingItems => 'Passende Artikel';
+	@override String get bookmarkedCrops => 'Mit Lesezeichen versehene Kulturpflanzen';
+	@override String get matchingResults => 'Übereinstimmende Ergebnisse';
+	@override String get noIMageSelected => 'Kein Bild ausgewählt';
+}
+
+// Path: features
+class _StringsFeaturesDe implements _StringsFeaturesEn {
+	_StringsFeaturesDe._(this._root);
+
+	@override final _StringsDe _root; // ignore: unused_field
+
+	// Translations
+	@override String get detectDisease => 'Krankheit erkennen';
+	@override String get getInfos => 'Infos abrufen';
+	@override String get viewSolution => 'Lösung anzeigen';
+	@override String get viewTreatment => 'Behandlung anzeigen';
+	@override String get accessRessources => 'Zugang zu Ressourcen';
+	@override String get customizeApp => 'App-Einstellungen anpassen';
+	@override String get bookmarkForFuture => 'Lesezeichen für zukünftige Lektüre';
 }
 
 /// Flat map(s) containing all translations.
@@ -450,7 +505,7 @@ extension on _StringsEn {
 			'hello': ({required Object name}) => 'Hello $name',
 			'save': 'Save',
 			'login': 'Login',
-			'singup': 'Singup',
+			'singup': 'Sign up',
 			'email': 'Email',
 			'enterEmail': 'Enter your email',
 			'createAccount': 'Create an account',
@@ -528,35 +583,80 @@ extension on _StringsEn {
 extension on _StringsDe {
 	Map<String, dynamic> _buildFlatMap() {
 		return <String, dynamic>{
-			'yourBookmarks': 'Ihre Lesezeichen',
-			'save': 'Speichern Sie',
-			'language': 'Sprache',
-			'crops': 'Kulturpflanzen',
-			'login': 'Anmeldung',
-			'bookmarks': 'Lesezeichen',
-			'loginToAccount': 'Anmeldung bei Ihrem Konto',
-			'forgotPassword': 'Passwort vergessen?',
-			'logout': 'Abmeldung',
-			'password': 'Passwort',
-			'singup': 'Singup',
-			'library': 'Bibliothek',
-			'alreadyHaveAccount': 'Sie haben bereits ein Konto?',
-			'welcomeBack': 'Willkommen zurück',
-			'language_en': 'Englisch',
-			'enterCorrectPassword': 'Bitte korrektes Passwort eingeben',
-			'email': 'E-Mail',
-			'language_de': 'Deutsch',
-			'settings': 'Einstellungen',
-			'enterEmail': 'Ihre E-Mail eingeben',
-			'searchLinary': 'Bibliothek durchsuchen',
-			'orSignInWith': 'Oder melden Sie sich an mit',
-			'profile': 'Profil',
-			'fullName': 'Vollständiger Name',
-			'createAccount': 'Ein Konto erstellen',
-			'dontHaveAccount': 'Sie haben noch kein Konto?',
-			'yourLibary': 'Your library',
 			'hello': ({required Object name}) => 'Hallo $name',
-			'register': 'Register',
+			'save': 'Speichern',
+			'login': 'Anmelden',
+			'singup': 'Anmelden',
+			'email': 'E-Mail',
+			'enterEmail': 'Geben Sie Ihre E-Mail ein',
+			'createAccount': 'Ein Konto erstellen',
+			'register': 'Registrieren',
+			'yourLibary': 'Ihre Bibliothek',
+			'searchLinary': 'Bibliothek durchsuchen',
+			'yourBookmarks': 'Ihre Lesezeichen',
+			'library': 'Bibliothek',
+			'logout': 'Abmelden',
+			'profile': 'Profil',
+			'settings': 'Einstellungen',
+			'language': 'Sprache',
+			'language_en': 'Englisch',
+			'language_de': 'Deutsch',
+			'fullName': 'Vollständiger Name',
+			'dontHaveAccount': 'Sie haben noch kein Konto?',
+			'forgotPassword': 'Passwort vergessen?',
+			'password': 'Kennwort',
+			'welcomeBack': 'Willkommen zurück',
+			'loginToAccount': 'Einloggen in Ihr Konto',
+			'enterCorrectPassword': 'Bitte korrektes Passwort eingeben',
+			'crops': 'Kulturpflanzen',
+			'bookmarks': 'Lesezeichen',
+			'alreadyHaveAccount': 'Sie haben bereits ein Konto?',
+			'orSignInWith': 'Oder melden Sie sich an mit',
+			'contactUS': 'Kontakt',
+			'helpCenter': 'Hilfe-Center',
+			'termsOfService': 'Bedingungen und Service',
+			'themeMode': 'Theme-Modus',
+			'changeAppTheme': 'App-Thema ändern',
+			'changeAppLanguage': 'App-Sprache ändern',
+			'pickImageFromGallery': 'Bild aus Galerie oder Kamera auswählen',
+			'camera': 'Kamera',
+			'gallery': 'Galerie',
+			'playSound': 'Ton abspielen',
+			'listenToText': 'Text anhören',
+			'solution': 'Lösung',
+			'step': 'Schritt',
+			'solutionAndTreatment': 'Lösung und Behandlung',
+			'treatment': 'Behandlung',
+			'importantTips': 'Wichtige Tipps',
+			'processingIMage': 'Verarbeitung Bild',
+			'symptoms': 'Symptome',
+			'disease': 'Krankheit',
+			'description': 'Beschreibung',
+			'prediction': 'Vorhersage',
+			'getToSource': 'Kopieren der Quell-URL 📋',
+			'desc': 'Bild konnte nicht hochgeladen werden, Zeitüberschreitung der Verbindung',
+			'error': 'Etwas ist schief gelaufen',
+			'logginOUt': 'Abmelden...',
+			'loggedOut': 'Ausgeloggt',
+			'changesApply': 'Um Änderungen in der App zu übernehmen, sollte die App neu gestartet werden',
+			'paidSuccess': 'Sie haben den Premium-Plan erfolgreich abonniert',
+			'restartApp': 'App neu starten',
+			'paymentConfirmation': 'Zahlungsbestätigung',
+			'features.detectDisease': 'Krankheit erkennen',
+			'features.getInfos': 'Infos abrufen',
+			'features.viewSolution': 'Lösung anzeigen',
+			'features.viewTreatment': 'Behandlung anzeigen',
+			'features.accessRessources': 'Zugang zu Ressourcen',
+			'features.customizeApp': 'App-Einstellungen anpassen',
+			'features.bookmarkForFuture': 'Lesezeichen für zukünftige Lektüre',
+			'purchasePrenium': 'Prenium kaufen',
+			'enterValidName': 'Bitte geben Sie einen gültigen Namen ein',
+			'enterValidEMail': 'Bitte gültige E-Mail eingeben',
+			'signingUp': 'Angemeldet...',
+			'mathingItems': 'Passende Artikel',
+			'bookmarkedCrops': 'Mit Lesezeichen versehene Kulturpflanzen',
+			'matchingResults': 'Übereinstimmende Ergebnisse',
+			'noIMageSelected': 'Kein Bild ausgewählt',
 		};
 	}
 }
