@@ -105,9 +105,9 @@ class TextToSpeech extends ConsumerWidget {
         }
         StringBuffer buffer = StringBuffer();
         for (var i = 0; i < steps.length; i++) {
-          buffer.write("step $i");
-          buffer.write(steps[i]);
-          buffer.write("\n ");
+          buffer.write("step ${i + 1}. ");
+          buffer.write("${steps[i]}. ");
+          buffer.write(", ");
         }
         ref.read(isPlayingRiverpod.state).state = true;
 
