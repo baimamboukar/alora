@@ -12,7 +12,7 @@ class TextToSpeechServices {
     await tts.setSpeechRate(.35);
     await tts.setVoice({"name": "en-AU-language", "locale": "en-AU"});
     await tts.setVolume(volume ?? 1.0);
-    await tts.setLanguage(locale);
+    await tts.setLanguage("en-AU");
     return tts;
   }
 }
