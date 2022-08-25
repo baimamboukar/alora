@@ -2,8 +2,10 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class Crop {
+  final String id;
   final String name;
   final String scienticName;
   final PhotoThumbails imageURL;
@@ -11,6 +13,7 @@ class Crop {
   final bool bookMarked;
   final Treatment treatment;
   Crop({
+    required this.id,
     required this.name,
     required this.scienticName,
     required this.imageURL,
@@ -20,6 +23,7 @@ class Crop {
   });
 
   Crop copyWith({
+    String? id,
     String? name,
     String? scienticName,
     PhotoThumbails? imageURL,
@@ -28,6 +32,7 @@ class Crop {
     Treatment? treatment,
   }) {
     return Crop(
+      id: id ?? this.id,
       name: name ?? this.name,
       scienticName: scienticName ?? this.scienticName,
       imageURL: imageURL ?? this.imageURL,
@@ -40,6 +45,7 @@ class Crop {
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{};
 
+    result.addAll({'id': id});
     result.addAll({'name': name});
     result.addAll({'scienticName': scienticName});
     result.addAll({'imageURL': imageURL.toMap()});
@@ -50,8 +56,15 @@ class Crop {
     return result;
   }
 
+  bool get isBookmarked {
+    final Box box = Hive.box('bookmarks');
+    List<String> bookmarked = box.get('crops') ?? <String>[];
+    return bookmarked.contains(id);
+  }
+
   factory Crop.fromMap(Map<String, dynamic> map) {
     return Crop(
+      id: map['id'] ?? '',
       name: map['name'] ?? '',
       scienticName: map['scienticName'] ?? '',
       imageURL: PhotoThumbails.fromMap(map['imageURL']),
@@ -67,7 +80,7 @@ class Crop {
 
   @override
   String toString() {
-    return 'Crop(name: $name, scienticName: $scienticName, imageURL: $imageURL, description: $description, bookMarked: $bookMarked, treatment: $treatment)';
+    return 'Crop(id: $id, name: $name, scienticName: $scienticName, imageURL: $imageURL, description: $description, bookMarked: $bookMarked, treatment: $treatment)';
   }
 
   @override
@@ -75,6 +88,7 @@ class Crop {
     if (identical(this, other)) return true;
 
     return other is Crop &&
+        other.id == id &&
         other.name == name &&
         other.scienticName == scienticName &&
         other.imageURL == imageURL &&
@@ -85,7 +99,8 @@ class Crop {
 
   @override
   int get hashCode {
-    return name.hashCode ^
+    return id.hashCode ^
+        name.hashCode ^
         scienticName.hashCode ^
         imageURL.hashCode ^
         description.hashCode ^
