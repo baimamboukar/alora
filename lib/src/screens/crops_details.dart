@@ -3,12 +3,11 @@ import 'package:grnagain/src/extensions/extensions.dart';
 import 'package:grnagain/src/models/crop_model.dart';
 import 'package:grnagain/src/router/router.gr.dart';
 import 'package:grnagain/src/services/auth/firebase_auth.dart';
-import 'package:grnagain/src/services/tts/text_to_speech_services.dart';
 import 'package:grnagain/src/widgets/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:lottie/lottie.dart';
 
 import '../widgets/text_to_speech.dart';
 
@@ -88,9 +87,15 @@ class _CropsDetailsState extends ConsumerState<CropsDetails> {
                             radius: 28,
                             backgroundColor: Palette.primary,
                             child: IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                final Box box = Hive.box('bookmarks');
+                                List<String> bookmarked =
+                                    box.get('crops') ?? <String>[];
+                                box.put(
+                                    'crops', [widget.model.id, ...bookmarked]);
+                              },
                               icon: Icon(
-                                widget.model.bookMarked
+                                widget.model.isBookmarked
                                     ? LineIcons.heartAlt
                                     : LineIcons.heart,
                                 color: Palette.light,
