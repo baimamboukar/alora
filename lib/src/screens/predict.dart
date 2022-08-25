@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/services.dart';
+import 'package:grnagain/i18n/strings.g.dart';
 import 'package:grnagain/src/configs/index.dart';
 import 'package:grnagain/src/riverpods/prediction_services_riverpod.dart';
 import 'package:grnagain/src/widgets/error.dart';
@@ -10,7 +11,6 @@ import 'package:grnagain/src/widgets/text_to_speech.dart';
 import 'package:image_picker/image_picker.dart';
 
 import 'package:lottie/lottie.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class Predict extends ConsumerWidget {
   final XFile image;
@@ -22,7 +22,7 @@ class Predict extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
-        title: Text("Prediction",
+        title: Text(t.prediction,
             style: Styles.designText(
                 bold: false, size: 14, color: Palette.primary)),
       ),
@@ -55,7 +55,7 @@ class Predict extends ConsumerWidget {
                       Row(
                         children: [
                           Text(
-                            "Disease",
+                            t.disease,
                             style: Styles.designText(
                                 bold: true, size: 16, color: Palette.primary),
                           ),
@@ -87,7 +87,7 @@ class Predict extends ConsumerWidget {
                   child: Row(
                     children: [
                       Text(
-                        "Description",
+                        t.description,
                         style: Styles.designText(
                             bold: true, size: 16, color: Palette.primary),
                       ),
@@ -114,7 +114,7 @@ class Predict extends ConsumerWidget {
                             height: 14,
                           ),
                           Text(
-                            "Symptoms",
+                            t.symptoms,
                             style: Styles.designText(
                                 bold: true, size: 16, color: Palette.light),
                           ),
@@ -133,7 +133,7 @@ class Predict extends ConsumerWidget {
                       Row(
                         children: [
                           Text(
-                            "Copy to the source url 📋",
+                            t.getToSource,
                             style: Styles.designText(
                                 bold: true, size: 16, color: Palette.primary),
                           ),
@@ -172,7 +172,7 @@ class Predict extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "Processing image...",
+              t.processingIMage,
               style: Styles.designText(
                   color: Palette.primary, size: 20, bold: true),
             ),
@@ -185,10 +185,7 @@ class Predict extends ConsumerWidget {
             ),
           ],
         )),
-        error: (err, trace) => const ErrorView(
-          desc: "Failed to upload image, connection timeout",
-          error: "Something went wrong",
-        ),
+        error: (err, trace) => ErrorView(desc: t.desc, error: t.error),
       ),
     );
   }
