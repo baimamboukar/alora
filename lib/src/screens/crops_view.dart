@@ -13,6 +13,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:line_icons/line_icons.dart';
 import 'library_search_delegate.dart';
 import 'package:grnagain/i18n/strings.g.dart';
+
 class CropsView extends ConsumerStatefulWidget {
   const CropsView({Key? key}) : super(key: key);
 
@@ -196,7 +197,7 @@ class ImagePickModal extends StatelessWidget {
           Column(
             children: [
               Text(
-                "Pick image from camera or gallery",
+                t.pickImageFromGallery,
                 style: Styles.designText(
                     color: Palette.light, size: 16, bold: true),
               ),
@@ -212,7 +213,7 @@ class ImagePickModal extends StatelessWidget {
                           await ImagePickerServices.takeCameraImage();
 
                       if (image == null) {
-                        EasyLoading.showError("No image selected");
+                        EasyLoading.showError(t.noIMageSelected);
                       } else {
                         context.autorouter.push(Predict(image: image));
                       }
@@ -233,7 +234,7 @@ class ImagePickModal extends StatelessWidget {
                               const Icon(LineIcons.camera,
                                   size: 32, color: Palette.secondary),
                               Text(
-                                "Camera",
+                                t.camera,
                                 style: Styles.designText(
                                     color: Palette.light,
                                     size: 12,
@@ -248,7 +249,7 @@ class ImagePickModal extends StatelessWidget {
                       final XFile? image =
                           await ImagePickerServices.pickGalleryImage();
                       if (image == null) {
-                        EasyLoading.showError("No image selected");
+                        EasyLoading.showError(t.noIMageSelected);
                       } else {
                         context.autorouter.push(Predict(image: image));
                       }
@@ -269,7 +270,7 @@ class ImagePickModal extends StatelessWidget {
                               const Icon(LineIcons.images,
                                   size: 32, color: Palette.secondary),
                               Text(
-                                "Gallery",
+                                t.gallery,
                                 style: Styles.designText(
                                     color: Palette.light,
                                     size: 12,
