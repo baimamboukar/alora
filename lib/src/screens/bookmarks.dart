@@ -21,7 +21,7 @@ class Bookmarks extends ConsumerStatefulWidget {
 class _BookmarksState extends ConsumerState<Bookmarks> {
   // ignore: unused_field
   late List<String> _bookmarked;
-  @override
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,16 +30,6 @@ class _BookmarksState extends ConsumerState<Bookmarks> {
         child: Column(
           children: [
             const SizedBox(height: 40),
-            // Button(
-            //   isLoading: false,
-            //   label: t.login,
-            //   callback: () => context.autorouter.pushNamed('/login'),
-            // ),
-            // Button(
-            //   isLoading: false,
-            //   label: t.singup,
-            //   callback: () => context.autorouter.pushNamed('/signup'),
-            // ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
