@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_unnecessary_containers
+
 import 'package:grnagain/src/configs/data.dart';
 import 'package:grnagain/src/configs/index.dart';
 import 'package:grnagain/src/extensions/extensions.dart';
@@ -11,6 +13,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'library_search_delegate.dart';
 import 'package:grnagain/i18n/strings.g.dart';
 
@@ -22,122 +25,209 @@ class CropsView extends ConsumerStatefulWidget {
 }
 
 class _CropsViewState extends ConsumerState<CropsView> {
+  late YoutubePlayerController _controller;
+  @override
+  void initState() {
+    super.initState();
+    const video = "https://www.youtube.com/watch?v=ChsYvX3bUPk";
+    _controller = YoutubePlayerController(
+      initialVideoId: YoutubePlayer.convertUrlToId(
+        video,
+      )!,
+      flags: const YoutubePlayerFlags(
+        autoPlay: false,
+        mute: false,
+        loop: false,
+      ),
+    )..addListener(() {
+        if (mounted) {
+          setState(() {});
+        }
+      });
+  }
+
+  @override
+  void deactivate() {
+    _controller.pause();
+    super.deactivate();
+  }
+
+  @override
+  dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     debugPrint(FirebaseAuth.instance.currentUser?.displayName);
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: Column(
-          children: [
-            const SizedBox(height: 40),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Visibility(
-                  visible: FirebaseAuth
-                          .instance.currentUser?.providerData.first.photoURL !=
-                      null,
-                  replacement: const CircleAvatar(
-                    backgroundColor: Colors.transparent,
-                    radius: 32,
-                    backgroundImage: AssetImage('assets/images/user.png'),
-                  ),
-                  child: CircleAvatar(
-                    backgroundColor: Colors.transparent,
-                    radius: 32,
-                    backgroundImage: NetworkImage(FirebaseAuth.instance
-                            .currentUser?.providerData.first.photoURL ??
-                        ''),
-                  ),
-                ),
-                IconButton(
-                  icon: const Icon(
-                    Icons.notifications_outlined,
-                    color: Palette.primary,
-                  ),
-                  onPressed: () =>
-                      context.autorouter.pushNamed('/notifications'),
-                ),
-              ],
-            ),
-            const SizedBox(height: 14),
-            Row(
-              children: [
-                Text(t.yourLibary,
-                    style: Styles.designText(
-                        bold: true, color: Palette.primary, size: 26)),
-              ],
-            ),
-            const SizedBox(height: 14),
-            Row(
-              children: [
-                Container(
-                    height: 58.0,
-                    width: (context.screenWidth - 76) * .8,
-                    padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                    decoration: BoxDecoration(
-                      color: Palette.light,
-                      borderRadius: BorderRadius.circular(10.0),
+        child: YoutubePlayerBuilder(
+          player: YoutubePlayer(controller: _controller),
+          builder: (context, player) => Column(
+            children: [
+              const SizedBox(height: 40),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Visibility(
+                    visible: FirebaseAuth.instance.currentUser?.providerData
+                            .first.photoURL !=
+                        null,
+                    replacement: const CircleAvatar(
+                      backgroundColor: Colors.transparent,
+                      radius: 32,
+                      backgroundImage: AssetImage('assets/images/user.png'),
                     ),
-                    child: Center(
-                      child: TextFormField(
-                        onTap: () => showSearch(
-                            context: context, delegate: CropsSearch()),
-                        decoration: InputDecoration(
-                          hintText: t.searchLinary,
-                          border: InputBorder.none,
-                          prefixIcon: const Icon(
-                            Icons.search,
-                            color: Palette.secondary,
-                          ),
-                        ),
-                      ),
-                    )),
-                const SizedBox(width: 22),
-                GestureDetector(
-                  onTap: () {
-                    FirebaseAuthentication.isPreniumUser
-                        ? showModalBottomSheet(
-                            backgroundColor: Colors.transparent,
-                            context: context,
-                            builder: (context) {
-                              return const ImagePickModal();
-                            },
-                          )
-                        : context.autorouter.pushNamed('/purchase');
-                  },
-                  child: Container(
-                    width: 50.0,
-                    height: 50.0,
-                    decoration: BoxDecoration(
+                    child: CircleAvatar(
+                      backgroundColor: Colors.transparent,
+                      radius: 32,
+                      backgroundImage: NetworkImage(FirebaseAuth.instance
+                              .currentUser?.providerData.first.photoURL ??
+                          ''),
+                    ),
+                  ),
+                  IconButton(
+                    icon: const Icon(
+                      Icons.notifications_outlined,
                       color: Palette.primary,
-                      borderRadius: BorderRadius.circular(10.0),
                     ),
-                    child: const Center(
-                        child: Icon(
-                      Icons.document_scanner,
-                      size: 28,
-                      color: Palette.light,
-                    )),
-                  ),
-                )
-              ],
-            ),
-            Expanded(
-              child: GridView.count(
-                shrinkWrap: true,
-                crossAxisSpacing: 4,
-                mainAxisSpacing: 4,
-                crossAxisCount: 2,
-                children: <Widget>[
-                  ...crops.map(
-                    (crop) => CropCaption(crop),
+                    onPressed: () =>
+                        context.autorouter.pushNamed('/notifications'),
                   ),
                 ],
               ),
-            ),
-          ],
+              const SizedBox(height: 14),
+              Row(
+                children: [
+                  Text(t.yourLibary,
+                      style: Styles.designText(
+                          bold: true, color: Palette.primary, size: 26)),
+                ],
+              ),
+              const SizedBox(height: 14),
+              Row(
+                children: [
+                  Container(
+                      height: 58.0,
+                      width: (context.screenWidth - 76) * .8,
+                      padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                      decoration: BoxDecoration(
+                        color: Palette.light,
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      child: Center(
+                        child: TextFormField(
+                          onTap: () => showSearch(
+                              context: context, delegate: CropsSearch()),
+                          decoration: InputDecoration(
+                            hintText: t.searchLinary,
+                            border: InputBorder.none,
+                            prefixIcon: const Icon(
+                              Icons.search,
+                              color: Palette.secondary,
+                            ),
+                          ),
+                        ),
+                      )),
+                  const SizedBox(width: 22),
+                  GestureDetector(
+                    onTap: () {
+                      FirebaseAuthentication.isPreniumUser
+                          ? showModalBottomSheet(
+                              backgroundColor: Colors.transparent,
+                              context: context,
+                              builder: (context) {
+                                return const ImagePickModal();
+                              },
+                            )
+                          : context.autorouter.pushNamed('/purchase');
+                    },
+                    child: Container(
+                      width: 50.0,
+                      height: 50.0,
+                      decoration: BoxDecoration(
+                        color: Palette.primary,
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      child: const Center(
+                          child: Icon(
+                        Icons.document_scanner,
+                        size: 28,
+                        color: Palette.light,
+                      )),
+                    ),
+                  )
+                ],
+              ),
+              const SizedBox(width: 22),
+              player,
+              // AspectRatio(
+              //   aspectRatio: controller.value.aspectRatio,
+              //   child: VideoPlayer(controller),
+              // ),
+              // Container(
+              //   //duration of video
+              //   child: Text("Total Duration:${controller.value.duration}"),
+              // ),
+
+              // Container(
+              //   color: Palette.primary,
+              //   height: 50,
+              //   child: Column(
+              //     children: [
+              //       VideoProgressIndicator(controller,
+              //         allowScrubbing: true,
+              //         colors: const VideoProgressColors(
+              //           backgroundColor: Colors.redAccent,
+              //           playedColor: Colors.green,
+              //           bufferedColor: Colors.purple,
+              //         )),
+              //       Row(
+              //         children: [
+              //           IconButton(
+              //               onPressed: () {
+              //                 if (controller.value.isPlaying) {
+              //                   controller.pause();
+              //                 } else {
+              //                   controller.play();
+              //                 }
+
+              //                 setState(() {});
+              //               },
+              //               icon: Icon(controller.value.isPlaying
+              //                   ? Icons.pause
+              //                   : Icons.play_arrow)),
+              //           IconButton(
+              //               onPressed: () {
+              //                 controller.seekTo(const Duration(seconds: 0));
+
+              //                 setState(() {});
+              //               },
+              //               icon: const Icon(Icons.stop))
+              //         ],
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              const SizedBox(width: 22),
+              Expanded(
+                child: GridView.count(
+                  shrinkWrap: true,
+                  crossAxisSpacing: 4,
+                  mainAxisSpacing: 4,
+                  crossAxisCount: 2,
+                  children: <Widget>[
+                    ...crops.map(
+                      (crop) => CropCaption(crop),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
       floatingActionButton: CircleAvatar(
