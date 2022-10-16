@@ -60,6 +60,8 @@ dependencies:
   webview_flutter_plus: ^0.3.0+2
   url_launcher: ^6.1.5
   flutter_tts: ^3.5.1
+  video_player: ^2.4.7
+  youtube_player_flutter: ^8.1.1
   #tflite_maven: ^1.1.5
   #tflite: ^1.1.2
 
