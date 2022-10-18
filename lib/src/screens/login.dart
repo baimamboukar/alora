@@ -34,12 +34,16 @@ class Login extends ConsumerWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 30.0),
                 child: Column(
                   children: [
-                    Text(t.welcomeBack,
-                        style: Styles.designText(
-                            bold: true, color: Palette.primary, size: 30)),
-                    Text(t.loginToAccount,
-                        style: Styles.designText(
-                            bold: false, color: Palette.primary, size: 20)),
+                    Text(
+                      t.welcomeBack,
+                      style: Styles.designText(
+                          bold: true, color: Palette.primary, size: 30),
+                    ),
+                    Text(
+                      t.loginToAccount,
+                      style: Styles.designText(
+                          bold: false, color: Palette.primary, size: 20),
+                    ),
                     const SizedBox(height: 18),
                     Input(
                       controller: emailController,
