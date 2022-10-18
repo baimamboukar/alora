@@ -130,10 +130,12 @@ class _BookmarksState extends ConsumerState<Bookmarks> {
                   return crop.isBookmarked;
                 }).toList();
                 return bookmarks.isEmpty
-                    ? Text(
-                        "No Bookmark found!",
-                        style: Styles.designText(
-                            bold: true, color: Palette.primary, size: 18),
+                    ? Center(
+                        child: Text(
+                          "No Bookmark found!",
+                          style: Styles.designText(
+                              bold: true, color: Palette.primary, size: 18),
+                        ),
                       )
                     : Expanded(
                         child: GridView.count(
