@@ -164,54 +164,6 @@ class _CropsViewState extends ConsumerState<CropsView> {
               ),
               const SizedBox(width: 22),
               player,
-              // AspectRatio(
-              //   aspectRatio: controller.value.aspectRatio,
-              //   child: VideoPlayer(controller),
-              // ),
-              // Container(
-              //   //duration of video
-              //   child: Text("Total Duration:${controller.value.duration}"),
-              // ),
-
-              // Container(
-              //   color: Palette.primary,
-              //   height: 50,
-              //   child: Column(
-              //     children: [
-              //       VideoProgressIndicator(controller,
-              //         allowScrubbing: true,
-              //         colors: const VideoProgressColors(
-              //           backgroundColor: Colors.redAccent,
-              //           playedColor: Colors.green,
-              //           bufferedColor: Colors.purple,
-              //         )),
-              //       Row(
-              //         children: [
-              //           IconButton(
-              //               onPressed: () {
-              //                 if (controller.value.isPlaying) {
-              //                   controller.pause();
-              //                 } else {
-              //                   controller.play();
-              //                 }
-
-              //                 setState(() {});
-              //               },
-              //               icon: Icon(controller.value.isPlaying
-              //                   ? Icons.pause
-              //                   : Icons.play_arrow)),
-              //           IconButton(
-              //               onPressed: () {
-              //                 controller.seekTo(const Duration(seconds: 0));
-
-              //                 setState(() {});
-              //               },
-              //               icon: const Icon(Icons.stop))
-              //         ],
-              //       ),
-              //     ],
-              //   ),
-              // ),
               const SizedBox(width: 22),
               Expanded(
                 child: GridView.count(
