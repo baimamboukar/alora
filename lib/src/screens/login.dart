@@ -32,96 +32,101 @@ class Login extends ConsumerWidget {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30.0),
-                child: Column(children: [
-                  Text(t.welcomeBack,
-                      style: Styles.designText(
-                          bold: true, color: Palette.primary, size: 30)),
-                  Text(t.loginToAccount,
-                      style: Styles.designText(
-                          bold: false, color: Palette.primary, size: 20)),
-                  const SizedBox(height: 18),
-                  Input(
-                    controller: emailController,
-                    icon: LineIcons.lock,
-                    label: t.email,
-                    hint: t.enterEmail,
-                    validator: (data) {
-                      return null;
-                    },
-                    isPassword: false,
-                  ),
-                  const SizedBox(height: 16),
-                  Input(
-                    controller: passwordController,
-                    icon: Icons.email,
-                    label: t.password,
-                    hint: '••••••••',
-                    validator: (data) {
-                      return data!.length > 5 ? null : t.enterCorrectPassword;
-                    },
-                    isPassword: true,
-                  ),
-                  const SizedBox(height: 10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text(t.forgotPassword,
-                          style: Styles.designText(
-                              bold: true, color: Palette.primary, size: 16)),
-                    ],
-                  ),
-                  const SizedBox(height: 18),
-                  Button(
-                    callback: () async {
-                      if (formKey.currentState!.validate()) {
-                        await EasyLoading.show(
+                child: Column(
+                  children: [
+                    Text(t.welcomeBack,
+                        style: Styles.designText(
+                            bold: true, color: Palette.primary, size: 30)),
+                    Text(t.loginToAccount,
+                        style: Styles.designText(
+                            bold: false, color: Palette.primary, size: 20)),
+                    const SizedBox(height: 18),
+                    Input(
+                      controller: emailController,
+                      icon: LineIcons.lock,
+                      label: t.email,
+                      hint: t.enterEmail,
+                      validator: (data) {
+                        return null;
+                      },
+                      isPassword: false,
+                    ),
+                    const SizedBox(height: 16),
+                    Input(
+                      controller: passwordController,
+                      icon: Icons.email,
+                      label: t.password,
+                      hint: '••••••••',
+                      validator: (data) {
+                        return data!.length > 5 ? null : t.enterCorrectPassword;
+                      },
+                      isPassword: true,
+                    ),
+                    const SizedBox(height: 10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(t.forgotPassword,
+                            style: Styles.designText(
+                                bold: true, color: Palette.primary, size: 16)),
+                      ],
+                    ),
+                    const SizedBox(height: 18),
+                    Button(
+                      callback: () async {
+                        if (formKey.currentState!.validate()) {
+                          await EasyLoading.show(
                             status: t.loginToAccount,
                             maskType: EasyLoadingMaskType.black,
-                            dismissOnTap: false);
-                        ref
-                            .read(firebaseAuthRiverpod)
-                            .loginUser(
-                              mail: emailController.value.text,
-                              pass: passwordController.value.text,
-                            )
-                            .then((res) async {
-                          await FirebaseAuth.instance.currentUser?.reload();
-                          context.autorouter.popUntilRoot();
-                          if (res.user != null) {
-                            ref.refresh(firebaseAuthRiverpod);
-                            await EasyLoading.dismiss();
-                            await EasyLoading.showSuccess(
-                                "Authenticated successfully");
+                            dismissOnTap: false,
+                          );
+                          ref
+                              .read(firebaseAuthRiverpod)
+                              .loginUser(
+                                mail: emailController.value.text,
+                                pass: passwordController.value.text,
+                              )
+                              .then((res) async {
+                            await FirebaseAuth.instance.currentUser?.reload();
                             context.autorouter.popUntilRoot();
-                            context.autorouter.push(const Home());
-                          } else {
-                            await EasyLoading.dismiss();
-                            await EasyLoading.showError(t.error);
-                          }
-                        });
-                      }
-                    },
-                    isLoading: false,
-                    label: t.login,
-                  ),
-                  const SizedBox(height: 12),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(t.dontHaveAccount,
-                          style: Styles.designText(
-                              bold: false, color: Palette.dark, size: 12)),
-                      const SizedBox(width: 7),
-                      TextButton(
-                        onPressed: () =>
-                            context.autorouter.replaceNamed('/signup'),
-                        child: Text(t.singup,
+                            if (res.user != null) {
+                              ref.refresh(firebaseAuthRiverpod);
+                              await EasyLoading.dismiss();
+                              await EasyLoading.showSuccess(
+                                  "Authenticated successfully");
+                              context.autorouter.popUntilRoot();
+                              context.autorouter.push(const Home());
+                            } else {
+                              await EasyLoading.dismiss();
+                              await EasyLoading.showError(t.error);
+                            }
+                          });
+                        }
+                      },
+                      isLoading: false,
+                      label: t.login,
+                    ),
+                    const SizedBox(height: 12),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(t.dontHaveAccount,
                             style: Styles.designText(
-                                bold: true, color: Palette.primary, size: 14)),
-                      ),
-                    ],
-                  ),
-                ]),
+                                bold: false, color: Palette.dark, size: 12)),
+                        const SizedBox(width: 7),
+                        TextButton(
+                          onPressed: () =>
+                              context.autorouter.replaceNamed('/signup'),
+                          child: Text(t.singup,
+                              style: Styles.designText(
+                                  bold: true,
+                                  color: Palette.primary,
+                                  size: 14)),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
