@@ -60,7 +60,6 @@ class _CropsViewState extends ConsumerState<CropsView> {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint(FirebaseAuth.instance.currentUser?.displayName);
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -162,9 +161,9 @@ class _CropsViewState extends ConsumerState<CropsView> {
                   )
                 ],
               ),
-              const SizedBox(width: 22),
-              player,
-              const SizedBox(width: 22),
+              const SizedBox(width: 35),
+              Container(child: player),
+              const SizedBox(width: 30),
               Expanded(
                 child: GridView.count(
                   shrinkWrap: true,
