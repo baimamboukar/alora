@@ -41,8 +41,8 @@ dependencies:
   auto_route: ^4.2.0
   flutter_native_splash: ^2.2.4
   line_icons: ^2.0.1
-  uuid: ^3.0.6
-  argon_buttons_flutter: ^1.1.0
+  #uuid: ^3.0.6
+  #argon_buttons_flutter: ^1.1.0
   flutter_easyloading: ^3.0.5
   firebase_auth: ^3.4.1
   firebase_core: ^1.19.1
@@ -60,7 +60,7 @@ dependencies:
   webview_flutter_plus: ^0.3.0+2
   url_launcher: ^6.1.5
   flutter_tts: ^3.5.1
-  video_player: ^2.4.7
+  #video_player: ^2.4.7
   youtube_player_flutter: ^8.1.1
   #tflite_maven: ^1.1.5
   #tflite: ^1.1.2
