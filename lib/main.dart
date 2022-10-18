@@ -53,6 +53,9 @@ Future<void> main() async {
   if (locale == 'Deutsch') {
     LocaleSettings.setLocale(AppLocale.de);
   }
+  if (locale == 'French') {
+    LocaleSettings.setLocale(AppLocale.fr);
+  }
 
   runApp(ProviderScope(
       child: TranslationProvider(child: GrnAgain(initialLink: initialLink))));
