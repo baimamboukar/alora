@@ -8,9 +8,11 @@ final firebaseAuthRiverpod = Provider<FirebaseAuthentication>(
     return FirebaseAuthentication(ref, FirebaseAuth.instance);
   },
 );
-final googleAuthRiverpod = Provider<AuthWithGoogle>((ref) {
-  return AuthWithGoogle(ref, FirebaseAuth.instance);
-});
+final googleAuthRiverpod = Provider<AuthWithGoogle>(
+  (ref) {
+    return AuthWithGoogle(ref, FirebaseAuth.instance);
+  },
+);
 
 final authStateRiverpod = StreamProvider<User?>(
   (ref) async* {
