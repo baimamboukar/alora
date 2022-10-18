@@ -126,19 +126,28 @@ class _BookmarksState extends ConsumerState<Bookmarks> {
             ValueListenableBuilder(
               valueListenable: Hive.box('user').listenable(),
               builder: (BuildContext context, Box box, Widget? widget) {
-                return Expanded(
-                  child: GridView.count(
-                    shrinkWrap: true,
-                    crossAxisSpacing: 4,
-                    mainAxisSpacing: 4,
-                    crossAxisCount: 2,
-                    children: <Widget>[
-                      ...crops.where((crop) => crop.isBookmarked).map(
-                            (crop) => CropCaption(crop),
-                          ),
-                    ],
-                  ),
-                );
+                final bookmarks = crops.where((crop) {
+                  return crop.isBookmarked;
+                }).toList();
+                return bookmarks.isEmpty
+                    ? Text(
+                        "No Bookmark found!",
+                        style: Styles.designText(
+                            bold: true, color: Palette.primary, size: 18),
+                      )
+                    : Expanded(
+                        child: GridView.count(
+                          shrinkWrap: true,
+                          crossAxisSpacing: 4,
+                          mainAxisSpacing: 4,
+                          crossAxisCount: 2,
+                          children: <Widget>[
+                            ...crops.where((crop) => crop.isBookmarked).map(
+                                  (crop) => CropCaption(crop),
+                                ),
+                          ],
+                        ),
+                      );
               },
             ),
           ],
