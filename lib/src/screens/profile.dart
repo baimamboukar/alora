@@ -135,7 +135,7 @@ class _ProfileState extends ConsumerState<Profile> {
                   return DropdownButton<String>(
                     underline: const SizedBox.shrink(),
                     elevation: 0,
-                    items: ["English", "Deutsch"]
+                    items: ["English", "French", "Deutsch"]
                         .map((item) => DropdownMenuItem<String>(
                               value: item,
                               child: Text(
@@ -151,6 +151,11 @@ class _ProfileState extends ConsumerState<Profile> {
                       switch (value) {
                         case "Deutsch":
                           LocaleSettings.setLocale(AppLocale.de);
+                          box.put('language', value);
+                          setState(() {});
+                          break;
+                        case "French":
+                          LocaleSettings.setLocale(AppLocale.fr);
                           box.put('language', value);
                           setState(() {});
                           break;
