@@ -161,8 +161,33 @@ class _CropsViewState extends ConsumerState<CropsView> {
                   )
                 ],
               ),
-              const SizedBox(width: 35),
-              Container(child: player),
+              // const SizedBox(width: 35),
+              // Container(child: player),
+              Padding(
+                padding: const EdgeInsets.only(top: 28.0),
+                child: YoutubePlayer(
+                  controller: _controller,
+                  showVideoProgressIndicator: true,
+                  progressIndicatorColor: Palette.primary,
+                  progressColors: const ProgressBarColors(
+                    playedColor: Palette.primary,
+                    handleColor: Palette.dark,
+                  ),
+                  onReady: () {
+                    //print('Player is ready.');
+                  },
+                  bottomActions: [
+                    CurrentPosition(),
+                    const SizedBox(width: 10.0),
+                    ProgressBar(isExpanded: true),
+                    const SizedBox(width: 10.0),
+                    RemainingDuration(),
+                    FullScreenButton(),
+                  ],
+                  thumbnail:
+                      Center(child: Image.asset("assets/images/grnagain.png")),
+                ),
+              ),
               const SizedBox(width: 30),
               Expanded(
                 child: GridView.count(
