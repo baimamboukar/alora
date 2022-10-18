@@ -123,6 +123,7 @@ class _BookmarksState extends ConsumerState<Bookmarks> {
                 )
               ],
             ),
+            const SizedBox(height: 28),
             ValueListenableBuilder(
               valueListenable: Hive.box('user').listenable(),
               builder: (BuildContext context, Box box, Widget? widget) {
