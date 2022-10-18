@@ -86,21 +86,23 @@ class Login extends ConsumerWidget {
                                 mail: emailController.value.text,
                                 pass: passwordController.value.text,
                               )
-                              .then((res) async {
-                            await FirebaseAuth.instance.currentUser?.reload();
-                            context.autorouter.popUntilRoot();
-                            if (res.user != null) {
-                              ref.refresh(firebaseAuthRiverpod);
-                              await EasyLoading.dismiss();
-                              await EasyLoading.showSuccess(
-                                  "Authenticated successfully");
+                              .then(
+                            (res) async {
+                              await FirebaseAuth.instance.currentUser?.reload();
                               context.autorouter.popUntilRoot();
-                              context.autorouter.push(const Home());
-                            } else {
-                              await EasyLoading.dismiss();
-                              await EasyLoading.showError(t.error);
-                            }
-                          });
+                              if (res.user != null) {
+                                ref.refresh(firebaseAuthRiverpod);
+                                await EasyLoading.dismiss();
+                                await EasyLoading.showSuccess(
+                                    "Authenticated successfully");
+                                context.autorouter.popUntilRoot();
+                                context.autorouter.push(const Home());
+                              } else {
+                                await EasyLoading.dismiss();
+                                await EasyLoading.showError(t.error);
+                              }
+                            },
+                          );
                         }
                       },
                       isLoading: false,
