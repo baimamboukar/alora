@@ -13,9 +13,11 @@ class PredictionsApiServices {
   Future<Prediction> runPrediction(XFile image) async {
     try {
       String fileName = image.path.split('/').last;
-      FormData imageData = FormData.fromMap({
-        "files": await MultipartFile.fromFile(image.path, filename: fileName),
-      });
+      FormData imageData = FormData.fromMap(
+        {
+          "files": await MultipartFile.fromFile(image.path, filename: fileName),
+        },
+      );
       final response =
           await _read(dioProvider).post('/api/predict', data: imageData);
 
