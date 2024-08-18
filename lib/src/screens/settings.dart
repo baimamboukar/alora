@@ -3,6 +3,7 @@ import 'package:grnagain/src/widgets/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:grnagain/i18n/strings.g.dart';
+
 class Settings extends ConsumerStatefulWidget {
   const Settings({Key? key}) : super(key: key);
 

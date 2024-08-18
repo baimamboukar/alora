@@ -26,29 +26,31 @@ class TextToSpeech extends ConsumerWidget {
     return Row(
       children: [
         GestureDetector(
-            onTap: callback ??
-                () async {
-                  final tts = await TextToSpeechServices(ref.read)
-                      .configure(locale: lang);
-                  if (isPlaying == false) {
-                    tts.setCompletionHandler(() {
-                      ref.read(isPlayingRiverpod.state).state = false;
-                    });
-                    tts.setCancelHandler(() {
-                      ref.read(isPlayingRiverpod.state).state = false;
-                    });
-                    ref.read(isPlayingRiverpod.state).state = true;
-                    await tts.speak(text);
-                  } else {
+          onTap: callback ??
+              () async {
+                final tts = await TextToSpeechServices(ref.read)
+                    .configure(locale: lang);
+                if (isPlaying == false) {
+                  tts.setCompletionHandler(() {
                     ref.read(isPlayingRiverpod.state).state = false;
-                    await tts.stop();
-                  }
-                },
-            child: Visibility(
-                visible: !isPlaying,
-                replacement: const Icon(Icons.cancel, size: 54),
-                child: Lottie.asset("assets/images/play.json",
-                    height: 70, width: 70))),
+                  });
+                  tts.setCancelHandler(() {
+                    ref.read(isPlayingRiverpod.state).state = false;
+                  });
+                  ref.read(isPlayingRiverpod.state).state = true;
+                  await tts.speak(text);
+                } else {
+                  ref.read(isPlayingRiverpod.state).state = false;
+                  await tts.stop();
+                }
+              },
+          child: Visibility(
+            visible: !isPlaying,
+            replacement: const Icon(Icons.cancel, size: 54),
+            child:
+                Lottie.asset("assets/images/play.json", height: 70, width: 70),
+          ),
+        ),
         GestureDetector(
           onTap: callback ??
               () async {

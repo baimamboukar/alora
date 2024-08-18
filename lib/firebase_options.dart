@@ -69,8 +69,10 @@ class DefaultFirebaseOptions {
     messagingSenderId: '132950112983',
     projectId: 'alora-b477f',
     storageBucket: 'alora-b477f.appspot.com',
-    androidClientId: '132950112983-3fkppampdkqnlct051nb1m9obpm093ap.apps.googleusercontent.com',
-    iosClientId: '132950112983-no5gbn17htu6vcbcv25ev2j96qeaipq9.apps.googleusercontent.com',
+    androidClientId:
+        '132950112983-3fkppampdkqnlct051nb1m9obpm093ap.apps.googleusercontent.com',
+    iosClientId:
+        '132950112983-no5gbn17htu6vcbcv25ev2j96qeaipq9.apps.googleusercontent.com',
     iosBundleId: 'com.mysdgsdockta.app',
   );
 }
