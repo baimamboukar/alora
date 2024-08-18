@@ -1,21 +1,20 @@
-import 'package:grnagain/src/configs/index.dart';
-import 'package:grnagain/src/extensions/extensions.dart';
-import 'package:grnagain/src/riverpods/auth_riverpods.dart';
-import 'package:grnagain/src/router/router.gr.dart';
-import 'package:grnagain/src/widgets/index.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:line_icons/line_icons.dart';
 import 'package:grnagain/i18n/strings.g.dart';
+import 'package:grnagain/src/configs/index.dart';
+import 'package:grnagain/src/extensions/extensions.dart';
+import 'package:grnagain/src/riverpods/auth_riverpods.dart';
+import 'package:grnagain/src/widgets/index.dart';
+import 'package:line_icons/line_icons.dart';
 
 final formKey = GlobalKey<FormState>();
 TextEditingController emailController = TextEditingController();
 TextEditingController passwordController = TextEditingController();
 
 class Login extends ConsumerWidget {
-  const Login({Key? key}) : super(key: key);
+  const Login({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -100,7 +99,7 @@ class Login extends ConsumerWidget {
                                 await EasyLoading.showSuccess(
                                     "Authenticated successfully");
                                 context.autorouter.popUntilRoot();
-                                context.autorouter.push(const Home());
+                                // context.autorouter.push(const Home());
                               } else {
                                 await EasyLoading.dismiss();
                                 await EasyLoading.showError(t.error);

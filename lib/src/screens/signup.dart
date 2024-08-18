@@ -1,18 +1,17 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:grnagain/i18n/strings.g.dart';
 import 'package:grnagain/src/configs/index.dart';
 import 'package:grnagain/src/extensions/extensions.dart';
 import 'package:grnagain/src/riverpods/auth_riverpods.dart';
 import 'package:grnagain/src/widgets/index.dart';
 import 'package:grnagain/src/widgets/social_button.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:grnagain/i18n/strings.g.dart';
-import '../router/router.gr.dart';
 
 class Signup extends ConsumerWidget {
-  const Signup({Key? key}) : super(key: key);
+  const Signup({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -98,7 +97,7 @@ class Signup extends ConsumerWidget {
 
                     await EasyLoading.showInfo("Authenticated successfully");
                     context.autorouter.popUntilRoot();
-                    context.autorouter.push(const Home());
+                    //context.autorouter.push(const Home());
                   } else {
                     await EasyLoading.dismiss();
                     await EasyLoading.showError(t.error);
@@ -122,7 +121,7 @@ class Signup extends ConsumerWidget {
                     ref.read(googleSignUpRiverpod);
                     ref.refresh(authStateRiverpod);
 
-                    context.autorouter.push(const Home());
+                    // context.autorouter.push(const Home());
                   },
                   iconAsset: 'assets/images/google.png',
                 ),

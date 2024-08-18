@@ -1,10 +1,10 @@
-import 'package:grnagain/src/configs/index.dart';
-import 'package:grnagain/src/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:grnagain/src/configs/index.dart';
+import 'package:grnagain/src/extensions/extensions.dart';
 
 class Notifications extends ConsumerWidget {
-  const Notifications({Key? key}) : super(key: key);
+  const Notifications({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -20,7 +20,7 @@ class Notifications extends ConsumerWidget {
                 width: 10,
               ),
               GestureDetector(
-                onTap: () => context.autorouter.pop(),
+                onTap: () => context.autorouter.maybePop(),
                 child: const CircleAvatar(
                   radius: 20,
                   backgroundColor: Color(0xFFEAEAEA),

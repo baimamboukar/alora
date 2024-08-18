@@ -1,9 +1,9 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:grnagain/i18n/strings.g.dart';
 import 'package:grnagain/src/configs/index.dart';
 import 'package:grnagain/src/extensions/extensions.dart';
 import 'package:grnagain/src/models/crop_model.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:grnagain/src/widgets/text_to_speech.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:line_icons/line_icons.dart';
@@ -11,9 +11,9 @@ import 'package:line_icons/line_icons.dart';
 class Solution extends ConsumerStatefulWidget {
   final Crop model;
   const Solution({
-    Key? key,
+    super.key,
     required this.model,
-  }) : super(key: key);
+  });
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _SolutionState();
@@ -45,7 +45,7 @@ class _SolutionState extends ConsumerState<Solution> {
                   width: 10,
                 ),
                 GestureDetector(
-                  onTap: () => context.autorouter.pop(),
+                  onTap: () => context.autorouter.maybePop(),
                   child: const CircleAvatar(
                     radius: 20,
                     backgroundColor: Color(0xFFEAEAEA),

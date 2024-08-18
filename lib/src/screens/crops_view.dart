@@ -1,24 +1,24 @@
 // ignore_for_file: avoid_unnecessary_containers
 
-import 'package:grnagain/src/configs/data.dart';
-import 'package:grnagain/src/configs/index.dart';
-import 'package:grnagain/src/extensions/extensions.dart';
-import 'package:grnagain/src/router/router.gr.dart';
-import 'package:grnagain/src/services/auth/firebase_auth.dart';
-import 'package:grnagain/src/services/mobile/image_picker_services.dart';
-import 'package:grnagain/src/widgets/index.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:grnagain/i18n/strings.g.dart';
+import 'package:grnagain/src/configs/data.dart';
+import 'package:grnagain/src/configs/index.dart';
+import 'package:grnagain/src/extensions/extensions.dart';
+import 'package:grnagain/src/services/auth/firebase_auth.dart';
+import 'package:grnagain/src/services/mobile/image_picker_services.dart';
+import 'package:grnagain/src/widgets/index.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+
 import 'library_search_delegate.dart';
-import 'package:grnagain/i18n/strings.g.dart';
 
 class CropsView extends ConsumerStatefulWidget {
-  const CropsView({Key? key}) : super(key: key);
+  const CropsView({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _CropsViewState();
@@ -232,8 +232,8 @@ class _CropsViewState extends ConsumerState<CropsView> {
 
 class ImagePickModal extends StatelessWidget {
   const ImagePickModal({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -281,7 +281,7 @@ class ImagePickModal extends StatelessWidget {
                       if (image == null) {
                         EasyLoading.showError(t.noIMageSelected);
                       } else {
-                        context.autorouter.push(Predict(image: image));
+                        //  context.autorouter.push(Predict(image: image));
                       }
                     },
                     child: Card(
@@ -317,7 +317,7 @@ class ImagePickModal extends StatelessWidget {
                       if (image == null) {
                         EasyLoading.showError(t.noIMageSelected);
                       } else {
-                        context.autorouter.push(Predict(image: image));
+                        //context.autorouter.push(Predict(image: image));
                       }
                     },
                     child: Card(

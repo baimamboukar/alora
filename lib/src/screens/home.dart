@@ -1,26 +1,25 @@
-import 'package:grnagain/i18n/strings.g.dart';
-import 'package:grnagain/src/configs/index.dart';
-import 'package:grnagain/src/router/router.gr.dart' as routes;
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:grnagain/i18n/strings.g.dart';
+import 'package:grnagain/src/configs/index.dart';
 import 'package:line_icons/line_icons.dart';
 
 final _key = GlobalKey<ScaffoldState>();
 
 class Home extends ConsumerWidget {
-  const Home({Key? key}) : super(key: key);
+  const Home({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return AutoTabsScaffold(
       scaffoldKey: _key,
       routes: const [
-        routes.CropsView(),
-        routes.Bookmarks(),
-        routes.Profile(),
+        // routes.CropsView(),
+        // routes.Bookmarks(),
+        // routes.Profile(),
       ],
-      builder: (context, child, animation) => ScaleTransition(
+      transitionBuilder: (context, child, animation) => ScaleTransition(
         scale: animation,
         child: child,
       ),

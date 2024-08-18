@@ -1,5 +1,4 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:grnagain/i18n/strings.g.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
@@ -8,11 +7,9 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-
+import 'package:grnagain/i18n/strings.g.dart';
 import 'package:grnagain/src/configs/index.dart';
-import 'package:grnagain/src/router/guards/index.dart';
-import 'package:grnagain/src/router/router.gr.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 import 'firebase_options.dart';
 
@@ -64,22 +61,22 @@ Future<void> main() async {
 class GrnAgain extends ConsumerStatefulWidget {
   final PendingDynamicLinkData? initialLink;
   const GrnAgain({
-    Key? key,
+    super.key,
     this.initialLink,
-  }) : super(key: key);
+  });
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _GrnAgainState();
 }
 
 class _GrnAgainState extends ConsumerState<GrnAgain> {
-  late AppRouter appRouter;
-  @override
-  void initState() {
-    appRouter = AppRouter(
-        authGuard: AuthGuard(ref: ref, initialLink: widget.initialLink));
-    super.initState();
-  }
+  // late AppRouter appRouter;
+  // @override
+  // void initState() {
+  //   appRouter = AppRouter(
+  //       authGuard: AuthGuard(ref: ref, initialLink: widget.initialLink));
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -88,8 +85,8 @@ class _GrnAgainState extends ConsumerState<GrnAgain> {
       builder: (context, Box box, widget) => MaterialApp.router(
         builder: EasyLoading.init(),
         locale: TranslationProvider.of(context).flutterLocale,
-        routerDelegate: appRouter.delegate(),
-        routeInformationParser: appRouter.defaultRouteParser(),
+        // routerDelegate: appRouter.delegate(),
+        // routeInformationParser: appRouter.defaultRouteParser(),
         restorationScopeId: 'app',
         debugShowCheckedModeBanner: false,
         localizationsDelegates: AppLocalizations.localizationsDelegates,

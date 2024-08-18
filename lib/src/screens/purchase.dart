@@ -1,16 +1,14 @@
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:grnagain/i18n/strings.g.dart';
 import 'package:grnagain/src/configs/index.dart';
 import 'package:grnagain/src/extensions/extensions.dart';
 import 'package:grnagain/src/widgets/button.dart';
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:lottie/lottie.dart';
-import 'package:webview_flutter_plus/webview_flutter_plus.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class Purchase extends StatelessWidget {
-  const Purchase({Key? key}) : super(key: key);
+  const Purchase({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -99,9 +97,9 @@ class Purchase extends StatelessWidget {
                           const SizedBox(
                             height: 20.0,
                           ),
-                          Row(
+                          const Row(
                             mainAxisAlignment: MainAxisAlignment.end,
-                            children: const [
+                            children: [
                               Text("Basic"),
                               SizedBox(width: 20),
                               Text("Prenium")
@@ -130,36 +128,38 @@ class Purchase extends StatelessWidget {
                                               color: Palette.light),
                                         ),
                                       ),
-                                      body: Padding(
-                                        padding: const EdgeInsets.all(12.0),
-                                        child: WebViewPlus(
-                                          navigationDelegate: (nav) async {
-                                            if (nav.url.contains(
-                                                "grnagain.page.link")) {
-                                              Navigator.pop(context);
-                                              Navigator.pop(context);
-                                              launchUrl(
-                                                  Uri.parse(nav.url
-                                                      .split('#')[0]
-                                                      .replaceAll(
-                                                          'intent', 'https')),
-                                                  mode: LaunchMode
-                                                      .externalNonBrowserApplication);
-                                              return NavigationDecision.prevent;
-                                            }
-                                            return NavigationDecision.prevent;
-                                          },
-                                          debuggingEnabled: true,
-                                          javascriptMode:
-                                              JavascriptMode.unrestricted,
-                                          onWebViewCreated: (controller) {
-                                            controller.loadUrl(
-                                                "https://mesomb.hachther.com/en/web/payment/CM/?widget=253");
-                                          },
-                                          // initialUrl:
-                                          // "https://mesomb.hachther.com/en/web/payment/CM/?widget=253",
-                                        ),
-                                      ),
+                                      body: const Padding(
+                                          padding: EdgeInsets.all(12.0),
+                                          child: Placeholder()
+
+                                          // WebViewPlus(
+                                          //   navigationDelegate: (nav) async {
+                                          //     if (nav.url.contains(
+                                          //         "grnagain.page.link")) {
+                                          //       Navigator.pop(context);
+                                          //       Navigator.pop(context);
+                                          //       launchUrl(
+                                          //           Uri.parse(nav.url
+                                          //               .split('#')[0]
+                                          //               .replaceAll(
+                                          //                   'intent', 'https')),
+                                          //           mode: LaunchMode
+                                          //               .externalNonBrowserApplication);
+                                          //       return NavigationDecision.prevent;
+                                          //     }
+                                          //     return NavigationDecision.prevent;
+                                          //   },
+                                          //   debuggingEnabled: true,
+                                          //   javascriptMode:
+                                          //       JavascriptMode.unrestricted,
+                                          //   onWebViewCreated: (controller) {
+                                          //     controller.loadUrl(
+                                          //         "https://mesomb.hachther.com/en/web/payment/CM/?widget=253");
+                                          //   },
+                                          //   // initialUrl:
+                                          //   // "https://mesomb.hachther.com/en/web/payment/CM/?widget=253",
+                                          // ),
+                                          ),
                                     ),
                                   );
                                 },
@@ -184,8 +184,7 @@ class Purchase extends StatelessWidget {
 class Feature extends StatelessWidget {
   final String name;
   final bool isPrenium;
-  const Feature({Key? key, required this.name, required this.isPrenium})
-      : super(key: key);
+  const Feature({super.key, required this.name, required this.isPrenium});
 
   @override
   Widget build(BuildContext context) {

@@ -1,12 +1,10 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:grnagain/i18n/strings.g.dart';
 import 'package:grnagain/src/configs/index.dart';
 import 'package:grnagain/src/extensions/extensions.dart';
 import 'package:grnagain/src/models/crop_model.dart';
-import 'package:grnagain/src/router/router.gr.dart';
-import 'package:grnagain/src/services/auth/firebase_auth.dart';
 import 'package:grnagain/src/widgets/index.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:line_icons/line_icons.dart';
 
@@ -15,9 +13,9 @@ import '../widgets/text_to_speech.dart';
 class CropsDetails extends ConsumerStatefulWidget {
   final Crop model;
   const CropsDetails({
-    Key? key,
+    super.key,
     required this.model,
-  }) : super(key: key);
+  });
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _CropsDetailsState();
@@ -50,7 +48,7 @@ class _CropsDetailsState extends ConsumerState<CropsDetails> {
                   width: 10,
                 ),
                 GestureDetector(
-                  onTap: () => context.autorouter.pop(),
+                  onTap: () => context.autorouter.maybePop(),
                   child: const CircleAvatar(
                     radius: 20,
                     backgroundColor: Color(0xFFEAEAEA),
@@ -92,10 +90,8 @@ class _CropsDetailsState extends ConsumerState<CropsDetails> {
                               final Box box = Hive.box('user');
                               List<String> bookmarked =
                                   box.get('bookmarks') ?? <String>[];
-                              box.put('bookmarks', [
-                                widget.model.id,
-                                ...bookmarked.toSet().toList()
-                              ]);
+                              box.put('bookmarks',
+                                  [widget.model.id, ...bookmarked.toSet()]);
                               setState(() {});
                             },
                             child: CircleAvatar(
@@ -146,10 +142,10 @@ class _CropsDetailsState extends ConsumerState<CropsDetails> {
                     const SizedBox(height: 28),
                     Button(
                         callback: () {
-                          FirebaseAuthentication.isPreniumUser
-                              ? context.autorouter
-                                  .push(Solution(model: widget.model))
-                              : context.autorouter.pushNamed('/purchase');
+                          // FirebaseAuthentication.isPreniumUser
+                          //     ? context.autorouter
+                          //         .push(Solution(model: widget.model))
+                          //     : context.autorouter.pushNamed('/purchase');
                         },
                         isLoading: false,
                         label: t.solution)

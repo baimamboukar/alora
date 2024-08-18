@@ -1,17 +1,17 @@
-import 'package:grnagain/i18n/strings.g.dart';
-import 'package:grnagain/src/configs/index.dart';
-import 'package:grnagain/src/extensions/extensions.dart';
-import 'package:grnagain/src/riverpods/index.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:line_icons/line_icons.dart';
+import 'package:grnagain/i18n/strings.g.dart';
+import 'package:grnagain/src/configs/index.dart';
+import 'package:grnagain/src/extensions/extensions.dart';
+import 'package:grnagain/src/riverpods/index.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:line_icons/line_icons.dart';
 
 class Profile extends ConsumerStatefulWidget {
-  const Profile({Key? key}) : super(key: key);
+  const Profile({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _ProfileState();
@@ -38,7 +38,7 @@ class _ProfileState extends ConsumerState<Profile> {
                   width: 10,
                 ),
                 GestureDetector(
-                  onTap: () => context.autorouter.pop(),
+                  onTap: () => context.autorouter.maybePop(),
                   child: const CircleAvatar(
                     radius: 20,
                     backgroundColor: Color(0xFFEAEAEA),

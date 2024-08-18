@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:grnagain/src/models/prediction.dart';
-import 'package:grnagain/src/riverpods/dio_riverpod.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:grnagain/src/models/prediction.dart';
+import 'package:grnagain/src/riverpods/dio_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
 class PredictionsApiServices {
@@ -27,7 +27,7 @@ class PredictionsApiServices {
       } else {
         throw Exception('Prediction failed');
       }
-    } on DioError catch (err) {
+    } on DioException catch (err) {
       throw Exception(err);
     }
   }

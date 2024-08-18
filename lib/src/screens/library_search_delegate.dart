@@ -1,10 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:grnagain/i18n/strings.g.dart';
 import 'package:grnagain/src/configs/data.dart';
 import 'package:grnagain/src/configs/index.dart';
-import 'package:flutter/material.dart';
-import 'package:grnagain/src/extensions/router.dart';
 import 'package:grnagain/src/models/crop_model.dart';
-import 'package:grnagain/src/router/router.gr.dart';
 import 'package:line_icons/line_icons.dart';
 
 class CropsSearch extends SearchDelegate {
@@ -54,7 +52,7 @@ class CropsSearch extends SearchDelegate {
             ..._crops.map(
               (crop) => ListTile(
                   onTap: () {
-                    context.autorouter.navigate(CropsDetails(model: crop));
+                    // context.autorouter.navigate(CropsDetails(model: crop));
                   },
                   leading: CircleAvatar(
                     backgroundImage: AssetImage(crop.imageURL.caption),
@@ -113,7 +111,7 @@ class CropsSearch extends SearchDelegate {
             ..._crops.map(
               (crop) => ListTile(
                   onTap: () {
-                    context.autorouter.navigate(CropsDetails(model: crop));
+                    //context.autorouter.navigate(CropsDetails(model: crop));
                   },
                   leading: CircleAvatar(
                     backgroundImage: AssetImage(crop.imageURL.caption),
@@ -148,7 +146,7 @@ class CropsSearch extends SearchDelegate {
             hintStyle: Styles.designText(
                 bold: false, color: Palette.light.withOpacity(.45), size: 14)),
         textTheme: Theme.of(context).textTheme.copyWith(
-              headline6: const TextStyle(color: Colors.white),
+              titleLarge: const TextStyle(color: Colors.white),
             ),
         appBarTheme: const AppBarTheme(elevation: 0.0, color: Palette.primary));
   }

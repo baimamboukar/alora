@@ -14,11 +14,11 @@ class TextToSpeech extends ConsumerWidget {
   final String lang;
   final VoidCallback? callback;
   const TextToSpeech({
-    Key? key,
+    super.key,
     this.callback,
     required this.text,
     required this.lang,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
