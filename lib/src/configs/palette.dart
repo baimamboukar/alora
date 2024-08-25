@@ -21,9 +21,9 @@ ThemeData _getTheme(Brightness brightness) => ThemeData(
       colorScheme: SeedColorScheme.fromSeeds(
         brightness: brightness,
         primary: const Color(0xFF337669),
-        primaryKey: const Color(0xFFDA015F),
+        primaryKey: const Color(0xFF337669),
         secondary: const Color(0xFF797D7A),
-        tertiary: const Color(0xFF99627A),
+        tertiary: const Color(0xFF797D7A),
         surface: const Color(0xFFEBEBEB),
         tones: FlexTones.vivid(brightness),
       ),

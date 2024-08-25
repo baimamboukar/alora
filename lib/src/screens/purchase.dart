@@ -7,6 +7,7 @@ import 'package:grnagain/src/extensions/extensions.dart';
 import 'package:grnagain/src/widgets/button.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:lottie/lottie.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 @RoutePage()
 class PurchasePage extends StatelessWidget {
@@ -112,60 +113,11 @@ class PurchasePage extends StatelessWidget {
                             height: 20,
                           ),
                           Button(
-                            callback: () {
-                              showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return SafeArea(
-                                    child: Scaffold(
-                                      appBar: AppBar(
-                                        //backgroundColor: Colors.transparent,
-                                        backgroundColor: Palette.primary,
-                                        elevation: 0,
-                                        title: Text(
-                                          "Payment Checkout",
-                                          style: Styles.designText(
-                                              bold: false,
-                                              size: 14,
-                                              color: Palette.light),
-                                        ),
-                                      ),
-                                      body: const Padding(
-                                          padding: EdgeInsets.all(12.0),
-                                          child: Placeholder()
-
-                                          // WebViewPlus(
-                                          //   navigationDelegate: (nav) async {
-                                          //     if (nav.url.contains(
-                                          //         "grnagain.page.link")) {
-                                          //       Navigator.pop(context);
-                                          //       Navigator.pop(context);
-                                          //       launchUrl(
-                                          //           Uri.parse(nav.url
-                                          //               .split('#')[0]
-                                          //               .replaceAll(
-                                          //                   'intent', 'https')),
-                                          //           mode: LaunchMode
-                                          //               .externalNonBrowserApplication);
-                                          //       return NavigationDecision.prevent;
-                                          //     }
-                                          //     return NavigationDecision.prevent;
-                                          //   },
-                                          //   debuggingEnabled: true,
-                                          //   javascriptMode:
-                                          //       JavascriptMode.unrestricted,
-                                          //   onWebViewCreated: (controller) {
-                                          //     controller.loadUrl(
-                                          //         "https://mesomb.hachther.com/en/web/payment/CM/?widget=253");
-                                          //   },
-                                          //   // initialUrl:
-                                          //   // "https://mesomb.hachther.com/en/web/payment/CM/?widget=253",
-                                          // ),
-                                          ),
-                                    ),
-                                  );
-                                },
-                              );
+                            callback: () async {
+                              const link =
+                                  'https://pay.mesomb.com/l/csAB9c22Qkksj08fZhcl';
+                              // launch a URL
+                              await _launchUrl(link);
                             },
                             label: "Purchase",
                             isLoading: false,
@@ -222,5 +174,11 @@ class Feature extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+Future<void> _launchUrl(String url) async {
+  if (!await launchUrl(Uri.parse(url))) {
+    throw Exception('Could not launch $url');
   }
 }

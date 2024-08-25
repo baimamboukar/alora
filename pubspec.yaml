@@ -58,7 +58,7 @@ dependencies:
   cinetpay: ^1.0.4
   firebase_dynamic_links: ^5.4.8
   webview_flutter_plus: ^0.4.6
-  url_launcher: ^6.1.5
+  url_launcher: ^6.3.0
   flutter_tts: ^4.0.2
   #video_player: ^2.4.7
   youtube_player_flutter: ^8.1.1
