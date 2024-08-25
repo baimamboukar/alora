@@ -1,20 +1,21 @@
 import 'dart:io';
 
+import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:grnagain/i18n/strings.g.dart';
 import 'package:grnagain/src/configs/index.dart';
 import 'package:grnagain/src/riverpods/prediction_services_riverpod.dart';
 import 'package:grnagain/src/widgets/error.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:grnagain/src/widgets/text_to_speech.dart';
 import 'package:image_picker/image_picker.dart';
-
 import 'package:lottie/lottie.dart';
 
-class Predict extends ConsumerWidget {
+@RoutePage()
+class PredictPage extends ConsumerWidget {
   final XFile image;
-  const Predict({Key? key, required this.image}) : super(key: key);
+  const PredictPage({super.key, required this.image});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

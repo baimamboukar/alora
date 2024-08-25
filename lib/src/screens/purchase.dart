@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:grnagain/i18n/strings.g.dart';
@@ -7,8 +8,9 @@ import 'package:grnagain/src/widgets/button.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:lottie/lottie.dart';
 
-class Purchase extends StatelessWidget {
-  const Purchase({super.key});
+@RoutePage()
+class PurchasePage extends StatelessWidget {
+  const PurchasePage({super.key});
 
   @override
   Widget build(BuildContext context) {

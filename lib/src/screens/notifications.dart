@@ -1,10 +1,12 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:grnagain/src/configs/index.dart';
 import 'package:grnagain/src/extensions/extensions.dart';
 
-class Notifications extends ConsumerWidget {
-  const Notifications({super.key});
+@RoutePage()
+class NotificationsPage extends ConsumerWidget {
+  const NotificationsPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

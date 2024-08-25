@@ -7,8 +7,9 @@ import 'package:line_icons/line_icons.dart';
 
 final _key = GlobalKey<ScaffoldState>();
 
-class Home extends ConsumerWidget {
-  const Home({super.key});
+@RoutePage()
+class HomePage extends ConsumerWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

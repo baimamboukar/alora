@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:grnagain/i18n/strings.g.dart';
+import 'package:grnagain/src/app/assets.dart';
 import 'package:lottie/lottie.dart';
 
 import '../configs/palette.dart';
@@ -22,45 +23,44 @@ class TextToSpeech extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isPlaying = ref.watch(isPlayingRiverpod.state).state;
+    final isPlaying = ref.watch(isPlayingRiverpod.notifier).state;
     return Row(
       children: [
         GestureDetector(
           onTap: callback ??
               () async {
-                final tts = await TextToSpeechServices(ref.read)
-                    .configure(locale: lang);
+                final tts =
+                    await TextToSpeechServices().configure(locale: lang);
                 if (isPlaying == false) {
                   tts.setCompletionHandler(() {
-                    ref.read(isPlayingRiverpod.state).state = false;
+                    ref.read(isPlayingRiverpod.notifier).state = false;
                   });
                   tts.setCancelHandler(() {
-                    ref.read(isPlayingRiverpod.state).state = false;
+                    ref.read(isPlayingRiverpod.notifier).state = false;
                   });
-                  ref.read(isPlayingRiverpod.state).state = true;
+                  ref.read(isPlayingRiverpod.notifier).state = true;
                   await tts.speak(text);
                 } else {
-                  ref.read(isPlayingRiverpod.state).state = false;
+                  ref.read(isPlayingRiverpod.notifier).state = false;
                   await tts.stop();
                 }
               },
           child: Visibility(
             visible: !isPlaying,
             replacement: const Icon(Icons.cancel, size: 54),
-            child:
-                Lottie.asset("assets/images/play.json", height: 70, width: 70),
+            child: Lottie.asset(Assets.assetsImagesPlay, height: 70, width: 70),
           ),
         ),
         GestureDetector(
           onTap: callback ??
               () async {
                 if (isPlaying == false) {
-                  final tts = await TextToSpeechServices(ref.read)
-                      .configure(locale: lang);
+                  final tts =
+                      await TextToSpeechServices().configure(locale: lang);
                   tts.setCompletionHandler(() {
-                    ref.read(isPlayingRiverpod.state).state = false;
+                    ref.read(isPlayingRiverpod.notifier).state = false;
                   });
-                  ref.read(isPlayingRiverpod.state).state = true;
+                  ref.read(isPlayingRiverpod.notifier).state = true;
                   await tts.speak(text);
                 }
               },
@@ -94,16 +94,15 @@ class TextToSpeech extends ConsumerWidget {
       text: steps.first,
       lang: lang,
       callback: () async {
-        final tts =
-            await TextToSpeechServices(ref.read).configure(locale: lang);
+        final tts = await TextToSpeechServices().configure(locale: lang);
         tts.setCompletionHandler(() {
-          ref.read(isPlayingRiverpod.state).state = false;
+          ref.read(isPlayingRiverpod.notifier).state = false;
         });
         tts.setCancelHandler(() {
-          ref.read(isPlayingRiverpod.state).state = false;
+          ref.read(isPlayingRiverpod.notifier).state = false;
         });
-        if (ref.read(isPlayingRiverpod.state).state) {
-          ref.read(isPlayingRiverpod.state).state = false;
+        if (ref.read(isPlayingRiverpod.notifier).state) {
+          ref.read(isPlayingRiverpod.notifier).state = false;
           await tts.stop();
           return;
         }
@@ -113,7 +112,7 @@ class TextToSpeech extends ConsumerWidget {
           buffer.write("${steps[i]}. ");
           buffer.write(", ");
         }
-        ref.read(isPlayingRiverpod.state).state = true;
+        ref.read(isPlayingRiverpod.notifier).state = true;
 
         tts.speak(buffer.toString());
       },

@@ -1,9 +1,5 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:grnagain/src/models/prediction.dart';
-import 'package:grnagain/src/riverpods/dio_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
 class PredictionsApiServices {
@@ -18,17 +14,20 @@ class PredictionsApiServices {
           "files": await MultipartFile.fromFile(image.path, filename: fileName),
         },
       );
-      final response =
-          await _read(dioProvider).post('/api/predict', data: imageData);
+      // final response =
+      //     await _read(dioProvider).post('/api/predict', data: imageData);
 
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        return Prediction.fromMap(
-            jsonDecode(jsonEncode(response.data[fileName])));
-      } else {
-        throw Exception('Prediction failed');
-      }
+      // if (response.statusCode == 200 || response.statusCode == 201) {
+      //   return Prediction.fromMap(
+      //       jsonDecode(jsonEncode(response.data[fileName])));
+      // } else {
+      //   throw Exception('Prediction failed');
+      // }
+      throw 'failed';
     } on DioException catch (err) {
       throw Exception(err);
     }
   }
 }
+
+class Reader {}

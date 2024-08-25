@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:grnagain/i18n/strings.g.dart';
@@ -5,14 +6,14 @@ import 'package:grnagain/src/configs/index.dart';
 import 'package:grnagain/src/extensions/extensions.dart';
 import 'package:grnagain/src/models/crop_model.dart';
 import 'package:grnagain/src/widgets/index.dart';
+import 'package:grnagain/src/widgets/text_to_speech.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:line_icons/line_icons.dart';
 
-import '../widgets/text_to_speech.dart';
-
-class CropsDetails extends ConsumerStatefulWidget {
+@RoutePage()
+class CropsDetailsPage extends ConsumerStatefulWidget {
   final Crop model;
-  const CropsDetails({
+  const CropsDetailsPage({
     super.key,
     required this.model,
   });
@@ -21,7 +22,7 @@ class CropsDetails extends ConsumerStatefulWidget {
   ConsumerState<ConsumerStatefulWidget> createState() => _CropsDetailsState();
 }
 
-class _CropsDetailsState extends ConsumerState<CropsDetails> {
+class _CropsDetailsState extends ConsumerState<CropsDetailsPage> {
   @override
   @override
   Widget build(BuildContext context) {

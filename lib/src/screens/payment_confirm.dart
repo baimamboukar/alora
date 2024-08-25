@@ -2,21 +2,23 @@
 
 import 'dart:io';
 
-import 'package:grnagain/i18n/strings.g.dart';
-import 'package:grnagain/src/configs/index.dart';
-import 'package:grnagain/src/widgets/index.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:grnagain/i18n/strings.g.dart';
+import 'package:grnagain/src/configs/index.dart';
+import 'package:grnagain/src/widgets/index.dart';
 
-class PaymentConfirm extends ConsumerStatefulWidget {
-  const PaymentConfirm({Key? key}) : super(key: key);
+@RoutePage()
+class PaymentConfirmPage extends ConsumerStatefulWidget {
+  const PaymentConfirmPage({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _PaymentConfirmState();
 }
 
-class _PaymentConfirmState extends ConsumerState<PaymentConfirm> {
+class _PaymentConfirmState extends ConsumerState<PaymentConfirmPage> {
   @override
   void initState() {
     super.initState();

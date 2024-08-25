@@ -1,10 +1,9 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
 class TextToSpeechServices {
   // ignore: unused_field
-  final Reader _read;
-  TextToSpeechServices(this._read);
+  //final Reader _read;
+  TextToSpeechServices();
 
   Future<FlutterTts> configure({required String locale, double? volume}) async {
     FlutterTts tts = FlutterTts();
@@ -16,3 +15,5 @@ class TextToSpeechServices {
     return tts;
   }
 }
+
+class Reader {}

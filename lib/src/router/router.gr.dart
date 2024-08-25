@@ -1,275 +1,355 @@
-// // **************************************************************************
-// // AutoRouteGenerator
-// // **************************************************************************
+// GENERATED CODE - DO NOT MODIFY BY HAND
 
-// // GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// AutoRouterGenerator
+// **************************************************************************
 
-// // **************************************************************************
-// // AutoRouteGenerator
-// // **************************************************************************
-// //
-// // ignore_for_file: type=lint
+// ignore_for_file: type=lint
+// coverage:ignore-file
 
-// import 'package:grnagain/src/models/crop_model.dart' as _i12;
-// import 'package:grnagain/src/router/guards/index.dart' as _i11;
-// import 'package:grnagain/src/screens/crops_details.dart' as _i2;
-// import 'package:grnagain/src/screens/crops_view.dart' as _i8;
-// import 'package:grnagain/src/screens/index.dart' as _i1;
-// import 'package:grnagain/src/screens/notifications.dart' as _i3;
-// import 'package:grnagain/src/screens/payment_confirm.dart' as _i5;
-// import 'package:grnagain/src/screens/predict.dart' as _i4;
-// import 'package:grnagain/src/screens/purchase.dart' as _i6;
-// import 'package:grnagain/src/screens/solution.dart' as _i7;
-// import 'package:auto_route/auto_route.dart' as _i9;
-// import 'package:flutter/material.dart' as _i10;
-// import 'package:image_picker/image_picker.dart' as _i13;
+// ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:auto_route/auto_route.dart' as _i14;
+import 'package:flutter/material.dart' as _i15;
+import 'package:grnagain/src/models/crop_model.dart' as _i16;
+import 'package:grnagain/src/screens/bookmarks.dart' as _i1;
+import 'package:grnagain/src/screens/crops_details.dart' as _i2;
+import 'package:grnagain/src/screens/crops_view.dart' as _i3;
+import 'package:grnagain/src/screens/home.dart' as _i4;
+import 'package:grnagain/src/screens/login.dart' as _i5;
+import 'package:grnagain/src/screens/notifications.dart' as _i6;
+import 'package:grnagain/src/screens/payment_confirm.dart' as _i7;
+import 'package:grnagain/src/screens/predict.dart' as _i8;
+import 'package:grnagain/src/screens/profile.dart' as _i9;
+import 'package:grnagain/src/screens/purchase.dart' as _i10;
+import 'package:grnagain/src/screens/settings.dart' as _i11;
+import 'package:grnagain/src/screens/signup.dart' as _i12;
+import 'package:grnagain/src/screens/solution.dart' as _i13;
+import 'package:image_picker/image_picker.dart' as _i17;
 
-// class AppRouter extends _i9.RootStackRouter {
-//   AppRouter(
-//       {_i10.GlobalKey<_i10.NavigatorState>? navigatorKey,
-//       required this.authGuard})
-//       : super(navigatorKey);
+/// generated route for
+/// [_i1.BookmarksPage]
+class BookmarksRoute extends _i14.PageRouteInfo<void> {
+  const BookmarksRoute({List<_i14.PageRouteInfo>? children})
+      : super(
+          BookmarksRoute.name,
+          initialChildren: children,
+        );
 
-//   final _i11.AuthGuard authGuard;
+  static const String name = 'BookmarksRoute';
 
-//   @override
-//   final Map<String, _i9.PageFactory> pagesMap = {
-//     Home.name: (routeData) {
-//       return _i9.AdaptivePage<dynamic>(
-//           routeData: routeData, child: const _i1.Home());
-//     },
-//     Login.name: (routeData) {
-//       return _i9.AdaptivePage<dynamic>(
-//           routeData: routeData, child: const _i1.Login());
-//     },
-//     Signup.name: (routeData) {
-//       return _i9.AdaptivePage<dynamic>(
-//           routeData: routeData, child: const _i1.Signup());
-//     },
-//     CropsDetails.name: (routeData) {
-//       final args = routeData.argsAs<CropsDetailsArgs>();
-//       return _i9.AdaptivePage<dynamic>(
-//           routeData: routeData,
-//           child: _i2.CropsDetails(key: args.key, model: args.model));
-//     },
-//     Settings.name: (routeData) {
-//       return _i9.AdaptivePage<dynamic>(
-//           routeData: routeData, child: const _i1.Settings());
-//     },
-//     Notifications.name: (routeData) {
-//       return _i9.AdaptivePage<dynamic>(
-//           routeData: routeData, child: const _i3.Notifications());
-//     },
-//     Predict.name: (routeData) {
-//       final args = routeData.argsAs<PredictArgs>();
-//       return _i9.AdaptivePage<dynamic>(
-//           routeData: routeData,
-//           child: _i4.Predict(key: args.key, image: args.image));
-//     },
-//     PaymentConfirm.name: (routeData) {
-//       return _i9.AdaptivePage<dynamic>(
-//           routeData: routeData, child: const _i5.PaymentConfirm());
-//     },
-//     Purchase.name: (routeData) {
-//       return _i9.AdaptivePage<dynamic>(
-//           routeData: routeData, child: const _i6.Purchase());
-//     },
-//     Solution.name: (routeData) {
-//       final args = routeData.argsAs<SolutionArgs>();
-//       return _i9.AdaptivePage<dynamic>(
-//           routeData: routeData,
-//           child: _i7.Solution(key: args.key, model: args.model));
-//     },
-//     CropsView.name: (routeData) {
-//       return _i9.AdaptivePage<dynamic>(
-//           routeData: routeData, child: const _i8.CropsView());
-//     },
-//     Bookmarks.name: (routeData) {
-//       return _i9.AdaptivePage<dynamic>(
-//           routeData: routeData, child: const _i1.Bookmarks());
-//     },
-//     Profile.name: (routeData) {
-//       return _i9.AdaptivePage<dynamic>(
-//           routeData: routeData, child: const _i1.Profile());
-//     }
-//   };
+  static _i14.PageInfo page = _i14.PageInfo(
+    name,
+    builder: (data) {
+      return const _i1.BookmarksPage();
+    },
+  );
+}
 
-//   @override
-//   List<_i9.RouteConfig> get routes => [
-//         _i9.RouteConfig('/#redirect',
-//             path: '/', redirectTo: '/home', fullMatch: true),
-//         _i9.RouteConfig(Home.name, path: '/home', guards: [
-//           authGuard
-//         ], children: [
-//           _i9.RouteConfig('#redirect',
-//               path: '',
-//               parent: Home.name,
-//               redirectTo: 'crops-view',
-//               fullMatch: true),
-//           _i9.RouteConfig(CropsView.name,
-//               path: 'crops-view', parent: Home.name),
-//           _i9.RouteConfig(Bookmarks.name, path: 'bookmarks', parent: Home.name),
-//           _i9.RouteConfig(Profile.name, path: 'profile', parent: Home.name)
-//         ]),
-//         _i9.RouteConfig(Login.name, path: '/login'),
-//         _i9.RouteConfig(Signup.name, path: '/signup'),
-//         _i9.RouteConfig(CropsDetails.name, path: '/crops-details'),
-//         _i9.RouteConfig(Settings.name, path: '/settings'),
-//         _i9.RouteConfig(Notifications.name, path: '/notifications'),
-//         _i9.RouteConfig(Predict.name, path: '/predict/'),
-//         _i9.RouteConfig(PaymentConfirm.name, path: '/payment-confirm'),
-//         _i9.RouteConfig(Purchase.name, path: '/purchase'),
-//         _i9.RouteConfig(Solution.name, path: '/solution')
-//       ];
-// }
+/// generated route for
+/// [_i2.CropsDetailsPage]
+class CropsDetailsRoute extends _i14.PageRouteInfo<CropsDetailsRouteArgs> {
+  CropsDetailsRoute({
+    _i15.Key? key,
+    required _i16.Crop model,
+    List<_i14.PageRouteInfo>? children,
+  }) : super(
+          CropsDetailsRoute.name,
+          args: CropsDetailsRouteArgs(
+            key: key,
+            model: model,
+          ),
+          initialChildren: children,
+        );
 
-// /// generated route for
-// /// [_i1.Home]
-// class Home extends _i9.PageRouteInfo<void> {
-//   const Home({List<_i9.PageRouteInfo>? children})
-//       : super(Home.name, path: '/home', initialChildren: children);
+  static const String name = 'CropsDetailsRoute';
 
-//   static const String name = 'Home';
-// }
+  static _i14.PageInfo page = _i14.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<CropsDetailsRouteArgs>();
+      return _i2.CropsDetailsPage(
+        key: args.key,
+        model: args.model,
+      );
+    },
+  );
+}
 
-// /// generated route for
-// /// [_i1.Login]
-// class Login extends _i9.PageRouteInfo<void> {
-//   const Login() : super(Login.name, path: '/login');
+class CropsDetailsRouteArgs {
+  const CropsDetailsRouteArgs({
+    this.key,
+    required this.model,
+  });
 
-//   static const String name = 'Login';
-// }
+  final _i15.Key? key;
 
-// /// generated route for
-// /// [_i1.Signup]
-// class Signup extends _i9.PageRouteInfo<void> {
-//   const Signup() : super(Signup.name, path: '/signup');
+  final _i16.Crop model;
 
-//   static const String name = 'Signup';
-// }
+  @override
+  String toString() {
+    return 'CropsDetailsRouteArgs{key: $key, model: $model}';
+  }
+}
 
-// /// generated route for
-// /// [_i2.CropsDetails]
-// class CropsDetails extends _i9.PageRouteInfo<CropsDetailsArgs> {
-//   CropsDetails({_i10.Key? key, required _i12.Crop model})
-//       : super(CropsDetails.name,
-//             path: '/crops-details',
-//             args: CropsDetailsArgs(key: key, model: model));
+/// generated route for
+/// [_i3.CropsPage]
+class CropsRoute extends _i14.PageRouteInfo<void> {
+  const CropsRoute({List<_i14.PageRouteInfo>? children})
+      : super(
+          CropsRoute.name,
+          initialChildren: children,
+        );
 
-//   static const String name = 'CropsDetails';
-// }
+  static const String name = 'CropsRoute';
 
-// class CropsDetailsArgs {
-//   const CropsDetailsArgs({this.key, required this.model});
+  static _i14.PageInfo page = _i14.PageInfo(
+    name,
+    builder: (data) {
+      return const _i3.CropsPage();
+    },
+  );
+}
 
-//   final _i10.Key? key;
+/// generated route for
+/// [_i4.HomePage]
+class HomeRoute extends _i14.PageRouteInfo<void> {
+  const HomeRoute({List<_i14.PageRouteInfo>? children})
+      : super(
+          HomeRoute.name,
+          initialChildren: children,
+        );
 
-//   final _i12.Crop model;
+  static const String name = 'HomeRoute';
 
-//   @override
-//   String toString() {
-//     return 'CropsDetailsArgs{key: $key, model: $model}';
-//   }
-// }
+  static _i14.PageInfo page = _i14.PageInfo(
+    name,
+    builder: (data) {
+      return const _i4.HomePage();
+    },
+  );
+}
 
-// /// generated route for
-// /// [_i1.Settings]
-// class Settings extends _i9.PageRouteInfo<void> {
-//   const Settings() : super(Settings.name, path: '/settings');
+/// generated route for
+/// [_i5.LoginPage]
+class LoginRoute extends _i14.PageRouteInfo<void> {
+  const LoginRoute({List<_i14.PageRouteInfo>? children})
+      : super(
+          LoginRoute.name,
+          initialChildren: children,
+        );
 
-//   static const String name = 'Settings';
-// }
+  static const String name = 'LoginRoute';
 
-// /// generated route for
-// /// [_i3.Notifications]
-// class Notifications extends _i9.PageRouteInfo<void> {
-//   const Notifications() : super(Notifications.name, path: '/notifications');
+  static _i14.PageInfo page = _i14.PageInfo(
+    name,
+    builder: (data) {
+      return const _i5.LoginPage();
+    },
+  );
+}
 
-//   static const String name = 'Notifications';
-// }
+/// generated route for
+/// [_i6.NotificationsPage]
+class NotificationsRoute extends _i14.PageRouteInfo<void> {
+  const NotificationsRoute({List<_i14.PageRouteInfo>? children})
+      : super(
+          NotificationsRoute.name,
+          initialChildren: children,
+        );
 
-// /// generated route for
-// /// [_i4.Predict]
-// class Predict extends _i9.PageRouteInfo<PredictArgs> {
-//   Predict({_i10.Key? key, required _i13.XFile image})
-//       : super(Predict.name,
-//             path: '/predict/', args: PredictArgs(key: key, image: image));
+  static const String name = 'NotificationsRoute';
 
-//   static const String name = 'Predict';
-// }
+  static _i14.PageInfo page = _i14.PageInfo(
+    name,
+    builder: (data) {
+      return const _i6.NotificationsPage();
+    },
+  );
+}
 
-// class PredictArgs {
-//   const PredictArgs({this.key, required this.image});
+/// generated route for
+/// [_i7.PaymentConfirmPage]
+class PaymentConfirmRoute extends _i14.PageRouteInfo<void> {
+  const PaymentConfirmRoute({List<_i14.PageRouteInfo>? children})
+      : super(
+          PaymentConfirmRoute.name,
+          initialChildren: children,
+        );
 
-//   final _i10.Key? key;
+  static const String name = 'PaymentConfirmRoute';
 
-//   final _i13.XFile image;
+  static _i14.PageInfo page = _i14.PageInfo(
+    name,
+    builder: (data) {
+      return const _i7.PaymentConfirmPage();
+    },
+  );
+}
 
-//   @override
-//   String toString() {
-//     return 'PredictArgs{key: $key, image: $image}';
-//   }
-// }
+/// generated route for
+/// [_i8.PredictPage]
+class PredictRoute extends _i14.PageRouteInfo<PredictRouteArgs> {
+  PredictRoute({
+    _i15.Key? key,
+    required _i17.XFile image,
+    List<_i14.PageRouteInfo>? children,
+  }) : super(
+          PredictRoute.name,
+          args: PredictRouteArgs(
+            key: key,
+            image: image,
+          ),
+          initialChildren: children,
+        );
 
-// /// generated route for
-// /// [_i5.PaymentConfirm]
-// class PaymentConfirm extends _i9.PageRouteInfo<void> {
-//   const PaymentConfirm() : super(PaymentConfirm.name, path: '/payment-confirm');
+  static const String name = 'PredictRoute';
 
-//   static const String name = 'PaymentConfirm';
-// }
+  static _i14.PageInfo page = _i14.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<PredictRouteArgs>();
+      return _i8.PredictPage(
+        key: args.key,
+        image: args.image,
+      );
+    },
+  );
+}
 
-// /// generated route for
-// /// [_i6.Purchase]
-// class Purchase extends _i9.PageRouteInfo<void> {
-//   const Purchase() : super(Purchase.name, path: '/purchase');
+class PredictRouteArgs {
+  const PredictRouteArgs({
+    this.key,
+    required this.image,
+  });
 
-//   static const String name = 'Purchase';
-// }
+  final _i15.Key? key;
 
-// /// generated route for
-// /// [_i7.Solution]
-// class Solution extends _i9.PageRouteInfo<SolutionArgs> {
-//   Solution({_i10.Key? key, required _i12.Crop model})
-//       : super(Solution.name,
-//             path: '/solution', args: SolutionArgs(key: key, model: model));
+  final _i17.XFile image;
 
-//   static const String name = 'Solution';
-// }
+  @override
+  String toString() {
+    return 'PredictRouteArgs{key: $key, image: $image}';
+  }
+}
 
-// class SolutionArgs {
-//   const SolutionArgs({this.key, required this.model});
+/// generated route for
+/// [_i9.ProfilePage]
+class ProfileRoute extends _i14.PageRouteInfo<void> {
+  const ProfileRoute({List<_i14.PageRouteInfo>? children})
+      : super(
+          ProfileRoute.name,
+          initialChildren: children,
+        );
 
-//   final _i10.Key? key;
+  static const String name = 'ProfileRoute';
 
-//   final _i12.Crop model;
+  static _i14.PageInfo page = _i14.PageInfo(
+    name,
+    builder: (data) {
+      return const _i9.ProfilePage();
+    },
+  );
+}
 
-//   @override
-//   String toString() {
-//     return 'SolutionArgs{key: $key, model: $model}';
-//   }
-// }
+/// generated route for
+/// [_i10.PurchasePage]
+class PurchaseRoute extends _i14.PageRouteInfo<void> {
+  const PurchaseRoute({List<_i14.PageRouteInfo>? children})
+      : super(
+          PurchaseRoute.name,
+          initialChildren: children,
+        );
 
-// /// generated route for
-// /// [_i8.CropsView]
-// class CropsView extends _i9.PageRouteInfo<void> {
-//   const CropsView() : super(CropsView.name, path: 'crops-view');
+  static const String name = 'PurchaseRoute';
 
-//   static const String name = 'CropsView';
-// }
+  static _i14.PageInfo page = _i14.PageInfo(
+    name,
+    builder: (data) {
+      return const _i10.PurchasePage();
+    },
+  );
+}
 
-// /// generated route for
-// /// [_i1.Bookmarks]
-// class Bookmarks extends _i9.PageRouteInfo<void> {
-//   const Bookmarks() : super(Bookmarks.name, path: 'bookmarks');
+/// generated route for
+/// [_i11.SettingsPage]
+class SettingsRoute extends _i14.PageRouteInfo<void> {
+  const SettingsRoute({List<_i14.PageRouteInfo>? children})
+      : super(
+          SettingsRoute.name,
+          initialChildren: children,
+        );
 
-//   static const String name = 'Bookmarks';
-// }
+  static const String name = 'SettingsRoute';
 
-// /// generated route for
-// /// [_i1.Profile]
-// class Profile extends _i9.PageRouteInfo<void> {
-//   const Profile() : super(Profile.name, path: 'profile');
+  static _i14.PageInfo page = _i14.PageInfo(
+    name,
+    builder: (data) {
+      return const _i11.SettingsPage();
+    },
+  );
+}
 
-//   static const String name = 'Profile';
-// }
+/// generated route for
+/// [_i12.SignupPage]
+class SignupRoute extends _i14.PageRouteInfo<void> {
+  const SignupRoute({List<_i14.PageRouteInfo>? children})
+      : super(
+          SignupRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SignupRoute';
+
+  static _i14.PageInfo page = _i14.PageInfo(
+    name,
+    builder: (data) {
+      return const _i12.SignupPage();
+    },
+  );
+}
+
+/// generated route for
+/// [_i13.SolutionPage]
+class SolutionRoute extends _i14.PageRouteInfo<SolutionRouteArgs> {
+  SolutionRoute({
+    _i15.Key? key,
+    required _i16.Crop model,
+    List<_i14.PageRouteInfo>? children,
+  }) : super(
+          SolutionRoute.name,
+          args: SolutionRouteArgs(
+            key: key,
+            model: model,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'SolutionRoute';
+
+  static _i14.PageInfo page = _i14.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<SolutionRouteArgs>();
+      return _i13.SolutionPage(
+        key: args.key,
+        model: args.model,
+      );
+    },
+  );
+}
+
+class SolutionRouteArgs {
+  const SolutionRouteArgs({
+    this.key,
+    required this.model,
+  });
+
+  final _i15.Key? key;
+
+  final _i16.Crop model;
+
+  @override
+  String toString() {
+    return 'SolutionRouteArgs{key: $key, model: $model}';
+  }
+}

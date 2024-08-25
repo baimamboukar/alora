@@ -7,11 +7,10 @@ class Button extends StatelessWidget {
   final bool isLoading;
   final VoidCallback callback;
   const Button(
-      {Key? key,
+      {super.key,
       required this.label,
       required this.isLoading,
-      required this.callback})
-      : super(key: key);
+      required this.callback});
 
   @override
   Widget build(BuildContext context) {

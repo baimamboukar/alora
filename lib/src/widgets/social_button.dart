@@ -5,8 +5,7 @@ class SocialButton extends StatelessWidget {
   final VoidCallback callback;
   final String iconAsset;
   const SocialButton(
-      {Key? key, required this.callback, required this.iconAsset})
-      : super(key: key);
+      {super.key, required this.callback, required this.iconAsset});
 
   @override
   Widget build(BuildContext context) {

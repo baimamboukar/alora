@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_unnecessary_containers
 
+import 'package:auto_route/auto_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -17,14 +18,15 @@ import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import 'library_search_delegate.dart';
 
-class CropsView extends ConsumerStatefulWidget {
-  const CropsView({super.key});
+@RoutePage()
+class CropsPage extends ConsumerStatefulWidget {
+  const CropsPage({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _CropsViewState();
 }
 
-class _CropsViewState extends ConsumerState<CropsView> {
+class _CropsViewState extends ConsumerState<CropsPage> {
   late YoutubePlayerController _controller;
   @override
   void initState() {

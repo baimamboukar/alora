@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,14 +11,15 @@ import 'package:grnagain/src/riverpods/index.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:line_icons/line_icons.dart';
 
-class Profile extends ConsumerStatefulWidget {
-  const Profile({super.key});
+@RoutePage()
+class ProfilePage extends ConsumerStatefulWidget {
+  const ProfilePage({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _ProfileState();
 }
 
-class _ProfileState extends ConsumerState<Profile> {
+class _ProfileState extends ConsumerState<ProfilePage> {
   @override
   void initState() {
     super.initState();

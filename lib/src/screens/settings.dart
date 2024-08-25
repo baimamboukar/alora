@@ -1,17 +1,19 @@
-import 'package:grnagain/src/extensions/extensions.dart';
-import 'package:grnagain/src/widgets/index.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:grnagain/i18n/strings.g.dart';
+import 'package:grnagain/src/extensions/extensions.dart';
+import 'package:grnagain/src/widgets/index.dart';
 
-class Settings extends ConsumerStatefulWidget {
-  const Settings({Key? key}) : super(key: key);
+@RoutePage()
+class SettingsPage extends ConsumerStatefulWidget {
+  const SettingsPage({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _SettingsState();
 }
 
-class _SettingsState extends ConsumerState<Settings> {
+class _SettingsState extends ConsumerState<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

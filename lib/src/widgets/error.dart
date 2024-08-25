@@ -4,8 +4,7 @@ import 'package:flutter/widgets.dart';
 class ErrorView extends StatelessWidget {
   final String error;
   final String desc;
-  const ErrorView({Key? key, required this.error, required this.desc})
-      : super(key: key);
+  const ErrorView({super.key, required this.error, required this.desc});
   @override
   Widget build(BuildContext context) {
     return Center(

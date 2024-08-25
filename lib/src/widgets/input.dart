@@ -14,14 +14,13 @@ class Input extends ConsumerWidget {
   final String hint;
   final String? Function(String?)? validator;
   const Input(
-      {Key? key,
+      {super.key,
       required this.controller,
       required this.label,
       required this.icon,
       required this.isPassword,
       required this.hint,
-      required this.validator})
-      : super(key: key);
+      required this.validator});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -10,8 +11,9 @@ import 'package:grnagain/src/widgets/index.dart';
 import 'package:grnagain/src/widgets/social_button.dart';
 import 'package:line_icons/line_icons.dart';
 
-class Signup extends ConsumerWidget {
-  const Signup({super.key});
+@RoutePage()
+class SignupPage extends ConsumerWidget {
+  const SignupPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

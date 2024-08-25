@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:grnagain/i18n/strings.g.dart';
@@ -8,9 +9,10 @@ import 'package:grnagain/src/widgets/text_to_speech.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:line_icons/line_icons.dart';
 
-class Solution extends ConsumerStatefulWidget {
+@RoutePage()
+class SolutionPage extends ConsumerStatefulWidget {
   final Crop model;
-  const Solution({
+  const SolutionPage({
     super.key,
     required this.model,
   });
@@ -19,7 +21,7 @@ class Solution extends ConsumerStatefulWidget {
   ConsumerState<ConsumerStatefulWidget> createState() => _SolutionState();
 }
 
-class _SolutionState extends ConsumerState<Solution> {
+class _SolutionState extends ConsumerState<SolutionPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

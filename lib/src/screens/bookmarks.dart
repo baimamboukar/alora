@@ -1,3 +1,7 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:grnagain/i18n/strings.g.dart';
 import 'package:grnagain/src/configs/data.dart';
 import 'package:grnagain/src/configs/index.dart';
@@ -6,19 +10,17 @@ import 'package:grnagain/src/screens/crops_view.dart';
 import 'package:grnagain/src/screens/library_search_delegate.dart';
 import 'package:grnagain/src/services/auth/firebase_auth.dart';
 import 'package:grnagain/src/widgets/index.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-class Bookmarks extends ConsumerStatefulWidget {
-  const Bookmarks({Key? key}) : super(key: key);
+@RoutePage()
+class BookmarksPage extends ConsumerStatefulWidget {
+  const BookmarksPage({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _BookmarksState();
 }
 
-class _BookmarksState extends ConsumerState<Bookmarks> {
+class _BookmarksState extends ConsumerState<BookmarksPage> {
   // ignore: unused_field
   late List<String> _bookmarked;
 
