@@ -12,7 +12,12 @@
           "package_name": "app.sahelfund.greenagain"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "348068762787-okt2g7u3r3dm6oos568971b4f4rkmjjf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAT0QmafJhR4WqfmhFyJxwGZwwgUeYhIW8"
@@ -20,7 +25,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "348068762787-okt2g7u3r3dm6oos568971b4f4rkmjjf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "348068762787-1074amqn3eu82gf059c6hsfndk8t2tpv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mysdgsdockta.app"
+              }
+            }
+          ]
         }
       }
     }
