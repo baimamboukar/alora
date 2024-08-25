@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:grnagain/src/router/guards/auth_guard.dart';
 import 'package:grnagain/src/router/router.gr.dart';
 
 @AutoRouterConfig(replaceInRouteName: 'Page,Route')
@@ -9,7 +10,9 @@ class AppRouter extends RootStackRouter {
           page: HomeRoute.page,
           path: '/home',
           initial: true,
-          //guards: [AuthGuard()],
+          guards: [
+            AuthGuard(),
+          ],
           children: [
             AutoRoute(
               page: CropsRoute.page,
