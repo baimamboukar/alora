@@ -56,23 +56,20 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAqLMYdRz07snb1PfFGj8XBJaZ_Nb4ttlc',
-    appId: '1:132950112983:android:813bbab2b2dc0792c84e92',
-    messagingSenderId: '132950112983',
-    projectId: 'alora-b477f',
-    storageBucket: 'alora-b477f.appspot.com',
+    apiKey: 'AIzaSyAT0QmafJhR4WqfmhFyJxwGZwwgUeYhIW8',
+    appId: '1:348068762787:android:3a2d02458ceed41d551b16',
+    messagingSenderId: '348068762787',
+    projectId: 'greenagain-7902a',
+    storageBucket: 'greenagain-7902a.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAZLusR13ve6imRJKzB9EFiFtnzJuvC49U',
-    appId: '1:132950112983:ios:1f52dcf0a0303cf5c84e92',
-    messagingSenderId: '132950112983',
-    projectId: 'alora-b477f',
-    storageBucket: 'alora-b477f.appspot.com',
-    androidClientId:
-        '132950112983-3fkppampdkqnlct051nb1m9obpm093ap.apps.googleusercontent.com',
-    iosClientId:
-        '132950112983-no5gbn17htu6vcbcv25ev2j96qeaipq9.apps.googleusercontent.com',
+    apiKey: 'AIzaSyCjUvgXydP_2Irz4YtjJFD_k_esFETLG0A',
+    appId: '1:348068762787:ios:ba8bf8ba1bed2b4f551b16',
+    messagingSenderId: '348068762787',
+    projectId: 'greenagain-7902a',
+    storageBucket: 'greenagain-7902a.appspot.com',
     iosBundleId: 'com.mysdgsdockta.app',
   );
+
 }

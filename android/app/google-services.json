@@ -1,43 +1,26 @@
 {
   "project_info": {
-    "project_number": "132950112983",
-    "project_id": "alora-b477f",
-    "storage_bucket": "alora-b477f.appspot.com"
+    "project_number": "348068762787",
+    "project_id": "greenagain-7902a",
+    "storage_bucket": "greenagain-7902a.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:132950112983:android:813bbab2b2dc0792c84e92",
+        "mobilesdk_app_id": "1:348068762787:android:3a2d02458ceed41d551b16",
         "android_client_info": {
-          "package_name": "com.grnagain.app"
+          "package_name": "app.sahelfund.greenagain"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "132950112983-e391l9bpikspch47ikkgae0tfg6e5c21.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAqLMYdRz07snb1PfFGj8XBJaZ_Nb4ttlc"
+          "current_key": "AIzaSyAT0QmafJhR4WqfmhFyJxwGZwwgUeYhIW8"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "132950112983-e391l9bpikspch47ikkgae0tfg6e5c21.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "132950112983-5e9vtdkmegn7ufjk7ckbl7j77fr5mbdi.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.alora"
-              }
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }
