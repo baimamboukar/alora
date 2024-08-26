@@ -26,7 +26,7 @@ class NotificationsPage extends ConsumerWidget {
                 onTap: () => context.autorouter.maybePop(),
                 child: CircleAvatar(
                   radius: 20,
-                  backgroundColor: const Color(0xFFEAEAEA),
+                  backgroundColor: context.colorScheme.surface,
                   child: Center(
                     child: Icon(
                       Icons.chevron_left,
