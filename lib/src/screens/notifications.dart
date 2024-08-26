@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:grnagain/src/configs/index.dart';
+import 'package:grnagain/src/extensions/contextx.dart';
 import 'package:grnagain/src/extensions/extensions.dart';
 
 @RoutePage()
@@ -23,14 +24,14 @@ class NotificationsPage extends ConsumerWidget {
               ),
               GestureDetector(
                 onTap: () => context.autorouter.maybePop(),
-                child: const CircleAvatar(
+                child: CircleAvatar(
                   radius: 20,
-                  backgroundColor: Color(0xFFEAEAEA),
+                  backgroundColor: const Color(0xFFEAEAEA),
                   child: Center(
                     child: Icon(
                       Icons.chevron_left,
                       size: 32,
-                      color: Palette.primary,
+                      color: context.colorScheme.primary,
                     ),
                   ),
                 ),
@@ -44,7 +45,9 @@ class NotificationsPage extends ConsumerWidget {
                 alignment: Alignment.bottomCenter,
                 child: Text("Notificaions",
                     style: Styles.designText(
-                        bold: true, color: Palette.primary, size: 26)),
+                        bold: true,
+                        color: context.colorScheme.primary,
+                        size: 26)),
               ),
               Positioned(right: 0, child: Image.asset("assets/images/leaf.png"))
             ],
@@ -52,8 +55,8 @@ class NotificationsPage extends ConsumerWidget {
           const SizedBox(
             height: 120,
           ),
-          const Icon(Icons.notifications_active,
-              size: 100, color: Palette.primary)
+          Icon(Icons.notifications_active,
+              size: 100, color: context.colorScheme.primary)
         ],
       ),
     );

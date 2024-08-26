@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:grnagain/i18n/strings.g.dart';
 import 'package:grnagain/src/configs/data.dart';
 import 'package:grnagain/src/configs/index.dart';
+import 'package:grnagain/src/extensions/contextx.dart';
 import 'package:grnagain/src/models/crop_model.dart';
 import 'package:line_icons/line_icons.dart';
 
@@ -46,7 +47,7 @@ class CropsSearch extends SearchDelegate {
             Text(
               t.mathingItems,
               style: Styles.designText(
-                  bold: true, size: 16, color: Palette.primary),
+                  bold: true, size: 16, color: context.colorScheme.primary),
             ),
             const SizedBox(height: 14),
             ..._crops.map(
@@ -60,16 +61,18 @@ class CropsSearch extends SearchDelegate {
                   title: Text(
                     crop.name,
                     style: Styles.designText(
-                        bold: true, color: Palette.primary, size: 14.0),
+                        bold: true,
+                        color: context.colorScheme.primary,
+                        size: 14.0),
                   ),
                   subtitle: Text(
                     crop.scienticName,
                     style: Styles.designText(
                         bold: false, color: Palette.secondary, size: 12.0),
                   ),
-                  trailing: const Icon(
+                  trailing: Icon(
                     LineIcons.heartAlt,
-                    color: Palette.primary,
+                    color: context.colorScheme.primary,
                   )),
             )
           ],
@@ -105,7 +108,7 @@ class CropsSearch extends SearchDelegate {
             Text(
               query.isEmpty ? t.bookmarkedCrops : t.matchingResults,
               style: Styles.designText(
-                  bold: true, size: 16, color: Palette.primary),
+                  bold: true, size: 16, color: context.colorScheme.primary),
             ),
             const SizedBox(height: 14),
             ..._crops.map(
@@ -119,16 +122,18 @@ class CropsSearch extends SearchDelegate {
                   title: Text(
                     crop.name,
                     style: Styles.designText(
-                        bold: true, color: Palette.primary, size: 14.0),
+                        bold: true,
+                        color: context.colorScheme.primary,
+                        size: 14.0),
                   ),
                   subtitle: Text(
                     crop.scienticName,
                     style: Styles.designText(
                         bold: false, color: Palette.secondary, size: 12.0),
                   ),
-                  trailing: const Icon(
+                  trailing: Icon(
                     LineIcons.heartAlt,
-                    color: Palette.primary,
+                    color: context.colorScheme.primary,
                   )),
             )
           ],
@@ -148,6 +153,7 @@ class CropsSearch extends SearchDelegate {
         textTheme: Theme.of(context).textTheme.copyWith(
               titleLarge: const TextStyle(color: Colors.white),
             ),
-        appBarTheme: const AppBarTheme(elevation: 0.0, color: Palette.primary));
+        appBarTheme:
+            AppBarTheme(elevation: 0.0, color: context.colorScheme.primary));
   }
 }

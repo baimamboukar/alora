@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:grnagain/i18n/strings.g.dart';
 import 'package:grnagain/src/configs/index.dart';
+import 'package:grnagain/src/extensions/contextx.dart';
 import 'package:grnagain/src/widgets/index.dart';
 
 @RoutePage()
@@ -36,11 +37,12 @@ class _PaymentConfirmState extends ConsumerState<PaymentConfirmPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(Icons.check_circle, color: Palette.primary, size: 100),
+            Icon(Icons.check_circle,
+                color: context.colorScheme.primary, size: 100),
             Text(
               t.paymentConfirmation,
               style: Styles.designText(
-                  bold: true, size: 18, color: Palette.primary),
+                  bold: true, size: 18, color: context.colorScheme.primary),
             ),
             const SizedBox(
               height: 22,

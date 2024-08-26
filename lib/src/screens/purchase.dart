@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:grnagain/i18n/strings.g.dart';
 import 'package:grnagain/src/configs/index.dart';
+import 'package:grnagain/src/extensions/contextx.dart';
 import 'package:grnagain/src/extensions/extensions.dart';
 import 'package:grnagain/src/widgets/button.dart';
 import 'package:line_icons/line_icons.dart';
@@ -50,10 +51,10 @@ class PurchasePage extends StatelessWidget {
                         Center(
                           child: Text(
                             t.purchasePrenium,
-                            style: const TextStyle(
+                            style: TextStyle(
                                 fontSize: 22,
                                 fontWeight: FontWeight.bold,
-                                color: Palette.primary),
+                                color: context.colorScheme.primary),
                           ),
                         ),
                         const Icon(LineIcons.medal,
@@ -95,7 +96,9 @@ class PurchasePage extends StatelessWidget {
                           Text(
                             "Features",
                             style: Styles.designText(
-                                color: Palette.primary, size: 22, bold: true),
+                                color: context.colorScheme.primary,
+                                size: 22,
+                                bold: true),
                           ),
                           const SizedBox(
                             height: 20.0,
@@ -164,12 +167,12 @@ class Feature extends StatelessWidget {
           ),
           Icon(
             isPrenium ? LineIcons.timesCircle : LineIcons.checkCircleAlt,
-            color: isPrenium ? Palette.danger : Palette.primary,
+            color: isPrenium ? Palette.danger : context.colorScheme.primary,
           ),
           const SizedBox(width: 35),
-          const Icon(
+          Icon(
             LineIcons.checkCircleAlt,
-            color: Palette.primary,
+            color: context.colorScheme.primary,
           ),
         ],
       ),

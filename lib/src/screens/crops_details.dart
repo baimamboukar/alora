@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:grnagain/i18n/strings.g.dart';
 import 'package:grnagain/src/configs/index.dart';
+import 'package:grnagain/src/extensions/contextx.dart';
 import 'package:grnagain/src/extensions/extensions.dart';
 import 'package:grnagain/src/models/crop_model.dart';
 import 'package:grnagain/src/widgets/index.dart';
@@ -50,14 +51,14 @@ class _CropsDetailsState extends ConsumerState<CropsDetailsPage> {
                 ),
                 GestureDetector(
                   onTap: () => context.autorouter.maybePop(),
-                  child: const CircleAvatar(
+                  child: CircleAvatar(
                     radius: 20,
-                    backgroundColor: Color(0xFFEAEAEA),
+                    backgroundColor: context.colorScheme.surface,
                     child: Center(
                       child: Icon(
                         Icons.chevron_left,
                         size: 32,
-                        color: Palette.primary,
+                        color: context.colorScheme.primary,
                       ),
                     ),
                   ),
@@ -97,7 +98,7 @@ class _CropsDetailsState extends ConsumerState<CropsDetailsPage> {
                             },
                             child: CircleAvatar(
                               radius: 28,
-                              backgroundColor: Palette.primary,
+                              backgroundColor: context.colorScheme.primary,
                               child: Icon(
                                 widget.model.isBookmarked
                                     ? LineIcons.heartAlt
@@ -119,12 +120,12 @@ class _CropsDetailsState extends ConsumerState<CropsDetailsPage> {
                                 Text(widget.model.name,
                                     style: Styles.designText(
                                         bold: true,
-                                        color: Palette.primary,
+                                        color: context.colorScheme.primary,
                                         size: 16)),
                                 Text(widget.model.scienticName,
                                     style: Styles.designText(
                                         bold: false,
-                                        color: Palette.primary,
+                                        color: context.colorScheme.primary,
                                         size: 12)),
                               ],
                             ),

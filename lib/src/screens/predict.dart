@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:grnagain/i18n/strings.g.dart';
 import 'package:grnagain/src/configs/index.dart';
+import 'package:grnagain/src/extensions/contextx.dart';
 import 'package:grnagain/src/riverpods/prediction_services_riverpod.dart';
 import 'package:grnagain/src/widgets/error.dart';
 import 'package:grnagain/src/widgets/text_to_speech.dart';
@@ -25,7 +26,7 @@ class PredictPage extends ConsumerWidget {
         elevation: 0.0,
         title: Text(t.prediction,
             style: Styles.designText(
-                bold: false, size: 14, color: Palette.primary)),
+                bold: false, size: 14, color: context.colorScheme.primary)),
       ),
       body: predicter.when(
         data: (data) {
@@ -58,7 +59,9 @@ class PredictPage extends ConsumerWidget {
                           Text(
                             t.disease,
                             style: Styles.designText(
-                                bold: true, size: 16, color: Palette.primary),
+                                bold: true,
+                                size: 16,
+                                color: context.colorScheme.primary),
                           ),
                         ],
                       ),
@@ -71,7 +74,7 @@ class PredictPage extends ConsumerWidget {
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                            color: Palette.primary,
+                            color: context.colorScheme.primary,
                             borderRadius: BorderRadius.circular(20)),
                         child: Padding(
                           padding: const EdgeInsets.all(12.0),
@@ -90,7 +93,9 @@ class PredictPage extends ConsumerWidget {
                       Text(
                         t.description,
                         style: Styles.designText(
-                            bold: true, size: 16, color: Palette.primary),
+                            bold: true,
+                            size: 16,
+                            color: context.colorScheme.primary),
                       ),
                     ],
                   ),
@@ -99,7 +104,7 @@ class PredictPage extends ConsumerWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
                     decoration: BoxDecoration(
-                        color: Palette.primary,
+                        color: context.colorScheme.primary,
                         borderRadius: BorderRadius.circular(20)),
                     child: Padding(
                       padding: const EdgeInsets.all(12.0),
@@ -140,7 +145,9 @@ class PredictPage extends ConsumerWidget {
                           Text(
                             t.getToSource,
                             style: Styles.designText(
-                                bold: true, size: 16, color: Palette.primary),
+                                bold: true,
+                                size: 16,
+                                color: context.colorScheme.primary),
                           ),
                         ],
                       ),
@@ -155,7 +162,7 @@ class PredictPage extends ConsumerWidget {
                         },
                         child: Container(
                           decoration: BoxDecoration(
-                              color: Palette.primary,
+                              color: context.colorScheme.primary,
                               borderRadius: BorderRadius.circular(20)),
                           child: Padding(
                             padding: const EdgeInsets.all(12.0),
@@ -183,7 +190,7 @@ class PredictPage extends ConsumerWidget {
             Text(
               t.processingIMage,
               style: Styles.designText(
-                  color: Palette.primary, size: 20, bold: true),
+                  color: context.colorScheme.primary, size: 20, bold: true),
             ),
             Stack(
               children: [

@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:grnagain/i18n/strings.g.dart';
 import 'package:grnagain/src/configs/data.dart';
 import 'package:grnagain/src/configs/index.dart';
+import 'package:grnagain/src/extensions/contextx.dart';
 import 'package:grnagain/src/extensions/extensions.dart';
 import 'package:grnagain/src/screens/crops_view.dart';
 import 'package:grnagain/src/screens/library_search_delegate.dart';
@@ -53,9 +54,9 @@ class _BookmarksState extends ConsumerState<BookmarksPage> {
                   ),
                 ),
                 IconButton(
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.notifications_outlined,
-                    color: Palette.primary,
+                    color: context.colorScheme.primary,
                   ),
                   onPressed: () =>
                       context.autorouter.pushNamed('/notifications'),
@@ -67,7 +68,9 @@ class _BookmarksState extends ConsumerState<BookmarksPage> {
               children: [
                 Text(t.yourBookmarks,
                     style: Styles.designText(
-                        bold: true, color: Palette.primary, size: 26)),
+                        bold: true,
+                        color: context.colorScheme.primary,
+                        size: 26)),
               ],
             ),
             const SizedBox(height: 14),
@@ -112,7 +115,7 @@ class _BookmarksState extends ConsumerState<BookmarksPage> {
                     width: 50.0,
                     height: 50.0,
                     decoration: BoxDecoration(
-                      color: Palette.primary,
+                      color: context.colorScheme.primary,
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                     child: const Center(
@@ -137,7 +140,9 @@ class _BookmarksState extends ConsumerState<BookmarksPage> {
                         child: Text(
                           "No Bookmark found!",
                           style: Styles.designText(
-                              bold: true, color: Palette.primary, size: 18),
+                              bold: true,
+                              color: context.colorScheme.primary,
+                              size: 18),
                         ),
                       )
                     : Expanded(
@@ -160,7 +165,7 @@ class _BookmarksState extends ConsumerState<BookmarksPage> {
       ),
       floatingActionButton: CircleAvatar(
         radius: 28,
-        backgroundColor: Palette.primary,
+        backgroundColor: context.colorScheme.primary,
         child: IconButton(
             onPressed: () {
               FirebaseAuthentication.isPreniumUser

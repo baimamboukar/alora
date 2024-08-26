@@ -6,6 +6,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:grnagain/i18n/strings.g.dart';
 import 'package:grnagain/src/configs/index.dart';
+import 'package:grnagain/src/extensions/contextx.dart';
 import 'package:grnagain/src/extensions/extensions.dart';
 import 'package:grnagain/src/riverpods/index.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -41,14 +42,14 @@ class _ProfileState extends ConsumerState<ProfilePage> {
                 ),
                 GestureDetector(
                   onTap: () => context.autorouter.maybePop(),
-                  child: const CircleAvatar(
+                  child: CircleAvatar(
                     radius: 20,
-                    backgroundColor: Color(0xFFEAEAEA),
+                    backgroundColor: const Color(0xFFEAEAEA),
                     child: Center(
                       child: Icon(
                         Icons.chevron_left,
                         size: 32,
-                        color: Palette.primary,
+                        color: context.colorScheme.primary,
                       ),
                     ),
                   ),
@@ -62,7 +63,9 @@ class _ProfileState extends ConsumerState<ProfilePage> {
                   alignment: Alignment.bottomCenter,
                   child: Text(t.profile,
                       style: Styles.designText(
-                          bold: true, color: Palette.primary, size: 26)),
+                          bold: true,
+                          color: context.colorScheme.primary,
+                          size: 26)),
                 ),
                 Positioned(
                   right: 0,
@@ -101,7 +104,9 @@ class _ProfileState extends ConsumerState<ProfilePage> {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: Styles.designText(
-                        bold: true, color: Palette.primary, size: 14),
+                        bold: true,
+                        color: context.colorScheme.primary,
+                        size: 14),
                   ),
                   const SizedBox(
                     width: 10,
@@ -114,9 +119,9 @@ class _ProfileState extends ConsumerState<ProfilePage> {
                             FirebaseAuth.instance.currentUser?.updateDisplayName(
                                 "${FirebaseAuth.instance.currentUser?.displayName?.split('-')[0].trimRight()}");
                           },
-                          child: const Icon(
+                          child: Icon(
                             Icons.verified,
-                            color: Palette.primary,
+                            color: context.colorScheme.primary,
                           ),
                         )
                       : const SizedBox.shrink(),
@@ -124,7 +129,9 @@ class _ProfileState extends ConsumerState<ProfilePage> {
               ),
               subtitle: Text(FirebaseAuth.instance.currentUser?.email ?? "...",
                   style: Styles.designText(
-                      bold: false, color: Palette.primary, size: 12)),
+                      bold: false,
+                      color: context.colorScheme.primary,
+                      size: 12)),
             ),
             const SizedBox(
               height: 20,
@@ -146,7 +153,7 @@ class _ProfileState extends ConsumerState<ProfilePage> {
                                 style: Styles.designText(
                                     size: 14.0,
                                     bold: false,
-                                    color: Palette.primary),
+                                    color: context.colorScheme.primary),
                               ),
                             ))
                         .toList(),
@@ -175,9 +182,9 @@ class _ProfileState extends ConsumerState<ProfilePage> {
                   );
                 },
               ),
-              leading: const Icon(
+              leading: Icon(
                 Icons.language,
-                color: Palette.primary,
+                color: context.colorScheme.primary,
                 size: 32,
               ),
               subtitle: Text(t.changeAppLanguage,
@@ -185,19 +192,21 @@ class _ProfileState extends ConsumerState<ProfilePage> {
                       bold: false, color: Palette.secondary, size: 11)),
               title: Text(t.language,
                   style: Styles.designText(
-                      bold: false, color: Palette.primary, size: 16)),
+                      bold: false,
+                      color: context.colorScheme.primary,
+                      size: 16)),
             ),
             ListTile(
-              leading: const Icon(
+              leading: Icon(
                 Icons.light_mode,
-                color: Palette.primary,
+                color: context.colorScheme.primary,
                 size: 32,
               ),
               trailing: ValueListenableBuilder(
                 valueListenable: Hive.box('settings').listenable(),
                 builder: (BuildContext context, Box box, Widget? widget) {
                   return CupertinoSwitch(
-                    activeColor: Palette.primary,
+                    activeColor: context.colorScheme.primary,
                     value: box.get('theme'),
                     onChanged: (value) {
                       box.put('theme', value);
@@ -210,37 +219,58 @@ class _ProfileState extends ConsumerState<ProfilePage> {
                       bold: false, color: Palette.secondary, size: 11)),
               title: Text(t.themeMode,
                   style: Styles.designText(
-                      bold: false, color: Palette.primary, size: 16)),
+                      bold: false,
+                      color: context.colorScheme.primary,
+                      size: 16)),
             ),
             ListTile(
-              leading: const Icon(
+              onTap: () => context.autorouter.pushNamed('/bookmarks'),
+              leading: Icon(
+                LineIcons.heart,
+                color: context.colorScheme.primary,
+                size: 32,
+              ),
+              title: Text(
+                t.bookmarks,
+                style: Styles.designText(
+                    bold: false, color: context.colorScheme.primary, size: 16),
+              ),
+            ),
+            ListTile(
+              leading: Icon(
                 Icons.people,
-                color: Palette.primary,
+                color: context.colorScheme.primary,
                 size: 32,
               ),
               title: Text(t.contactUS,
                   style: Styles.designText(
-                      bold: false, color: Palette.primary, size: 16)),
+                      bold: false,
+                      color: context.colorScheme.primary,
+                      size: 16)),
             ),
             ListTile(
-              leading: const Icon(
+              leading: Icon(
                 Icons.fiber_manual_record,
-                color: Palette.primary,
+                color: context.colorScheme.primary,
                 size: 32,
               ),
               title: Text(t.termsOfService,
                   style: Styles.designText(
-                      bold: false, color: Palette.primary, size: 16)),
+                      bold: false,
+                      color: context.colorScheme.primary,
+                      size: 16)),
             ),
             ListTile(
-              leading: const Icon(
+              leading: Icon(
                 Icons.help_center_rounded,
-                color: Palette.primary,
+                color: context.colorScheme.primary,
                 size: 32,
               ),
               title: Text(t.helpCenter,
                   style: Styles.designText(
-                      bold: false, color: Palette.primary, size: 16)),
+                      bold: false,
+                      color: context.colorScheme.primary,
+                      size: 16)),
             ),
             ListTile(
               onTap: () async {
@@ -252,14 +282,16 @@ class _ProfileState extends ConsumerState<ProfilePage> {
                   await EasyLoading.showSuccess(t.loggedOut);
                 });
               },
-              leading: const Icon(
+              leading: Icon(
                 LineIcons.powerOff,
-                color: Palette.primary,
+                color: context.colorScheme.primary,
                 size: 32,
               ),
               title: Text(t.logout,
                   style: Styles.designText(
-                      bold: false, color: Palette.primary, size: 16)),
+                      bold: false,
+                      color: context.colorScheme.primary,
+                      size: 16)),
             )
           ],
         ),

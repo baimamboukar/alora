@@ -17,7 +17,8 @@ class HomePage extends ConsumerWidget {
       scaffoldKey: _key,
       routes: const [
         CropsRoute(),
-        BookmarksRoute(),
+        AgrovetShopsRoute(),
+        HistoryRoute(),
         ProfileRoute(),
       ],
       transitionBuilder: (context, child, animation) => ScaleTransition(
@@ -32,8 +33,10 @@ class HomePage extends ConsumerWidget {
         destinations: [
           NavigationDestination(
               icon: const Icon(LineIcons.leaf), label: t.library),
-          NavigationDestination(
-              icon: const Icon(LineIcons.heart), label: t.bookmarks),
+          const NavigationDestination(
+              icon: Icon(LineIcons.shoppingBag), label: "Agrovet Shops"),
+          const NavigationDestination(
+              icon: Icon(LineIcons.clockAlt), label: "History"),
           NavigationDestination(
               icon: const Icon(LineIcons.user), label: t.profile),
         ],

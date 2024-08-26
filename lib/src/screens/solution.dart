@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:grnagain/i18n/strings.g.dart';
 import 'package:grnagain/src/configs/index.dart';
+import 'package:grnagain/src/extensions/contextx.dart';
 import 'package:grnagain/src/extensions/extensions.dart';
 import 'package:grnagain/src/models/crop_model.dart';
 import 'package:grnagain/src/widgets/text_to_speech.dart';
@@ -48,14 +49,14 @@ class _SolutionState extends ConsumerState<SolutionPage> {
                 ),
                 GestureDetector(
                   onTap: () => context.autorouter.maybePop(),
-                  child: const CircleAvatar(
+                  child: CircleAvatar(
                     radius: 20,
-                    backgroundColor: Color(0xFFEAEAEA),
+                    backgroundColor: const Color(0xFFEAEAEA),
                     child: Center(
                       child: Icon(
                         Icons.chevron_left,
                         size: 32,
-                        color: Palette.primary,
+                        color: context.colorScheme.primary,
                       ),
                     ),
                   ),
@@ -86,7 +87,7 @@ class _SolutionState extends ConsumerState<SolutionPage> {
                           top: -32,
                           child: CircleAvatar(
                             radius: 28,
-                            backgroundColor: Palette.primary,
+                            backgroundColor: context.colorScheme.primary,
                             child: IconButton(
                               onPressed: () {
                                 final Box box = Hive.box('bookmarks');
@@ -116,12 +117,12 @@ class _SolutionState extends ConsumerState<SolutionPage> {
                                 Text(widget.model.name,
                                     style: Styles.designText(
                                         bold: true,
-                                        color: Palette.primary,
+                                        color: context.colorScheme.primary,
                                         size: 16)),
                                 Text(widget.model.scienticName,
                                     style: Styles.designText(
                                         bold: false,
-                                        color: Palette.primary,
+                                        color: context.colorScheme.primary,
                                         size: 12)),
                               ],
                             ),
@@ -134,7 +135,9 @@ class _SolutionState extends ConsumerState<SolutionPage> {
                     const SizedBox(height: 14),
                     Text(t.solutionAndTreatment,
                         style: Styles.designText(
-                            bold: true, size: 16.5, color: Palette.primary)),
+                            bold: true,
+                            size: 16.5,
+                            color: context.colorScheme.primary)),
                     const SizedBox(height: 14),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 14),
@@ -170,14 +173,16 @@ class _SolutionState extends ConsumerState<SolutionPage> {
                           Text(
                             "💡 ${t.importantTips}",
                             style: Styles.designText(
-                                bold: true, size: 14.5, color: Palette.primary),
+                                bold: true,
+                                size: 14.5,
+                                color: context.colorScheme.primary),
                           ),
                           Text(
                             widget.model.treatment.outtro ?? "",
                             style: Styles.designText(
                                 bold: false,
                                 size: 14.5,
-                                color: Palette.primary),
+                                color: context.colorScheme.primary),
                           ),
                         ],
                       ),
@@ -186,7 +191,7 @@ class _SolutionState extends ConsumerState<SolutionPage> {
                     //   padding: const EdgeInsets.all(8.0),
                     //   child: Container(
                     //     decoration: BoxDecoration(
-                    //         color: Palette.primary,
+                    //         color: context.colorScheme.primary,
                     //         borderRadius: BorderRadius.circular(20)),
                     //     child: Padding(
                     //       padding: const EdgeInsets.all(12.0),

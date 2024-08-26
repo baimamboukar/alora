@@ -20,14 +20,22 @@ class AppRouter extends RootStackRouter {
               initial: true,
             ),
             AutoRoute(
-              page: BookmarksRoute.page,
-              path: 'bookmarks',
+              page: HistoryRoute.page,
+              path: 'history',
+            ),
+            AutoRoute(
+              page: AgrovetShopsRoute.page,
+              path: 'agrovet-shops',
             ),
             AutoRoute(
               page: ProfileRoute.page,
               path: 'profile',
             ),
           ],
+        ),
+        AutoRoute(
+          page: BookmarksRoute.page,
+          path: '/bookmarks',
         ),
         AutoRoute(
           page: LoginRoute.page,

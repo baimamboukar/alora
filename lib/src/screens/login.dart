@@ -5,6 +5,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:grnagain/i18n/strings.g.dart';
 import 'package:grnagain/src/configs/index.dart';
+import 'package:grnagain/src/extensions/contextx.dart';
 import 'package:grnagain/src/extensions/extensions.dart';
 import 'package:grnagain/src/riverpods/auth_riverpods.dart';
 import 'package:grnagain/src/widgets/index.dart';
@@ -38,12 +39,16 @@ class LoginPage extends ConsumerWidget {
                     Text(
                       t.welcomeBack,
                       style: Styles.designText(
-                          bold: true, color: Palette.primary, size: 30),
+                          bold: true,
+                          color: context.colorScheme.primary,
+                          size: 30),
                     ),
                     Text(
                       t.loginToAccount,
                       style: Styles.designText(
-                          bold: false, color: Palette.primary, size: 20),
+                          bold: false,
+                          color: context.colorScheme.primary,
+                          size: 20),
                     ),
                     const SizedBox(height: 18),
                     Input(
@@ -73,7 +78,9 @@ class LoginPage extends ConsumerWidget {
                       children: [
                         Text(t.forgotPassword,
                             style: Styles.designText(
-                                bold: true, color: Palette.primary, size: 16)),
+                                bold: true,
+                                color: context.colorScheme.primary,
+                                size: 16)),
                       ],
                     ),
                     const SizedBox(height: 18),
@@ -127,7 +134,7 @@ class LoginPage extends ConsumerWidget {
                           child: Text(t.singup,
                               style: Styles.designText(
                                   bold: true,
-                                  color: Palette.primary,
+                                  color: context.colorScheme.primary,
                                   size: 14)),
                         ),
                       ],

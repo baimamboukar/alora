@@ -5,6 +5,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:grnagain/i18n/strings.g.dart';
 import 'package:grnagain/src/configs/index.dart';
+import 'package:grnagain/src/extensions/contextx.dart';
 import 'package:grnagain/src/extensions/extensions.dart';
 import 'package:grnagain/src/riverpods/auth_riverpods.dart';
 import 'package:grnagain/src/widgets/index.dart';
@@ -36,10 +37,14 @@ class SignupPage extends ConsumerWidget {
                     children: [
                       Text(t.register,
                           style: Styles.designText(
-                              bold: true, color: Palette.primary, size: 30)),
+                              bold: true,
+                              color: context.colorScheme.primary,
+                              size: 30)),
                       Text(t.createAccount,
                           style: Styles.designText(
-                              bold: false, color: Palette.primary, size: 15)),
+                              bold: false,
+                              color: context.colorScheme.primary,
+                              size: 15)),
                     ],
                   ),
                 ),
@@ -112,7 +117,7 @@ class SignupPage extends ConsumerWidget {
             const SizedBox(height: 30),
             Text(t.orSignInWith,
                 style: Styles.designText(
-                    bold: true, color: Palette.primary, size: 16)),
+                    bold: true, color: context.colorScheme.primary, size: 16)),
             const SizedBox(height: 14),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -146,7 +151,9 @@ class SignupPage extends ConsumerWidget {
                   onPressed: () => context.autorouter.replaceNamed('/login'),
                   child: Text(t.login,
                       style: Styles.designText(
-                          bold: true, color: Palette.primary, size: 14)),
+                          bold: true,
+                          color: context.colorScheme.primary,
+                          size: 14)),
                 ),
               ],
             ),

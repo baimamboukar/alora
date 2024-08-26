@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:grnagain/src/configs/index.dart';
+import 'package:grnagain/src/extensions/contextx.dart';
 import 'package:grnagain/src/models/crop_model.dart';
 import 'package:grnagain/src/router/router.gr.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -66,18 +67,20 @@ class _CropCaptionState extends ConsumerState<CropCaption> {
                                 child: Text(widget.crop.name,
                                     style: Styles.designText(
                                         bold: false,
-                                        color: Palette.primary,
+                                        color: context.colorScheme.primary,
                                         size: 15)),
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(left: 8.0),
-                                child: Text(widget.crop.scienticName,
-                                    overflow: TextOverflow.ellipsis,
-                                    softWrap: true,
-                                    style: Styles.designText(
-                                        bold: false,
-                                        color: Palette.primary,
-                                        size: 9)),
+                                child: Text(
+                                  widget.crop.scienticName,
+                                  overflow: TextOverflow.ellipsis,
+                                  softWrap: true,
+                                  style: Styles.designText(
+                                      bold: false,
+                                      color: context.colorScheme.primary,
+                                      size: 9),
+                                ),
                               ),
                             ],
                           ),

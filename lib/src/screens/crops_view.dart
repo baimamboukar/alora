@@ -8,6 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:grnagain/i18n/strings.g.dart';
 import 'package:grnagain/src/configs/data.dart';
 import 'package:grnagain/src/configs/index.dart';
+import 'package:grnagain/src/extensions/contextx.dart';
 import 'package:grnagain/src/extensions/extensions.dart';
 import 'package:grnagain/src/services/auth/firebase_auth.dart';
 import 'package:grnagain/src/services/mobile/image_picker_services.dart';
@@ -91,9 +92,9 @@ class _CropsViewState extends ConsumerState<CropsPage> {
                     ),
                   ),
                   IconButton(
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.notifications_outlined,
-                      color: Palette.primary,
+                      color: context.colorScheme.primary,
                     ),
                     onPressed: () =>
                         context.autorouter.pushNamed('/notifications'),
@@ -105,7 +106,9 @@ class _CropsViewState extends ConsumerState<CropsPage> {
                 children: [
                   Text(t.yourLibary,
                       style: Styles.designText(
-                          bold: true, color: Palette.primary, size: 26)),
+                          bold: true,
+                          color: context.colorScheme.primary,
+                          size: 26)),
                 ],
               ),
               const SizedBox(height: 14),
@@ -150,7 +153,7 @@ class _CropsViewState extends ConsumerState<CropsPage> {
                       width: 50.0,
                       height: 50.0,
                       decoration: BoxDecoration(
-                        color: Palette.primary,
+                        color: context.colorScheme.primary,
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       child: const Center(
@@ -170,9 +173,9 @@ class _CropsViewState extends ConsumerState<CropsPage> {
                 child: YoutubePlayer(
                   controller: _controller,
                   showVideoProgressIndicator: true,
-                  progressIndicatorColor: Palette.primary,
-                  progressColors: const ProgressBarColors(
-                    playedColor: Palette.primary,
+                  progressIndicatorColor: context.colorScheme.primary,
+                  progressColors: ProgressBarColors(
+                    playedColor: context.colorScheme.primary,
                     handleColor: Palette.dark,
                   ),
                   onReady: () {
@@ -210,7 +213,7 @@ class _CropsViewState extends ConsumerState<CropsPage> {
       ),
       floatingActionButton: CircleAvatar(
         radius: 28,
-        backgroundColor: Palette.primary,
+        backgroundColor: context.colorScheme.primary,
         child: IconButton(
             onPressed: () {
               FirebaseAuthentication.isPreniumUser
@@ -254,14 +257,14 @@ class ImagePickModal extends StatelessWidget {
             height: 6,
             width: 70,
             decoration: BoxDecoration(
-              color: Palette.primary,
+              color: context.colorScheme.primary,
               borderRadius: BorderRadius.circular(20),
             ),
           ),
           const SizedBox(height: 20),
           Text(t.pickImageFromGallery,
               style: Styles.designText(
-                  bold: false, color: Palette.primary, size: 16)),
+                  bold: false, color: context.colorScheme.primary, size: 16)),
           Column(
             children: [
               Text(
@@ -294,7 +297,7 @@ class ImagePickModal extends StatelessWidget {
                           width: 100.0,
                           height: 70.0,
                           decoration: BoxDecoration(
-                            color: Palette.primary,
+                            color: context.colorScheme.primary,
                             borderRadius: BorderRadius.circular(20.0),
                           ),
                           child: Column(
@@ -330,7 +333,7 @@ class ImagePickModal extends StatelessWidget {
                           width: 100.0,
                           height: 70.0,
                           decoration: BoxDecoration(
-                            color: Palette.primary,
+                            color: context.colorScheme.primary,
                             borderRadius: BorderRadius.circular(20.0),
                           ),
                           child: Column(
