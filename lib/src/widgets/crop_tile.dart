@@ -1,7 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:grnagain/src/configs/index.dart';
 import 'package:grnagain/src/models/crop_model.dart';
+import 'package:grnagain/src/router/router.gr.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:line_icons/line_icons.dart';
 
@@ -21,7 +23,7 @@ class _CropCaptionState extends ConsumerState<CropCaption> {
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap: () {
-          //context.autorouter.navigate(CropsDetails(model: widget.crop));
+          context.router.navigate(CropsDetailsRoute(model: widget.crop));
         },
         child: Card(
           shape: RoundedRectangleBorder(
