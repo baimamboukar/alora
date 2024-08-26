@@ -65,7 +65,9 @@ class _ProfileState extends ConsumerState<ProfilePage> {
                           bold: true, color: Palette.primary, size: 26)),
                 ),
                 Positioned(
-                    right: 0, child: Image.asset("assets/images/leaf.png"))
+                  right: 0,
+                  child: Image.asset("assets/images/leaf.png"),
+                )
               ],
             ),
             const SizedBox(
@@ -94,8 +96,7 @@ class _ProfileState extends ConsumerState<ProfilePage> {
                 children: [
                   Text(
                     FirebaseAuth.instance.currentUser?.displayName
-                            ?.split('-')[0]
-                            .substring(0, 12) ??
+                            ?.split('-')[0] ??
                         "User",
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,

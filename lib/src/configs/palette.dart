@@ -17,7 +17,7 @@ class AppTheme {
 ThemeData _getTheme(Brightness brightness) => ThemeData(
       useMaterial3: true,
       brightness: brightness,
-      fontFamily: 'Gilroy',
+      fontFamily: 'GoogleSans',
       colorScheme: SeedColorScheme.fromSeeds(
         brightness: brightness,
         primary: const Color(0xFF337669),
