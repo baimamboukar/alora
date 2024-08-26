@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "app.sahelfund.greenagain",
+      "package_name": "app.sahelfund.greenagain",
+      "sha256_cert_fingerprints": [
+        "01:40:E8:41:BA:9B:CF:8D:B0:CE:EA:75:39:A6:A8:8C:85:8D:CF:8A:19:BA:ED:5F:A4:E2:A5:FF:06:94:9E:CF"
+      ]
+    }
+  }
+]
