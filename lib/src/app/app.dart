@@ -9,6 +9,7 @@ import 'package:grnagain/i18n/strings.g.dart';
 import 'package:grnagain/src/configs/index.dart';
 import 'package:grnagain/src/router/router.dart';
 import 'package:grnagain/src/router/router.gr.dart';
+import 'package:grnagain/src/widgets/app_blocs_base.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class GrnAgain extends ConsumerStatefulWidget {
@@ -30,38 +31,40 @@ class _GrnAgainState extends ConsumerState<GrnAgain> {
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder(
-      valueListenable: Hive.box<dynamic>('settings').listenable(),
-      builder: (context, Box box, widget) => MaterialApp.router(
-        builder: EasyLoading.init(),
-        locale: TranslationProvider.of(context).flutterLocale,
-        routerConfig: appRouter.config(
-          placeholder: (context) => const Center(
-            child: CupertinoActivityIndicator(),
+    return AppBlocsBase(
+      child: ValueListenableBuilder(
+        valueListenable: Hive.box<dynamic>('settings').listenable(),
+        builder: (context, Box box, widget) => MaterialApp.router(
+          builder: EasyLoading.init(),
+          locale: TranslationProvider.of(context).flutterLocale,
+          routerConfig: appRouter.config(
+            placeholder: (context) => const Center(
+              child: CupertinoActivityIndicator(),
+            ),
+            rebuildStackOnDeepLink: true,
+            deepLinkBuilder: (link) {
+              if (link.path.contains('payment-confirm')) {
+                final args = link.uri.queryParameters;
+                //final invitation = Invitation.fromMap(args, fromInvite: true);
+                return const DeepLink(
+                  [
+                    PaymentConfirmRoute(),
+                  ],
+                );
+              } else {
+                return DeepLink.defaultPath;
+              }
+            },
           ),
-          rebuildStackOnDeepLink: true,
-          deepLinkBuilder: (link) {
-            if (link.path.contains('payment-confirm')) {
-              final args = link.uri.queryParameters;
-              //final invitation = Invitation.fromMap(args, fromInvite: true);
-              return const DeepLink(
-                [
-                  PaymentConfirmRoute(),
-                ],
-              );
-            } else {
-              return DeepLink.defaultPath;
-            }
-          },
+          restorationScopeId: 'app',
+          debugShowCheckedModeBanner: false,
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          title: 'grnagain',
+          themeMode: box.get('theme') ? ThemeMode.dark : ThemeMode.light,
+          darkTheme: AppTheme.dark,
+          theme: AppTheme.light,
         ),
-        restorationScopeId: 'app',
-        debugShowCheckedModeBanner: false,
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        supportedLocales: AppLocalizations.supportedLocales,
-        title: 'grnagain',
-        themeMode: box.get('theme') ? ThemeMode.dark : ThemeMode.light,
-        darkTheme: AppTheme.dark,
-        theme: AppTheme.light,
       ),
     );
   }

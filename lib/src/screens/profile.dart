@@ -272,6 +272,22 @@ class _ProfileState extends ConsumerState<ProfilePage> {
                       color: context.colorScheme.primary,
                       size: 16)),
             ),
+            // About Page
+            ListTile(
+              onTap: () async {
+                context.autorouter.pushNamed('/about');
+              },
+              leading: Icon(
+                LineIcons.infoCircle,
+                color: context.colorScheme.primary,
+                size: 32,
+              ),
+              title: Text(
+                "About GreenAgain",
+                style: Styles.designText(
+                    bold: false, color: context.colorScheme.primary, size: 16),
+              ),
+            ),
             ListTile(
               onTap: () async {
                 await EasyLoading.show(

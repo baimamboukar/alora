@@ -73,5 +73,13 @@ class AppRouter extends RootStackRouter {
           page: SolutionRoute.page,
           path: '/solution',
         ),
+        AutoRoute(
+          page: AboutRoute.page,
+          path: '/about',
+        ),
+        AutoRoute(
+          page: ForecastRoute.page,
+          path: '/forecast',
+        ),
       ];
 }
