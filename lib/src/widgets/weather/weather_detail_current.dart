@@ -39,7 +39,7 @@ class WeatherDetailsCurrent extends StatelessWidget {
         horizontal: 10,
       ),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.secondary,
+        color: Theme.of(context).colorScheme.secondary.withOpacity(0.2),
         borderRadius: BorderRadius.circular(30),
       ),
       child: Column(

@@ -1,8 +1,6 @@
-
 import 'package:flutter/material.dart';
 
 class HourlyWeather extends StatelessWidget {
-
   final int length;
 
   final List<String> hourlyList;
@@ -19,7 +17,6 @@ class HourlyWeather extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
       height: 150,
       margin: const EdgeInsets.only(
@@ -39,7 +36,7 @@ class HourlyWeather extends StatelessWidget {
             ),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Theme.of(context).colorScheme.secondary,
+              color: Theme.of(context).colorScheme.secondary.withOpacity(0.2),
             ),
             width: 80,
             child: Column(

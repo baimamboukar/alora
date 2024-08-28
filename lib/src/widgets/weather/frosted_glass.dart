@@ -1,23 +1,28 @@
-
 import 'package:flutter/material.dart';
+import 'package:grnagain/src/extensions/contextx.dart';
+import 'package:grnagain/src/extensions/extensions.dart';
+import 'package:intl/intl.dart';
 
 class FrostedGlass extends StatelessWidget {
-
   final double borderRadius;
 
   final String tempMin;
   final String tempMax;
   final String icon;
   final String description;
+  final bool isPreview;
+  final DateTime? date;
 
   const FrostedGlass({
-    Key? key,
+    super.key,
     this.borderRadius = 30.0,
     required this.tempMin,
     required this.tempMax,
     required this.icon,
     required this.description,
-  }) : super(key: key);
+    this.isPreview = false,
+    this.date,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +32,12 @@ class FrostedGlass extends StatelessWidget {
         padding: const EdgeInsets.all(5),
         margin: const EdgeInsets.all(10),
         width: double.infinity,
-        height: 150,
+        height: isPreview ? 180 : 150,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(borderRadius),
-          color: Theme.of(context).colorScheme.secondary,
+          borderRadius: BorderRadius.circular(isPreview ? 12 : borderRadius),
+          color: isPreview
+              ? context.colorScheme.inversePrimary.withOpacity(0.35)
+              : Theme.of(context).colorScheme.primary.withOpacity(0.25),
         ),
         child: Center(
           child: Row(
@@ -47,15 +54,30 @@ class FrostedGlass extends StatelessWidget {
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    if (isPreview)
+                      Builder(builder: (context) {
+                        final format = DateFormat('E, d MMM yyyy');
+                        final formattedDate =
+                            format.format(date ?? DateTime.now());
+                        return Text(
+                          formattedDate,
+                          style: context.paragraph
+                              .copyWith(color: context.colorScheme.primary),
+                        ).floatL.hPaddingx(24);
+                      }),
                     Text(
                       description,
                       style: Theme.of(context).textTheme.headlineLarge,
+                    ).format,
+                    const Divider(
+                      color: Colors.black,
+                      thickness: 4,
                     ),
-                    const SizedBox(height: 10,),
                     Text(
-                      "Min: $tempMin°\nMax: $tempMax°",
-                      style: Theme.of(context).textTheme.headlineLarge,
+                      "Min: $tempMin°C\nMax: $tempMax°C",
+                      style: Theme.of(context).textTheme.headlineMedium,
                     ),
                   ],
                 ),

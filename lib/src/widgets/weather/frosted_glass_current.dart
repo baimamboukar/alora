@@ -1,8 +1,6 @@
-
 import 'package:flutter/material.dart';
 
 class FrostedGlassCurrent extends StatelessWidget {
-
   final double borderRadius;
 
   final String temp;
@@ -13,14 +11,14 @@ class FrostedGlassCurrent extends StatelessWidget {
   final String description;
 
   const FrostedGlassCurrent({
-    Key? key,
+    super.key,
     this.borderRadius = 30.0,
     required this.temp,
     required this.tempMin,
     required this.tempMax,
     required this.icon,
     required this.description,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +31,7 @@ class FrostedGlassCurrent extends StatelessWidget {
         height: 150,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(borderRadius),
-          color: Theme.of(context).colorScheme.secondary,
+          color: Theme.of(context).colorScheme.secondary.withOpacity(0.2),
         ),
         child: Center(
           child: Row(
@@ -62,9 +60,10 @@ class FrostedGlassCurrent extends StatelessWidget {
                         ),
                         Text(
                           "$tempMin°/$tempMax°",
-                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            fontSize: 14,
-                          ),
+                          style:
+                              Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                    fontSize: 14,
+                                  ),
                         ),
                       ],
                     ),

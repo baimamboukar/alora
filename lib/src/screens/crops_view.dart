@@ -168,7 +168,7 @@ class _BuildPage extends StatelessWidget {
             )
           ],
         ),
-        34.vGap,
+        //14.vGap,
         const WeatherForecast(),
         // const SizedBox(width: 35),
         // Container(child: player),

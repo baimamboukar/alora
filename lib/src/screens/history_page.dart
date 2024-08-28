@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:grnagain/src/extensions/contextx.dart';
 
 @RoutePage()
 class HistoryPage extends StatefulWidget {
@@ -12,6 +13,11 @@ class HistoryPage extends StatefulWidget {
 class _HistoryPageState extends State<HistoryPage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: Center(
+        child: Text('You dont have any history yet',
+            style: context.title.copyWith(color: context.colorScheme.primary)),
+      ),
+    );
   }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grnagain/src/widgets/weather/daily_summary.dart';
 import 'package:grnagain/src/widgets/weather/frosted_glass.dart';
-import 'package:grnagain/src/widgets/weather/other_temps.dart';
 import 'package:grnagain/src/widgets/weather/rise_set_timings.dart';
 import 'package:grnagain/src/widgets/weather/weather_details.dart';
 
@@ -70,12 +69,12 @@ class Day extends StatelessWidget {
         DailySummary(
           summary: summary,
         ),
-        OtherTemps(
-          morningTemp: morningTemp,
-          dayTemp: dayTemp,
-          eveningTemp: eveningTemp,
-          nightTemp: nightTemp,
-        ),
+        // OtherTemps(
+        //   morningTemp: morningTemp,
+        //   dayTemp: dayTemp,
+        //   eveningTemp: eveningTemp,
+        //   nightTemp: nightTemp,
+        // ),
         WeatherDetails(
           windSpeed: windSpeed,
           windDegree: windDegree,

@@ -1,8 +1,7 @@
-
 import 'package:flutter/material.dart';
+import 'package:grnagain/src/extensions/widgetx.dart';
 
 class DailySummary extends StatelessWidget {
-
   final String summary;
 
   const DailySummary({
@@ -22,14 +21,18 @@ class DailySummary extends StatelessWidget {
       ),
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.secondary,
+        color: Theme.of(context)
+            .colorScheme
+            .secondary
+            .withOpacity(0.2)
+            .withOpacity(0.2),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Center(
         child: Text(
-          summary,
-          style: Theme.of(context).textTheme.bodyMedium,
-        ),
+          "This day is more likely to be **$summary** day!",
+          style: Theme.of(context).textTheme.bodyLarge!.copyWith(),
+        ).format,
       ),
     );
   }
