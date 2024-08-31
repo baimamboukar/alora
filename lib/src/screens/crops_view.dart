@@ -30,8 +30,8 @@ class CropsPage extends ConsumerStatefulWidget {
 class _CropsViewState extends ConsumerState<CropsPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: const Padding(
+    return const Scaffold(
+      body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.0),
         child: _BuildPage(),
         // child: YoutubePlayerBuilder(
@@ -39,26 +39,44 @@ class _CropsViewState extends ConsumerState<CropsPage> {
         //   builder: (context, player) => _BuildPage(controller: _controller),
         // ),
       ),
-      floatingActionButton: CircleAvatar(
-        radius: 28,
-        backgroundColor: context.colorScheme.primary,
-        child: IconButton(
-            onPressed: () {
-              FirebaseAuthentication.isPreniumUser
-                  ? showModalBottomSheet(
-                      backgroundColor: Colors.transparent,
-                      context: context,
-                      builder: (context) {
-                        return const ImagePickModal();
-                      },
-                    )
-                  : context.autorouter.pushNamed('/purchase');
-            },
-            icon: const Icon(
-              Icons.document_scanner,
-              color: Palette.light,
-            )),
-      ),
+      floatingActionButton: ScannerLaucnher(),
+    );
+  }
+}
+
+class ScannerLaucnher extends StatelessWidget {
+  const ScannerLaucnher({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return CircleAvatar(
+      radius: 28,
+      backgroundColor: context.colorScheme.primary,
+      child: IconButton(
+          onPressed: () {
+            showModalBottomSheet(
+              backgroundColor: Colors.transparent,
+              context: context,
+              builder: (context) {
+                return const ImagePickModal();
+              },
+            );
+            // FirebaseAuthentication.isPreniumUser
+            //     ? showModalBottomSheet(
+            //         backgroundColor: Colors.transparent,
+            //         context: context,
+            //         builder: (context) {
+            //           return const ImagePickModal();
+            //         },
+            //       )
+            //     : context.autorouter.pushNamed('/purchase');
+          },
+          icon: const Icon(
+            Icons.document_scanner,
+            color: Palette.light,
+          )),
     );
   }
 }
