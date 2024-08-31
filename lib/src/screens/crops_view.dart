@@ -3,7 +3,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:grnagain/i18n/strings.g.dart';
 import 'package:grnagain/src/configs/data.dart';
@@ -11,11 +10,10 @@ import 'package:grnagain/src/configs/index.dart';
 import 'package:grnagain/src/extensions/contextx.dart';
 import 'package:grnagain/src/extensions/extensions.dart';
 import 'package:grnagain/src/services/auth/firebase_auth.dart';
-import 'package:grnagain/src/services/mobile/image_picker_services.dart';
+import 'package:grnagain/src/widgets/image_picker.dart';
 import 'package:grnagain/src/widgets/index.dart';
+import 'package:grnagain/src/widgets/scanner_launcher.dart';
 import 'package:grnagain/src/widgets/weather_forecast.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:line_icons/line_icons.dart';
 
 import 'library_search_delegate.dart';
 
@@ -39,44 +37,7 @@ class _CropsViewState extends ConsumerState<CropsPage> {
         //   builder: (context, player) => _BuildPage(controller: _controller),
         // ),
       ),
-      floatingActionButton: ScannerLaucnher(),
-    );
-  }
-}
-
-class ScannerLaucnher extends StatelessWidget {
-  const ScannerLaucnher({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return CircleAvatar(
-      radius: 28,
-      backgroundColor: context.colorScheme.primary,
-      child: IconButton(
-          onPressed: () {
-            showModalBottomSheet(
-              backgroundColor: Colors.transparent,
-              context: context,
-              builder: (context) {
-                return const ImagePickModal();
-              },
-            );
-            // FirebaseAuthentication.isPreniumUser
-            //     ? showModalBottomSheet(
-            //         backgroundColor: Colors.transparent,
-            //         context: context,
-            //         builder: (context) {
-            //           return const ImagePickModal();
-            //         },
-            //       )
-            //     : context.autorouter.pushNamed('/purchase');
-          },
-          icon: const Icon(
-            Icons.document_scanner,
-            color: Palette.light,
-          )),
+      floatingActionButton: ScannerLauncher(),
     );
   }
 }
@@ -177,43 +138,18 @@ class _BuildPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 child: const Center(
-                    child: Icon(
-                  Icons.document_scanner,
-                  size: 28,
-                  color: Palette.light,
-                )),
+                  child: Icon(
+                    Icons.document_scanner,
+                    size: 28,
+                    color: Palette.light,
+                  ),
+                ),
               ),
             )
           ],
         ),
         //14.vGap,
         const WeatherForecast(),
-        // const SizedBox(width: 35),
-        // Container(child: player),
-        // Padding(
-        //   padding: const EdgeInsets.only(top: 28.0),
-        //   child: YoutubePlayer(
-        //     controller: _controller,
-        //     showVideoProgressIndicator: true,
-        //     progressIndicatorColor: context.colorScheme.primary,
-        //     progressColors: ProgressBarColors(
-        //       playedColor: context.colorScheme.primary,
-        //       handleColor: Palette.dark,
-        //     ),
-        //     onReady: () {
-        //       //print('Player is ready.');
-        //     },
-        //     bottomActions: [
-        //       CurrentPosition(),
-        //       const SizedBox(width: 10.0),
-        //       ProgressBar(isExpanded: true),
-        //       const SizedBox(width: 10.0),
-        //       RemainingDuration(),
-        //       FullScreenButton(),
-        //     ],
-        //     thumbnail: Center(child: Image.asset("assets/images/grnagain.png")),
-        //   ),
-        // ),
         const SizedBox(width: 30),
         Expanded(
           child: GridView.count(
@@ -229,132 +165,6 @@ class _BuildPage extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-class ImagePickModal extends StatelessWidget {
-  const ImagePickModal({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        color: Palette.light,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
-        ),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(mainAxisSize: MainAxisSize.min, children: [
-          Container(
-            height: 6,
-            width: 70,
-            decoration: BoxDecoration(
-              color: context.colorScheme.primary,
-              borderRadius: BorderRadius.circular(20),
-            ),
-          ),
-          const SizedBox(height: 20),
-          Text(t.pickImageFromGallery,
-              style: Styles.designText(
-                  bold: false, color: context.colorScheme.primary, size: 16)),
-          Column(
-            children: [
-              Text(
-                t.pickImageFromGallery,
-                style: Styles.designText(
-                    color: Palette.light, size: 16, bold: true),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  GestureDetector(
-                    onTap: () async {
-                      final XFile? image =
-                          await ImagePickerServices.takeCameraImage();
-
-                      if (image == null) {
-                        EasyLoading.showError(t.noIMageSelected);
-                      } else {
-                        //  context.autorouter.push(Predict(image: image));
-                      }
-                    },
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      child: Container(
-                          width: 100.0,
-                          height: 70.0,
-                          decoration: BoxDecoration(
-                            color: context.colorScheme.primary,
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          child: Column(
-                            children: [
-                              const Icon(LineIcons.camera,
-                                  size: 32, color: Palette.secondary),
-                              Text(
-                                t.camera,
-                                style: Styles.designText(
-                                    color: Palette.light,
-                                    size: 12,
-                                    bold: false),
-                              ),
-                            ],
-                          )),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () async {
-                      final XFile? image =
-                          await ImagePickerServices.pickGalleryImage();
-                      if (image == null) {
-                        EasyLoading.showError(t.noIMageSelected);
-                      } else {
-                        //context.autorouter.push(Predict(image: image));
-                      }
-                    },
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      child: Container(
-                          width: 100.0,
-                          height: 70.0,
-                          decoration: BoxDecoration(
-                            color: context.colorScheme.primary,
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          child: Column(
-                            children: [
-                              const Icon(LineIcons.images,
-                                  size: 32, color: Palette.secondary),
-                              Text(
-                                t.gallery,
-                                style: Styles.designText(
-                                    color: Palette.light,
-                                    size: 12,
-                                    bold: false),
-                              ),
-                            ],
-                          )),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          )
-        ]),
-      ),
     );
   }
 }

@@ -7,10 +7,9 @@ import 'package:grnagain/src/configs/data.dart';
 import 'package:grnagain/src/configs/index.dart';
 import 'package:grnagain/src/extensions/contextx.dart';
 import 'package:grnagain/src/extensions/extensions.dart';
-import 'package:grnagain/src/screens/crops_view.dart';
 import 'package:grnagain/src/screens/library_search_delegate.dart';
-import 'package:grnagain/src/services/auth/firebase_auth.dart';
 import 'package:grnagain/src/widgets/index.dart';
+import 'package:grnagain/src/widgets/scanner_launcher.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 @RoutePage()
@@ -99,33 +98,7 @@ class _BookmarksState extends ConsumerState<BookmarksPage> {
                       ),
                     )),
                 const SizedBox(width: 22),
-                GestureDetector(
-                  onTap: () {
-                    FirebaseAuthentication.isPreniumUser
-                        ? showModalBottomSheet(
-                            backgroundColor: Colors.transparent,
-                            context: context,
-                            builder: (context) {
-                              return const ImagePickModal();
-                            },
-                          )
-                        : context.autorouter.pushNamed('/purchase');
-                  },
-                  child: Container(
-                    width: 50.0,
-                    height: 50.0,
-                    decoration: BoxDecoration(
-                      color: context.colorScheme.primary,
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    child: const Center(
-                        child: Icon(
-                      Icons.document_scanner,
-                      size: 36,
-                      color: Palette.light,
-                    )),
-                  ),
-                )
+                const ScannerLauncher()
               ],
             ),
             const SizedBox(height: 28),
@@ -163,26 +136,7 @@ class _BookmarksState extends ConsumerState<BookmarksPage> {
           ],
         ),
       ),
-      floatingActionButton: CircleAvatar(
-        radius: 28,
-        backgroundColor: context.colorScheme.primary,
-        child: IconButton(
-            onPressed: () {
-              FirebaseAuthentication.isPreniumUser
-                  ? showModalBottomSheet(
-                      backgroundColor: Colors.transparent,
-                      context: context,
-                      builder: (context) {
-                        return const ImagePickModal();
-                      },
-                    )
-                  : context.autorouter.pushNamed('/purchase');
-            },
-            icon: const Icon(
-              Icons.document_scanner,
-              color: Palette.light,
-            )),
-      ),
+      floatingActionButton: const ScannerLauncher(),
     );
   }
 }

@@ -24,9 +24,11 @@ class PredictPage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
-        title: Text(t.prediction,
-            style: Styles.designText(
-                bold: false, size: 14, color: context.colorScheme.primary)),
+        title: Text(
+          t.prediction,
+          style: Styles.designText(
+              bold: false, size: 14, color: context.colorScheme.primary),
+        ),
       ),
       body: predicter.when(
         data: (data) {
@@ -184,24 +186,28 @@ class PredictPage extends ConsumerWidget {
           );
         },
         loading: () => Center(
-            child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              t.processingIMage,
-              style: Styles.designText(
-                  color: context.colorScheme.primary, size: 20, bold: true),
-            ),
-            Stack(
-              children: [
-                Lottie.asset('assets/images/leaves.json'),
-                Lottie.asset('assets/images/leaf.json',
-                    width: 300, height: 300),
-              ],
-            ),
-          ],
-        )),
-        error: (err, trace) => ErrorView(desc: t.desc, error: t.error),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                t.processingIMage,
+                style: Styles.designText(
+                    color: context.colorScheme.primary, size: 20, bold: true),
+              ),
+              Stack(
+                children: [
+                  Lottie.asset('assets/images/leaves.json'),
+                  Lottie.asset('assets/images/leaf.json',
+                      width: 300, height: 300),
+                ],
+              ),
+            ],
+          ),
+        ),
+        error: (err, trace) => ErrorView(
+          desc: t.desc,
+          error: t.error,
+        ),
       ),
     );
   }
