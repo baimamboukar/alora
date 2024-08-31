@@ -7,6 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:grnagain/i18n/strings.g.dart';
 import 'package:grnagain/src/configs/index.dart';
 import 'package:grnagain/src/extensions/contextx.dart';
+import 'package:grnagain/src/extensions/num.dart';
 import 'package:grnagain/src/riverpods/prediction_services_riverpod.dart';
 import 'package:grnagain/src/widgets/error.dart';
 import 'package:grnagain/src/widgets/text_to_speech.dart';
@@ -27,7 +28,10 @@ class PredictPage extends ConsumerWidget {
         title: Text(
           t.prediction,
           style: Styles.designText(
-              bold: false, size: 14, color: context.colorScheme.primary),
+            bold: false,
+            size: 14,
+            color: context.colorScheme.primary,
+          ),
         ),
       ),
       body: predicter.when(
@@ -39,19 +43,20 @@ class PredictPage extends ConsumerWidget {
                 Container(
                   height: 200,
                   width: MediaQuery.of(context).size.width,
-                  decoration:
-                      BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
                   child: Image.file(
                     File(image.path),
                     fit: BoxFit.fitWidth,
                   ),
                 ),
-                const SizedBox(height: 10),
+                10.vGap,
                 TextToSpeech(
                   text: data.description,
                   lang: "en-AU",
                 ),
-                const SizedBox(height: 10),
+                10.vGap,
                 Padding(
                   padding: const EdgeInsets.only(left: 18.0),
                   child: Column(
