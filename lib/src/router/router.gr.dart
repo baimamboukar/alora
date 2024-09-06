@@ -8,9 +8,9 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i19;
-import 'package:flutter/material.dart' as _i20;
-import 'package:grnagain/src/models/crop_model.dart' as _i21;
+import 'package:auto_route/auto_route.dart' as _i20;
+import 'package:flutter/material.dart' as _i21;
+import 'package:grnagain/src/models/crop_model.dart' as _i22;
 import 'package:grnagain/src/screens/about_page.dart' as _i1;
 import 'package:grnagain/src/screens/agrovet_shops_page.dart' as _i2;
 import 'package:grnagain/src/screens/bookmarks.dart' as _i3;
@@ -28,14 +28,15 @@ import 'package:grnagain/src/screens/profile.dart' as _i14;
 import 'package:grnagain/src/screens/purchase.dart' as _i15;
 import 'package:grnagain/src/screens/settings.dart' as _i16;
 import 'package:grnagain/src/screens/signup.dart' as _i17;
-import 'package:grnagain/src/screens/solution.dart' as _i18;
-import 'package:image_picker/image_picker.dart' as _i22;
-import 'package:weather/weather.dart' as _i23;
+import 'package:grnagain/src/screens/soil_analysis.dart' as _i18;
+import 'package:grnagain/src/screens/solution.dart' as _i19;
+import 'package:image_picker/image_picker.dart' as _i23;
+import 'package:weather/weather.dart' as _i24;
 
 /// generated route for
 /// [_i1.AboutPage]
-class AboutRoute extends _i19.PageRouteInfo<void> {
-  const AboutRoute({List<_i19.PageRouteInfo>? children})
+class AboutRoute extends _i20.PageRouteInfo<void> {
+  const AboutRoute({List<_i20.PageRouteInfo>? children})
       : super(
           AboutRoute.name,
           initialChildren: children,
@@ -43,7 +44,7 @@ class AboutRoute extends _i19.PageRouteInfo<void> {
 
   static const String name = 'AboutRoute';
 
-  static _i19.PageInfo page = _i19.PageInfo(
+  static _i20.PageInfo page = _i20.PageInfo(
     name,
     builder: (data) {
       return const _i1.AboutPage();
@@ -53,8 +54,8 @@ class AboutRoute extends _i19.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.AgrovetShopsPage]
-class AgrovetShopsRoute extends _i19.PageRouteInfo<void> {
-  const AgrovetShopsRoute({List<_i19.PageRouteInfo>? children})
+class AgrovetShopsRoute extends _i20.PageRouteInfo<void> {
+  const AgrovetShopsRoute({List<_i20.PageRouteInfo>? children})
       : super(
           AgrovetShopsRoute.name,
           initialChildren: children,
@@ -62,7 +63,7 @@ class AgrovetShopsRoute extends _i19.PageRouteInfo<void> {
 
   static const String name = 'AgrovetShopsRoute';
 
-  static _i19.PageInfo page = _i19.PageInfo(
+  static _i20.PageInfo page = _i20.PageInfo(
     name,
     builder: (data) {
       return const _i2.AgrovetShopsPage();
@@ -72,8 +73,8 @@ class AgrovetShopsRoute extends _i19.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.BookmarksPage]
-class BookmarksRoute extends _i19.PageRouteInfo<void> {
-  const BookmarksRoute({List<_i19.PageRouteInfo>? children})
+class BookmarksRoute extends _i20.PageRouteInfo<void> {
+  const BookmarksRoute({List<_i20.PageRouteInfo>? children})
       : super(
           BookmarksRoute.name,
           initialChildren: children,
@@ -81,7 +82,7 @@ class BookmarksRoute extends _i19.PageRouteInfo<void> {
 
   static const String name = 'BookmarksRoute';
 
-  static _i19.PageInfo page = _i19.PageInfo(
+  static _i20.PageInfo page = _i20.PageInfo(
     name,
     builder: (data) {
       return const _i3.BookmarksPage();
@@ -91,11 +92,11 @@ class BookmarksRoute extends _i19.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i4.CropsDetailsPage]
-class CropsDetailsRoute extends _i19.PageRouteInfo<CropsDetailsRouteArgs> {
+class CropsDetailsRoute extends _i20.PageRouteInfo<CropsDetailsRouteArgs> {
   CropsDetailsRoute({
-    _i20.Key? key,
-    required _i21.Crop model,
-    List<_i19.PageRouteInfo>? children,
+    _i21.Key? key,
+    required _i22.Crop model,
+    List<_i20.PageRouteInfo>? children,
   }) : super(
           CropsDetailsRoute.name,
           args: CropsDetailsRouteArgs(
@@ -107,7 +108,7 @@ class CropsDetailsRoute extends _i19.PageRouteInfo<CropsDetailsRouteArgs> {
 
   static const String name = 'CropsDetailsRoute';
 
-  static _i19.PageInfo page = _i19.PageInfo(
+  static _i20.PageInfo page = _i20.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<CropsDetailsRouteArgs>();
@@ -125,9 +126,9 @@ class CropsDetailsRouteArgs {
     required this.model,
   });
 
-  final _i20.Key? key;
+  final _i21.Key? key;
 
-  final _i21.Crop model;
+  final _i22.Crop model;
 
   @override
   String toString() {
@@ -137,8 +138,8 @@ class CropsDetailsRouteArgs {
 
 /// generated route for
 /// [_i5.CropsPage]
-class CropsRoute extends _i19.PageRouteInfo<void> {
-  const CropsRoute({List<_i19.PageRouteInfo>? children})
+class CropsRoute extends _i20.PageRouteInfo<void> {
+  const CropsRoute({List<_i20.PageRouteInfo>? children})
       : super(
           CropsRoute.name,
           initialChildren: children,
@@ -146,7 +147,7 @@ class CropsRoute extends _i19.PageRouteInfo<void> {
 
   static const String name = 'CropsRoute';
 
-  static _i19.PageInfo page = _i19.PageInfo(
+  static _i20.PageInfo page = _i20.PageInfo(
     name,
     builder: (data) {
       return const _i5.CropsPage();
@@ -156,11 +157,11 @@ class CropsRoute extends _i19.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i6.DiseaseDetailsPage]
-class DiseaseDetailsRoute extends _i19.PageRouteInfo<DiseaseDetailsRouteArgs> {
+class DiseaseDetailsRoute extends _i20.PageRouteInfo<DiseaseDetailsRouteArgs> {
   DiseaseDetailsRoute({
-    _i20.Key? key,
-    required _i22.XFile image,
-    List<_i19.PageRouteInfo>? children,
+    _i21.Key? key,
+    required _i23.XFile image,
+    List<_i20.PageRouteInfo>? children,
   }) : super(
           DiseaseDetailsRoute.name,
           args: DiseaseDetailsRouteArgs(
@@ -172,7 +173,7 @@ class DiseaseDetailsRoute extends _i19.PageRouteInfo<DiseaseDetailsRouteArgs> {
 
   static const String name = 'DiseaseDetailsRoute';
 
-  static _i19.PageInfo page = _i19.PageInfo(
+  static _i20.PageInfo page = _i20.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<DiseaseDetailsRouteArgs>();
@@ -190,9 +191,9 @@ class DiseaseDetailsRouteArgs {
     required this.image,
   });
 
-  final _i20.Key? key;
+  final _i21.Key? key;
 
-  final _i22.XFile image;
+  final _i23.XFile image;
 
   @override
   String toString() {
@@ -202,11 +203,11 @@ class DiseaseDetailsRouteArgs {
 
 /// generated route for
 /// [_i7.ForecastPage]
-class ForecastRoute extends _i19.PageRouteInfo<ForecastRouteArgs> {
+class ForecastRoute extends _i20.PageRouteInfo<ForecastRouteArgs> {
   ForecastRoute({
-    _i20.Key? key,
-    required List<_i23.Weather> forecast,
-    List<_i19.PageRouteInfo>? children,
+    _i21.Key? key,
+    required List<_i24.Weather> forecast,
+    List<_i20.PageRouteInfo>? children,
   }) : super(
           ForecastRoute.name,
           args: ForecastRouteArgs(
@@ -218,7 +219,7 @@ class ForecastRoute extends _i19.PageRouteInfo<ForecastRouteArgs> {
 
   static const String name = 'ForecastRoute';
 
-  static _i19.PageInfo page = _i19.PageInfo(
+  static _i20.PageInfo page = _i20.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<ForecastRouteArgs>();
@@ -236,9 +237,9 @@ class ForecastRouteArgs {
     required this.forecast,
   });
 
-  final _i20.Key? key;
+  final _i21.Key? key;
 
-  final List<_i23.Weather> forecast;
+  final List<_i24.Weather> forecast;
 
   @override
   String toString() {
@@ -248,8 +249,8 @@ class ForecastRouteArgs {
 
 /// generated route for
 /// [_i8.HistoryPage]
-class HistoryRoute extends _i19.PageRouteInfo<void> {
-  const HistoryRoute({List<_i19.PageRouteInfo>? children})
+class HistoryRoute extends _i20.PageRouteInfo<void> {
+  const HistoryRoute({List<_i20.PageRouteInfo>? children})
       : super(
           HistoryRoute.name,
           initialChildren: children,
@@ -257,7 +258,7 @@ class HistoryRoute extends _i19.PageRouteInfo<void> {
 
   static const String name = 'HistoryRoute';
 
-  static _i19.PageInfo page = _i19.PageInfo(
+  static _i20.PageInfo page = _i20.PageInfo(
     name,
     builder: (data) {
       return const _i8.HistoryPage();
@@ -267,8 +268,8 @@ class HistoryRoute extends _i19.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i9.HomePage]
-class HomeRoute extends _i19.PageRouteInfo<void> {
-  const HomeRoute({List<_i19.PageRouteInfo>? children})
+class HomeRoute extends _i20.PageRouteInfo<void> {
+  const HomeRoute({List<_i20.PageRouteInfo>? children})
       : super(
           HomeRoute.name,
           initialChildren: children,
@@ -276,7 +277,7 @@ class HomeRoute extends _i19.PageRouteInfo<void> {
 
   static const String name = 'HomeRoute';
 
-  static _i19.PageInfo page = _i19.PageInfo(
+  static _i20.PageInfo page = _i20.PageInfo(
     name,
     builder: (data) {
       return const _i9.HomePage();
@@ -286,8 +287,8 @@ class HomeRoute extends _i19.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i10.LoginPage]
-class LoginRoute extends _i19.PageRouteInfo<void> {
-  const LoginRoute({List<_i19.PageRouteInfo>? children})
+class LoginRoute extends _i20.PageRouteInfo<void> {
+  const LoginRoute({List<_i20.PageRouteInfo>? children})
       : super(
           LoginRoute.name,
           initialChildren: children,
@@ -295,7 +296,7 @@ class LoginRoute extends _i19.PageRouteInfo<void> {
 
   static const String name = 'LoginRoute';
 
-  static _i19.PageInfo page = _i19.PageInfo(
+  static _i20.PageInfo page = _i20.PageInfo(
     name,
     builder: (data) {
       return const _i10.LoginPage();
@@ -305,8 +306,8 @@ class LoginRoute extends _i19.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i11.NotificationsPage]
-class NotificationsRoute extends _i19.PageRouteInfo<void> {
-  const NotificationsRoute({List<_i19.PageRouteInfo>? children})
+class NotificationsRoute extends _i20.PageRouteInfo<void> {
+  const NotificationsRoute({List<_i20.PageRouteInfo>? children})
       : super(
           NotificationsRoute.name,
           initialChildren: children,
@@ -314,7 +315,7 @@ class NotificationsRoute extends _i19.PageRouteInfo<void> {
 
   static const String name = 'NotificationsRoute';
 
-  static _i19.PageInfo page = _i19.PageInfo(
+  static _i20.PageInfo page = _i20.PageInfo(
     name,
     builder: (data) {
       return const _i11.NotificationsPage();
@@ -324,8 +325,8 @@ class NotificationsRoute extends _i19.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i12.PaymentConfirmPage]
-class PaymentConfirmRoute extends _i19.PageRouteInfo<void> {
-  const PaymentConfirmRoute({List<_i19.PageRouteInfo>? children})
+class PaymentConfirmRoute extends _i20.PageRouteInfo<void> {
+  const PaymentConfirmRoute({List<_i20.PageRouteInfo>? children})
       : super(
           PaymentConfirmRoute.name,
           initialChildren: children,
@@ -333,7 +334,7 @@ class PaymentConfirmRoute extends _i19.PageRouteInfo<void> {
 
   static const String name = 'PaymentConfirmRoute';
 
-  static _i19.PageInfo page = _i19.PageInfo(
+  static _i20.PageInfo page = _i20.PageInfo(
     name,
     builder: (data) {
       return const _i12.PaymentConfirmPage();
@@ -343,8 +344,8 @@ class PaymentConfirmRoute extends _i19.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i13.PredictPage]
-class PredictRoute extends _i19.PageRouteInfo<void> {
-  const PredictRoute({List<_i19.PageRouteInfo>? children})
+class PredictRoute extends _i20.PageRouteInfo<void> {
+  const PredictRoute({List<_i20.PageRouteInfo>? children})
       : super(
           PredictRoute.name,
           initialChildren: children,
@@ -352,7 +353,7 @@ class PredictRoute extends _i19.PageRouteInfo<void> {
 
   static const String name = 'PredictRoute';
 
-  static _i19.PageInfo page = _i19.PageInfo(
+  static _i20.PageInfo page = _i20.PageInfo(
     name,
     builder: (data) {
       return const _i13.PredictPage();
@@ -362,8 +363,8 @@ class PredictRoute extends _i19.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i14.ProfilePage]
-class ProfileRoute extends _i19.PageRouteInfo<void> {
-  const ProfileRoute({List<_i19.PageRouteInfo>? children})
+class ProfileRoute extends _i20.PageRouteInfo<void> {
+  const ProfileRoute({List<_i20.PageRouteInfo>? children})
       : super(
           ProfileRoute.name,
           initialChildren: children,
@@ -371,7 +372,7 @@ class ProfileRoute extends _i19.PageRouteInfo<void> {
 
   static const String name = 'ProfileRoute';
 
-  static _i19.PageInfo page = _i19.PageInfo(
+  static _i20.PageInfo page = _i20.PageInfo(
     name,
     builder: (data) {
       return const _i14.ProfilePage();
@@ -381,8 +382,8 @@ class ProfileRoute extends _i19.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i15.PurchasePage]
-class PurchaseRoute extends _i19.PageRouteInfo<void> {
-  const PurchaseRoute({List<_i19.PageRouteInfo>? children})
+class PurchaseRoute extends _i20.PageRouteInfo<void> {
+  const PurchaseRoute({List<_i20.PageRouteInfo>? children})
       : super(
           PurchaseRoute.name,
           initialChildren: children,
@@ -390,7 +391,7 @@ class PurchaseRoute extends _i19.PageRouteInfo<void> {
 
   static const String name = 'PurchaseRoute';
 
-  static _i19.PageInfo page = _i19.PageInfo(
+  static _i20.PageInfo page = _i20.PageInfo(
     name,
     builder: (data) {
       return const _i15.PurchasePage();
@@ -400,8 +401,8 @@ class PurchaseRoute extends _i19.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i16.SettingsPage]
-class SettingsRoute extends _i19.PageRouteInfo<void> {
-  const SettingsRoute({List<_i19.PageRouteInfo>? children})
+class SettingsRoute extends _i20.PageRouteInfo<void> {
+  const SettingsRoute({List<_i20.PageRouteInfo>? children})
       : super(
           SettingsRoute.name,
           initialChildren: children,
@@ -409,7 +410,7 @@ class SettingsRoute extends _i19.PageRouteInfo<void> {
 
   static const String name = 'SettingsRoute';
 
-  static _i19.PageInfo page = _i19.PageInfo(
+  static _i20.PageInfo page = _i20.PageInfo(
     name,
     builder: (data) {
       return const _i16.SettingsPage();
@@ -419,8 +420,8 @@ class SettingsRoute extends _i19.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i17.SignupPage]
-class SignupRoute extends _i19.PageRouteInfo<void> {
-  const SignupRoute({List<_i19.PageRouteInfo>? children})
+class SignupRoute extends _i20.PageRouteInfo<void> {
+  const SignupRoute({List<_i20.PageRouteInfo>? children})
       : super(
           SignupRoute.name,
           initialChildren: children,
@@ -428,7 +429,7 @@ class SignupRoute extends _i19.PageRouteInfo<void> {
 
   static const String name = 'SignupRoute';
 
-  static _i19.PageInfo page = _i19.PageInfo(
+  static _i20.PageInfo page = _i20.PageInfo(
     name,
     builder: (data) {
       return const _i17.SignupPage();
@@ -437,12 +438,58 @@ class SignupRoute extends _i19.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i18.SolutionPage]
-class SolutionRoute extends _i19.PageRouteInfo<SolutionRouteArgs> {
+/// [_i18.SoilAnalysisPage]
+class SoilAnalysisRoute extends _i20.PageRouteInfo<SoilAnalysisRouteArgs> {
+  SoilAnalysisRoute({
+    _i21.Key? key,
+    required _i23.XFile image,
+    List<_i20.PageRouteInfo>? children,
+  }) : super(
+          SoilAnalysisRoute.name,
+          args: SoilAnalysisRouteArgs(
+            key: key,
+            image: image,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'SoilAnalysisRoute';
+
+  static _i20.PageInfo page = _i20.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<SoilAnalysisRouteArgs>();
+      return _i18.SoilAnalysisPage(
+        key: args.key,
+        image: args.image,
+      );
+    },
+  );
+}
+
+class SoilAnalysisRouteArgs {
+  const SoilAnalysisRouteArgs({
+    this.key,
+    required this.image,
+  });
+
+  final _i21.Key? key;
+
+  final _i23.XFile image;
+
+  @override
+  String toString() {
+    return 'SoilAnalysisRouteArgs{key: $key, image: $image}';
+  }
+}
+
+/// generated route for
+/// [_i19.SolutionPage]
+class SolutionRoute extends _i20.PageRouteInfo<SolutionRouteArgs> {
   SolutionRoute({
-    _i20.Key? key,
-    required _i21.Crop model,
-    List<_i19.PageRouteInfo>? children,
+    _i21.Key? key,
+    required _i22.Crop model,
+    List<_i20.PageRouteInfo>? children,
   }) : super(
           SolutionRoute.name,
           args: SolutionRouteArgs(
@@ -454,11 +501,11 @@ class SolutionRoute extends _i19.PageRouteInfo<SolutionRouteArgs> {
 
   static const String name = 'SolutionRoute';
 
-  static _i19.PageInfo page = _i19.PageInfo(
+  static _i20.PageInfo page = _i20.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<SolutionRouteArgs>();
-      return _i18.SolutionPage(
+      return _i19.SolutionPage(
         key: args.key,
         model: args.model,
       );
@@ -472,9 +519,9 @@ class SolutionRouteArgs {
     required this.model,
   });
 
-  final _i20.Key? key;
+  final _i21.Key? key;
 
-  final _i21.Crop model;
+  final _i22.Crop model;
 
   @override
   String toString() {

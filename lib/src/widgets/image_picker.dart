@@ -12,8 +12,10 @@ import 'package:image_picker/image_picker.dart';
 import 'package:line_icons/line_icons.dart';
 
 class ImagePickModal extends StatelessWidget {
+  final bool forSoilAnalysis;
   const ImagePickModal({
     super.key,
+    this.forSoilAnalysis = false,
   });
 
   @override
