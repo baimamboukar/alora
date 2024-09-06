@@ -6,6 +6,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:grnagain/i18n/strings.g.dart';
 import 'package:grnagain/src/configs/index.dart';
 import 'package:grnagain/src/extensions/contextx.dart';
+import 'package:grnagain/src/extensions/extensions.dart';
 import 'package:grnagain/src/router/router.gr.dart';
 import 'package:grnagain/src/services/mobile/image_picker_services.dart';
 import 'package:image_picker/image_picker.dart';
@@ -39,7 +40,7 @@ class ImagePickModal extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
             ),
           ),
-          const SizedBox(height: 20),
+          20.vGap,
           Text(t.pickImageFromGallery,
               style: Styles.designText(
                   bold: false, color: context.colorScheme.primary, size: 16)),
@@ -65,7 +66,9 @@ class ImagePickModal extends StatelessWidget {
                         EasyLoading.showError(t.noIMageSelected);
                       } else {
                         context.router.push(
-                          DiseaseDetailsRoute(image: image),
+                          forSoilAnalysis
+                              ? SoilAnalysisRoute(image: image)
+                              : DiseaseDetailsRoute(image: image),
                         );
                       }
                     },
@@ -103,7 +106,9 @@ class ImagePickModal extends StatelessWidget {
                         EasyLoading.showError(t.noIMageSelected);
                       } else {
                         context.router.push(
-                          DiseaseDetailsRoute(image: image),
+                          forSoilAnalysis
+                              ? SoilAnalysisRoute(image: image)
+                              : DiseaseDetailsRoute(image: image),
                         );
                       }
                     },

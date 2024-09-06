@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:grnagain/src/extensions/contextx.dart';
 import 'package:grnagain/src/widgets/image_picker.dart';
 
-class ScannerLauncher extends StatelessWidget {
-  const ScannerLauncher({
+class SoilScanner extends StatelessWidget {
+  const SoilScanner({
     super.key,
   });
 
@@ -20,7 +20,7 @@ class ScannerLauncher extends StatelessWidget {
             backgroundColor: Colors.transparent,
             context: context,
             builder: (context) {
-              return const ImagePickModal();
+              return const ImagePickModal(forSoilAnalysis: true);
             },
           );
         },
