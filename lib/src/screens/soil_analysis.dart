@@ -99,8 +99,7 @@ class _SoilAnalysisPageState extends State<SoilAnalysisPage> {
 
     try {
       final prompt = TextPart(
-        "I am a farmer from Cameroon. I want you to help me make better decision in my farms. Your task is to help me identify the disease in this plant. Your response should be detailled and clear. You should highlight titles, symptoms, causes, and treatments. Please provide a detailed response by mentionning Cameroon and West Cameroon that should be organized in sections, each titled and subtitled. If the plant does not have any disease, mention it accordingly and give tips based on the plant's health.",
-      );
+          "I am a farmer from Cameroon. I want you to help me make better decisions for my farms. Your task is to help me analyze the soil quality of my farm. Your response should be detailed and clear. You should highlight titles, indicators, causes, and recommendations. Please provide a detailed response by mentioning Cameroon and West Cameroon, organized in sections, each titled and subtitled. If the soil is healthy, mention it accordingly and give tips based on the soil's current condition.");
       final imageParts = [
         DataPart('image/jpeg', image.readAsBytesSync()),
       ];
