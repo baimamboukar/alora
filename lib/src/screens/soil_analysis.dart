@@ -73,17 +73,34 @@ class _SoilAnalysisPageState extends State<SoilAnalysisPage> {
                 ],
               ),
             24.vGap,
-            ElevatedButton(
-              onPressed: () async {
-                final image = await ImagePicker().pickImage(
-                  source: ImageSource.camera,
-                  imageQuality: 50,
-                );
-                if (image != null) {
-                  await getPrediction(File(image.path), _model);
-                }
-              },
-              child: const Text('Take a picture'),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                  onPressed: () async {
+                    final image = await ImagePicker().pickImage(
+                      source: ImageSource.camera,
+                      imageQuality: 50,
+                    );
+                    if (image != null) {
+                      await getPrediction(File(image.path), _model);
+                    }
+                  },
+                  child: const Text('Take a picture'),
+                ),
+                ElevatedButton(
+                  onPressed: () async {
+                    final image = await ImagePicker().pickImage(
+                      source: ImageSource.gallery,
+                      imageQuality: 50,
+                    );
+                    if (image != null) {
+                      await getPrediction(File(image.path), _model);
+                    }
+                  },
+                  child: const Text('Pick From Gallery'),
+                ),
+              ],
             ),
           ],
         ).hPadding.vPadding,
@@ -99,7 +116,7 @@ class _SoilAnalysisPageState extends State<SoilAnalysisPage> {
 
     try {
       final prompt = TextPart(
-          "I am a farmer from Cameroon. I want you to help me make better decisions for my farms. Your task is to help me analyze the soil quality of my farm. Your response should be detailed and clear. You should highlight titles, indicators, causes, and recommendations. Please provide a detailed response by mentioning Cameroon and West Cameroon, organized in sections, each titled and subtitled. If the soil is healthy, mention it accordingly and give tips based on the soil's current condition.");
+          "Your name is GreenAgain AI, you are responsible for assisting farmers access their soil quality and provide them with a complete analysis and insights. Your response should be clear, but not loo long. You should highlight titles, soil characteristics and cause and recommendations (where applicable). Please provide a detailed response organized in sections. If the soil is healthy, mention it accordingly and give tips based on the soil's current condition. If the provided image is not a soil image, mention you can't analyze the soil or the image provided is invalid (in a cool funny way) and tell the user a fun fact about soil and agriculture in Cameroon, then ask him to provide a soil image.");
       final imageParts = [
         DataPart('image/jpeg', image.readAsBytesSync()),
       ];

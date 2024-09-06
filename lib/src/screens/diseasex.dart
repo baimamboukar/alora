@@ -73,17 +73,34 @@ class _DiseaseDetailsState extends State<DiseaseDetailsPage> {
                 ],
               ),
             24.vGap,
-            ElevatedButton(
-              onPressed: () async {
-                final image = await ImagePicker().pickImage(
-                  source: ImageSource.camera,
-                  imageQuality: 50,
-                );
-                if (image != null) {
-                  await getPrediction(File(image.path), _model);
-                }
-              },
-              child: const Text('Take a picture'),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                  onPressed: () async {
+                    final image = await ImagePicker().pickImage(
+                      source: ImageSource.camera,
+                      imageQuality: 50,
+                    );
+                    if (image != null) {
+                      await getPrediction(File(image.path), _model);
+                    }
+                  },
+                  child: const Text('Take a picture'),
+                ),
+                ElevatedButton(
+                  onPressed: () async {
+                    final image = await ImagePicker().pickImage(
+                      source: ImageSource.gallery,
+                      imageQuality: 50,
+                    );
+                    if (image != null) {
+                      await getPrediction(File(image.path), _model);
+                    }
+                  },
+                  child: const Text('Pick From Gallery'),
+                ),
+              ],
             ),
           ],
         ).hPadding.vPadding,

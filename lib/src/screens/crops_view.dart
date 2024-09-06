@@ -4,16 +4,17 @@ import 'package:auto_route/auto_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:grnagain/i18n/strings.g.dart';
 import 'package:grnagain/src/configs/data.dart';
 import 'package:grnagain/src/configs/index.dart';
 import 'package:grnagain/src/extensions/contextx.dart';
 import 'package:grnagain/src/extensions/extensions.dart';
-import 'package:grnagain/src/services/auth/firebase_auth.dart';
 import 'package:grnagain/src/widgets/image_picker.dart';
 import 'package:grnagain/src/widgets/index.dart';
 import 'package:grnagain/src/widgets/scanner_launcher.dart';
 import 'package:grnagain/src/widgets/weather_forecast.dart';
+import 'package:line_icons/line_icons.dart';
 
 import 'library_search_delegate.dart';
 
@@ -28,8 +29,8 @@ class CropsPage extends ConsumerStatefulWidget {
 class _CropsViewState extends ConsumerState<CropsPage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Padding(
+    return Scaffold(
+      body: const Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.0),
         child: _BuildPage(),
         // child: YoutubePlayerBuilder(
@@ -37,7 +38,41 @@ class _CropsViewState extends ConsumerState<CropsPage> {
         //   builder: (context, player) => _BuildPage(controller: _controller),
         // ),
       ),
-      floatingActionButton: ScannerLauncher(),
+      floatingActionButton: SpeedDial(
+        icon: Icons.document_scanner_outlined,
+        iconTheme: IconThemeData(color: context.colorScheme.onPrimary),
+        backgroundColor: context.colorScheme.primary,
+        overlayOpacity: 0.4,
+        children: [
+          SpeedDialChild(
+            child: const Icon(LineIcons.leaf),
+            label: 'Plant Disease',
+            onTap: () {
+              showModalBottomSheet(
+                backgroundColor: Colors.transparent,
+                context: context,
+                builder: (context) {
+                  return const ImagePickModal(forSoilAnalysis: false);
+                },
+              );
+            },
+          ),
+          SpeedDialChild(
+            child: const Icon(LineIcons.solarPanel),
+            label: 'Soil Analysis',
+            onTap: () {
+              showModalBottomSheet(
+                backgroundColor: Colors.transparent,
+                context: context,
+                builder: (context) {
+                  return const ImagePickModal(forSoilAnalysis: true);
+                },
+              );
+            },
+          ),
+        ],
+      ),
+      // ScannerLauncher(),
     );
   }
 }
@@ -96,42 +131,44 @@ class _BuildPage extends StatelessWidget {
         Row(
           children: [
             Container(
-                height: 58.0,
-                width: (context.screenWidth - 76) * .8,
-                padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                decoration: BoxDecoration(
-                  color: Palette.light,
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                child: Center(
-                  child: TextFormField(
-                    onTap: () =>
-                        showSearch(context: context, delegate: CropsSearch()),
-                    decoration: InputDecoration(
-                      hintText: t.searchLinary,
-                      border: InputBorder.none,
-                      prefixIcon: const Icon(
-                        Icons.search,
-                        color: Palette.secondary,
-                      ),
+              height: 58.0,
+              width: (context.screenWidth - 76) * .8,
+              padding: const EdgeInsets.symmetric(horizontal: 15.0),
+              decoration: BoxDecoration(
+                color: Palette.light,
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              child: Center(
+                child: TextFormField(
+                  onTap: () =>
+                      showSearch(context: context, delegate: CropsSearch()),
+                  decoration: InputDecoration(
+                    hintText: t.searchLinary,
+                    border: InputBorder.none,
+                    prefixIcon: const Icon(
+                      Icons.search,
+                      color: Palette.secondary,
                     ),
                   ),
-                )),
-            const SizedBox(width: 22),
+                ),
+              ),
+            ),
+            22.hGap,
             GestureDetector(
               onTap: () {
-                FirebaseAuthentication.isPreniumUser
-                    ? showModalBottomSheet(
-                        backgroundColor: Colors.transparent,
-                        context: context,
-                        builder: (context) {
-                          return const ImagePickModal();
-                        },
-                      )
-                    : context.autorouter.pushNamed('/purchase');
+                // FirebaseAuthentication.isPreniumUser
+                //     ?
+                showModalBottomSheet(
+                  backgroundColor: Colors.transparent,
+                  context: context,
+                  builder: (context) {
+                    return const ImagePickModal();
+                  },
+                );
+                // : context.autorouter.pushNamed('/purchase');
               },
               child: const ScannerLauncher(),
-            )
+            ),
           ],
         ),
         //14.vGap,
