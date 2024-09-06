@@ -130,21 +130,7 @@ class _BuildPage extends StatelessWidget {
                       )
                     : context.autorouter.pushNamed('/purchase');
               },
-              child: Container(
-                width: 50.0,
-                height: 50.0,
-                decoration: BoxDecoration(
-                  color: context.colorScheme.primary,
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                child: const Center(
-                  child: Icon(
-                    Icons.document_scanner,
-                    size: 28,
-                    color: Palette.light,
-                  ),
-                ),
-              ),
+              child: const ScannerLauncher(),
             )
           ],
         ),

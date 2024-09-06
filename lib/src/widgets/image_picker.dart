@@ -63,7 +63,7 @@ class ImagePickModal extends StatelessWidget {
                         EasyLoading.showError(t.noIMageSelected);
                       } else {
                         context.router.push(
-                          PredictRoute(image: image),
+                          DiseaseDetailsRoute(image: image),
                         );
                       }
                     },
@@ -100,7 +100,9 @@ class ImagePickModal extends StatelessWidget {
                       if (image == null) {
                         EasyLoading.showError(t.noIMageSelected);
                       } else {
-                        //context.autorouter.push(Predict(image: image));
+                        context.router.push(
+                          DiseaseDetailsRoute(image: image),
+                        );
                       }
                     },
                     child: Card(

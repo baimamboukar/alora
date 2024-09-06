@@ -66,6 +66,8 @@ dependencies:
   flutter_bloc: ^8.1.6
   freezed_annotation: ^2.4.4
   weather: ^3.1.1
+  google_generative_ai: ^0.4.5
+  flutter_markdown: ^0.7.3+1
   #tflite_maven: ^1.1.5
   #tflite: ^1.1.2
 

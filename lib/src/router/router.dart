@@ -81,5 +81,9 @@ class AppRouter extends RootStackRouter {
           page: ForecastRoute.page,
           path: '/forecast',
         ),
+        AutoRoute(
+          page: DiseaseDetailsRoute.page,
+          path: '/predict-disease',
+        ),
       ];
 }
