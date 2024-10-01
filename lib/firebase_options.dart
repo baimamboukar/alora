@@ -69,8 +69,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '348068762787',
     projectId: 'greenagain-7902a',
     storageBucket: 'greenagain-7902a.appspot.com',
-    iosClientId: '348068762787-1074amqn3eu82gf059c6hsfndk8t2tpv.apps.googleusercontent.com',
+    iosClientId:
+        '348068762787-1074amqn3eu82gf059c6hsfndk8t2tpv.apps.googleusercontent.com',
     iosBundleId: 'com.mysdgsdockta.app',
   );
-
 }

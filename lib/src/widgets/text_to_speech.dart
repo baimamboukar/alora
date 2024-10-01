@@ -11,19 +11,20 @@ import '../services/tts/text_to_speech_services.dart';
 final isPlayingRiverpod = StateProvider<bool>((ref) => false);
 
 class TextToSpeech extends ConsumerWidget {
+  final String? label;
   final String text;
   final String lang;
   final VoidCallback? callback;
-  const TextToSpeech({
-    super.key,
-    this.callback,
-    required this.text,
-    required this.lang,
-  });
+  const TextToSpeech(
+      {super.key,
+      this.callback,
+      required this.text,
+      required this.lang,
+      this.label});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isPlaying = ref.watch(isPlayingRiverpod.notifier).state;
+    final isPlaying = ref.watch(isPlayingRiverpod);
     return Row(
       children: [
         GestureDetector(
@@ -67,7 +68,7 @@ class TextToSpeech extends ConsumerWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(t.playSound,
+              Text(label ?? t.playSound,
                   style: Styles.designText(
                       bold: true, color: Palette.dark, size: 16)),
               Text(t.listenToText,

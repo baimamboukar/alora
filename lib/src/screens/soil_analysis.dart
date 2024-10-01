@@ -6,6 +6,8 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:grnagain/src/extensions/contextx.dart';
 import 'package:grnagain/src/extensions/extensions.dart';
+import 'package:grnagain/src/extensions/stringx.dart';
+import 'package:grnagain/src/widgets/text_to_speech.dart';
 import 'package:image_picker/image_picker.dart';
 
 @RoutePage()
@@ -65,6 +67,12 @@ class _SoilAnalysisPageState extends State<SoilAnalysisPage> {
                         ),
                       ),
                     ),
+                  ),
+                  10.vGap,
+                  TextToSpeech(
+                    label: "Read content",
+                    text: _prediction.clean,
+                    lang: "en-US",
                   ),
                   MarkdownBody(
                     selectable: true,

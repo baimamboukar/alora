@@ -1,3 +1,4 @@
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:grnagain/src/app/assets.dart';
 
 class Shop {
@@ -7,15 +8,16 @@ class Shop {
   final String desc;
   final String infos;
   final String contact;
+  final LatLng coordinates;
 
-  Shop({
-    required this.name,
-    required this.location,
-    required this.imageUrl,
-    required this.desc,
-    required this.infos,
-    required this.contact,
-  });
+  Shop(
+      {required this.name,
+      required this.location,
+      required this.imageUrl,
+      required this.desc,
+      required this.infos,
+      required this.contact,
+      required this.coordinates});
 }
 
 List<Shop> shops = [
@@ -26,6 +28,7 @@ List<Shop> shops = [
     desc: 'Open from 7am to 7pm',
     infos: 'Specializing in farm equipment',
     contact: '674556677 | support@multi-techsolutions.com',
+    coordinates: const LatLng(3.8480, 11.5021),
   ),
   Shop(
     name: 'GrnAgain Shop',
@@ -34,6 +37,7 @@ List<Shop> shops = [
     desc: 'Open from 9am to 9pm',
     infos: 'Find all your gardening needs here',
     contact: '675622404 | store@greeagain.io',
+    coordinates: const LatLng(3.8485, 11.5027),
   ),
   Shop(
     name: 'Mokolo Shop',
@@ -42,6 +46,7 @@ List<Shop> shops = [
     desc: 'Open from 8am to 8pm',
     infos: 'Organic seeds and tools available',
     contact: '699223344 | info@bioagric.cm',
+    coordinates: const LatLng(3.8490, 11.5033),
   )
   // Shop(
   //   name: 'Green Oasis',

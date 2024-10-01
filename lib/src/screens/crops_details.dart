@@ -133,8 +133,8 @@ class _CropsDetailsState extends ConsumerState<CropsDetailsPage> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 14),
-                    TextToSpeech(text: widget.model.description, lang: "en-AU"),
+                    14.vGap,
+                    TextToSpeech(text: widget.model.description, lang: "en-US"),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 14),
                       child: Text(widget.model.description,

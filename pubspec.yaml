@@ -69,6 +69,7 @@ dependencies:
   google_generative_ai: ^0.4.5
   flutter_markdown: ^0.7.3+1
   flutter_speed_dial: ^7.0.0
+  google_maps_flutter: ^2.9.0
   #tflite_maven: ^1.1.5
   #tflite: ^1.1.2
 
